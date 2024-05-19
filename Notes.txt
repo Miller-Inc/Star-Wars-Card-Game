@@ -1,0 +1,4 @@
+﻿
+use ports 1024-49151
+
+Prefere port 6136
