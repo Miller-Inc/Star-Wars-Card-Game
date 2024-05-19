@@ -11,7 +11,7 @@ namespace Star_Wars_Card_Game.Backend.Server
         private void SendTCPData(ushort toClient, Packet packet)
         {
             packet.WriteLength();
-            ServerBase.Server.Clients[toClient].SendData(packet);
+            //ServerBase.Server.Clients[toClient].SendData(packet);
         }
 
         public static void Welcome(ushort toClient, string message)
@@ -21,7 +21,7 @@ namespace Star_Wars_Card_Game.Backend.Server
                 packet.Write(message);
                 packet.Write(toClient);
 
-                SendTCPData(toClient, packet);
+                //SendTCPData(toClient, packet);
             }
         }
     }

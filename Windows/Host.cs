@@ -44,7 +44,7 @@ namespace Star_Wars_Card_Game.Windows
 
         private void RunServer()
         {
-            ServerBase.StartServer(Properties.Settings.Default.Port, 6);
+            //ServerBase.StartServer(Properties.Settings.Default.Port, 6);
             Thread serverThread = new Thread(() => 
             {
                 ServerBase.Running = true; 
@@ -54,7 +54,7 @@ namespace Star_Wars_Card_Game.Windows
                     Thread.Sleep(1000 / 60);
                 }
             });
-            serverThread.Start();
+            //serverThread.Start();
         }
 
         private void joinGameLocally_Click(object sender, EventArgs e)

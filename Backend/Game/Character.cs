@@ -20,5 +20,7 @@ namespace Star_Wars_Card_Game.Backend.Game
         public int Speed { get; set; }
 
         public List<Ablility> Ablilities { get; set; }
+
+
     }
 }

@@ -47,6 +47,9 @@ namespace Star_Wars_Card_Game.Backend.Server
             Port = port;
             MaxClients = maxClients;
 
+            if (Server != null || Server.IsRunning)
+                return;
+
             Server = new Riptide.Server();
             Server.Start(port, maxClients);
             Server.ClientDisconnected += PlayerDisconnect;
