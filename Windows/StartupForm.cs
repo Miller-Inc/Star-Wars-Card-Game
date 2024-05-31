@@ -82,5 +82,11 @@ namespace Star_Wars_Card_Game.Windows
             Program.CurrentForm = OpenForms.Host;
             this.Close();
         }
+
+        private void devButton_Click(object sender, EventArgs e)
+        {
+            Form form = new DevForm();
+            form.Show();
+        }
     }
 }

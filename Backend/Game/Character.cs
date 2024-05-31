@@ -19,6 +19,10 @@ namespace Star_Wars_Card_Game.Backend.Game
 
         public int Speed { get; set; }
 
+        public List<string> Classes { get; set; }
+
+        public Allignment Allignment { get; set; }
+
         public List<Ablility> Ablilities { get; set; }
 
 

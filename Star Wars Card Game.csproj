@@ -54,12 +54,17 @@
     <ApplicationIcon>Resources\SW.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MillerInc, Version=1.0.4.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Backend\DLLs\MillerInc.dll</HintPath>
+    </Reference>
     <Reference Include="RiptideNetworking, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Backend\DLLs\RiptideNetworking.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -74,6 +79,8 @@
   <ItemGroup>
     <Compile Include="Backend\Client\ClientBase.cs" />
     <Compile Include="Backend\Client\PlayerClient.cs" />
+    <Compile Include="Backend\Game\Allignment.cs" />
+    <Compile Include="Backend\Game\Classes.cs" />
     <Compile Include="Backend\Server\Packet.cs" />
     <Compile Include="Backend\Server\Player.cs" />
     <Compile Include="Backend\Game\Ablility.cs" />
@@ -83,6 +90,18 @@
     <Compile Include="Backend\Server\ServerBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\Confirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\Confirmation.Designer.cs">
+      <DependentUpon>Confirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DevForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\DevForm.Designer.cs">
+      <DependentUpon>DevForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Host.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +123,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Windows\Confirmation.resx">
+      <DependentUpon>Confirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\DevForm.resx">
+      <DependentUpon>DevForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\Host.resx">
       <DependentUpon>Host.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,18 +144,27 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Classes.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="Backend\DLLs\MillerInc.dll" />
     <Content Include="Backend\DLLs\RiptideNetworking.dll" />
     <Content Include="Backend\DLLs\RiptideNetworking.xml" />
     <Content Include="Notes.txt" />
     <Content Include="Resources\SW.ico" />
     <Content Include="Resources\SW.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.3</Version>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>

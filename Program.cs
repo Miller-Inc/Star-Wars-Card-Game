@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Star_Wars_Card_Game.Backend.Game;
 using Star_Wars_Card_Game.Windows; 
 
 namespace Star_Wars_Card_Game
@@ -28,6 +29,8 @@ namespace Star_Wars_Card_Game
             if (Properties.Settings.Default.ColorPreference == "Dark") IsDarkMode = true;
             else IsDarkMode = false;
 
+            Classes.FilePath = "Resources\\Classes.json";
+            Classes.LoadFromFile(); 
 
             switch (form)
             {

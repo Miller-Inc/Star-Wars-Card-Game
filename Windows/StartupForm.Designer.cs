@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartupForm));
             this.tabContainer = new System.Windows.Forms.TabControl();
             this.ConnectionPage = new System.Windows.Forms.TabPage();
+            this.HostGame = new System.Windows.Forms.Button();
             this.preferences = new System.Windows.Forms.TabPage();
             this.defaultPort = new System.Windows.Forms.MaskedTextBox();
             this.DefaultIPInput = new System.Windows.Forms.MaskedTextBox();
@@ -41,7 +42,7 @@
             this.defaultPage = new System.Windows.Forms.ComboBox();
             this.SaveDefaults = new System.Windows.Forms.Button();
             this.ColorMode = new System.Windows.Forms.ComboBox();
-            this.HostGame = new System.Windows.Forms.Button();
+            this.devButton = new System.Windows.Forms.Button();
             this.tabContainer.SuspendLayout();
             this.ConnectionPage.SuspendLayout();
             this.preferences.SuspendLayout();
@@ -68,9 +69,21 @@
             this.ConnectionPage.TabIndex = 0;
             this.ConnectionPage.Text = "Connection Setup";
             // 
+            // HostGame
+            // 
+            this.HostGame.ForeColor = System.Drawing.Color.Black;
+            this.HostGame.Location = new System.Drawing.Point(667, 6);
+            this.HostGame.Name = "HostGame";
+            this.HostGame.Size = new System.Drawing.Size(95, 34);
+            this.HostGame.TabIndex = 0;
+            this.HostGame.Text = "Host Game";
+            this.HostGame.UseVisualStyleBackColor = true;
+            this.HostGame.Click += new System.EventHandler(this.HostGame_Click);
+            // 
             // preferences
             // 
             this.preferences.BackColor = System.Drawing.Color.Black;
+            this.preferences.Controls.Add(this.devButton);
             this.preferences.Controls.Add(this.defaultPort);
             this.preferences.Controls.Add(this.DefaultIPInput);
             this.preferences.Controls.Add(this.defaultPortLbl);
@@ -176,16 +189,17 @@
             this.ColorMode.Size = new System.Drawing.Size(303, 21);
             this.ColorMode.TabIndex = 0;
             // 
-            // HostGame
+            // devButton
             // 
-            this.HostGame.ForeColor = System.Drawing.Color.Black;
-            this.HostGame.Location = new System.Drawing.Point(667, 6);
-            this.HostGame.Name = "HostGame";
-            this.HostGame.Size = new System.Drawing.Size(95, 34);
-            this.HostGame.TabIndex = 0;
-            this.HostGame.Text = "Host Game";
-            this.HostGame.UseVisualStyleBackColor = true;
-            this.HostGame.Click += new System.EventHandler(this.HostGame_Click);
+            this.devButton.FlatAppearance.BorderSize = 0;
+            this.devButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.devButton.ForeColor = System.Drawing.Color.Black;
+            this.devButton.Location = new System.Drawing.Point(6, 6);
+            this.devButton.Name = "devButton";
+            this.devButton.Size = new System.Drawing.Size(87, 30);
+            this.devButton.TabIndex = 11;
+            this.devButton.UseVisualStyleBackColor = true;
+            this.devButton.Click += new System.EventHandler(this.devButton_Click);
             // 
             // StartupForm
             // 
@@ -220,5 +234,6 @@
         private System.Windows.Forms.Label DefaultIPLbl;
         private System.Windows.Forms.MaskedTextBox defaultPort;
         private System.Windows.Forms.Button HostGame;
+        private System.Windows.Forms.Button devButton;
     }
 }
