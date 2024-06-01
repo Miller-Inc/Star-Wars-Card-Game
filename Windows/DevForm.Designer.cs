@@ -33,18 +33,17 @@
             this.devTabs = new System.Windows.Forms.TabControl();
             this.AddPlayers = new System.Windows.Forms.TabPage();
             this.characterNameIn = new System.Windows.Forms.TextBox();
-            this.classInput = new System.Windows.Forms.RichTextBox();
             this.ClassMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.className = new System.Windows.Forms.ToolStripTextBox();
+            this.addClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeClassToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classOptionsMenu = new System.Windows.Forms.ToolStripComboBox();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addClassToCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addClasses = new System.Windows.Forms.ToolStripComboBox();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CharacterClassLbl = new System.Windows.Forms.Label();
             this.charNameLbl = new System.Windows.Forms.Label();
             this.RemoveCharacterTbPg = new System.Windows.Forms.TabPage();
+            this.classInput = new System.Windows.Forms.CheckedListBox();
             this.devTabs.SuspendLayout();
             this.AddPlayers.SuspendLayout();
             this.ClassMenu.SuspendLayout();
@@ -63,8 +62,8 @@
             // AddPlayers
             // 
             this.AddPlayers.BackColor = System.Drawing.Color.Black;
-            this.AddPlayers.Controls.Add(this.characterNameIn);
             this.AddPlayers.Controls.Add(this.classInput);
+            this.AddPlayers.Controls.Add(this.characterNameIn);
             this.AddPlayers.Controls.Add(this.CharacterClassLbl);
             this.AddPlayers.Controls.Add(this.charNameLbl);
             this.AddPlayers.Location = new System.Drawing.Point(4, 22);
@@ -84,36 +83,36 @@
             this.characterNameIn.Size = new System.Drawing.Size(275, 13);
             this.characterNameIn.TabIndex = 3;
             // 
-            // classInput
-            // 
-            this.classInput.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.classInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.classInput.CausesValidation = false;
-            this.classInput.ContextMenuStrip = this.ClassMenu;
-            this.classInput.DetectUrls = false;
-            this.classInput.ForeColor = System.Drawing.Color.White;
-            this.classInput.Location = new System.Drawing.Point(12, 82);
-            this.classInput.Name = "classInput";
-            this.classInput.Size = new System.Drawing.Size(275, 151);
-            this.classInput.TabIndex = 2;
-            this.classInput.Text = "";
-            // 
             // ClassMenu
             // 
             this.ClassMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNewToolStripMenuItem,
-            this.removeClassToolStripMenuItem,
-            this.addClassToCharacterToolStripMenuItem});
+            this.removeClassToolStripMenuItem});
             this.ClassMenu.Name = "ClassMenu";
-            this.ClassMenu.Size = new System.Drawing.Size(205, 70);
+            this.ClassMenu.Size = new System.Drawing.Size(157, 48);
             this.ClassMenu.Text = "Class Options";
             // 
             // addNewToolStripMenuItem
             // 
+            this.addNewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.className,
+            this.addClassToolStripMenuItem});
             this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
-            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.addNewToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.addNewToolStripMenuItem.Text = "Add New Class";
-            this.addNewToolStripMenuItem.Click += new System.EventHandler(this.addNewToolStripMenuItem_Click);
+            // 
+            // className
+            // 
+            this.className.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.className.Name = "className";
+            this.className.Size = new System.Drawing.Size(100, 23);
+            // 
+            // addClassToolStripMenuItem
+            // 
+            this.addClassToolStripMenuItem.Name = "addClassToolStripMenuItem";
+            this.addClassToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addClassToolStripMenuItem.Text = "Add Class";
+            this.addClassToolStripMenuItem.Click += new System.EventHandler(this.addClassToolStripMenuItem_Click);
             // 
             // removeClassToolStripMenuItem
             // 
@@ -121,7 +120,7 @@
             this.classOptionsMenu,
             this.removeToolStripMenuItem});
             this.removeClassToolStripMenuItem.Name = "removeClassToolStripMenuItem";
-            this.removeClassToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.removeClassToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.removeClassToolStripMenuItem.Text = "Remove Class...";
             // 
             // classOptionsMenu
@@ -138,27 +137,6 @@
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
-            // 
-            // addClassToCharacterToolStripMenuItem
-            // 
-            this.addClassToCharacterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addClasses,
-            this.addToolStripMenuItem});
-            this.addClassToCharacterToolStripMenuItem.Name = "addClassToCharacterToolStripMenuItem";
-            this.addClassToCharacterToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.addClassToCharacterToolStripMenuItem.Text = "Add Class To Character...";
-            // 
-            // addClasses
-            // 
-            this.addClasses.Name = "addClasses";
-            this.addClasses.Size = new System.Drawing.Size(121, 23);
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.addToolStripMenuItem.Text = "Add";
-            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // CharacterClassLbl
             // 
@@ -191,6 +169,18 @@
             this.RemoveCharacterTbPg.TabIndex = 1;
             this.RemoveCharacterTbPg.Text = "Remove Character";
             // 
+            // classInput
+            // 
+            this.classInput.BackColor = System.Drawing.Color.DimGray;
+            this.classInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.classInput.ContextMenuStrip = this.ClassMenu;
+            this.classInput.ForeColor = System.Drawing.Color.White;
+            this.classInput.FormattingEnabled = true;
+            this.classInput.Location = new System.Drawing.Point(12, 81);
+            this.classInput.Name = "classInput";
+            this.classInput.Size = new System.Drawing.Size(275, 150);
+            this.classInput.TabIndex = 4;
+            // 
             // DevForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,16 +205,15 @@
         private System.Windows.Forms.TabPage AddPlayers;
         private System.Windows.Forms.Label charNameLbl;
         private System.Windows.Forms.TabPage RemoveCharacterTbPg;
-        private System.Windows.Forms.RichTextBox classInput;
         private System.Windows.Forms.Label CharacterClassLbl;
         private System.Windows.Forms.TextBox characterNameIn;
         private System.Windows.Forms.ContextMenuStrip ClassMenu;
         private System.Windows.Forms.ToolStripMenuItem addNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeClassToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox classOptionsMenu;
-        private System.Windows.Forms.ToolStripMenuItem addClassToCharacterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox addClasses;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox className;
+        private System.Windows.Forms.ToolStripMenuItem addClassToolStripMenuItem;
+        private System.Windows.Forms.CheckedListBox classInput;
     }
 }
