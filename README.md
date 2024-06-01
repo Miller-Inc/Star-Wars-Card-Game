@@ -16,6 +16,7 @@ This mode is where the player can setup their roster and their opponents' roster
 
 ## Legal and Monetary Policies
 This project is open sourced and aims to always be free for everyone. Copies of this project should include a reference to this main project as this project also should include references to any other resources that were used in the the game and its development. 
+This project uses ideas and intellectual property from Lucasfilm and Disney. 
 
 ## Contributing 
 To contribute to the the main branch of this project, it would need to work with the current functionality of the rest of the project. It would also be ideal for the additions to be thoroughly tested for bugs. 
