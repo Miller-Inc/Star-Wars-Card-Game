@@ -12,12 +12,24 @@ using System.Windows.Forms;
 
 namespace Star_Wars_Card_Game.Windows
 {
+
+    
+
     public partial class DevForm : Form
     {
+        internal static readonly Bitmap InitialImage = new("Resources/ImageBlank.png");
+
         public DevForm()
         {
             InitializeComponent();
-            LoadUI(); 
+            LoadUI();
+            ResetUI();
+        }
+
+        private void ResetUI()
+        {
+            this.className.Text = "";
+            this.CharacterPicture.Image = InitialImage;
         }
 
         private void LoadUI()
@@ -30,12 +42,14 @@ namespace Star_Wars_Card_Game.Windows
             {
                 SetLightMode();
             }
+
+            // Classes Region
+
             // Add the class options to the classOptionsMenu
             // Get the classes from the local database
             classOptionsMenu.Items.Clear();
             classInput.Items.Clear();
             classOptionsMenu.Items.AddRange(Backend.Game.Classes.ClassNames.ToArray());
-            this.classInput.Items.Clear();
 
             foreach (var item in Backend.Game.Classes.ClassNames)
             {
@@ -50,6 +64,16 @@ namespace Star_Wars_Card_Game.Windows
             if (classOptionsMenu.Items.Count > 0)
             {
                 classOptionsMenu.SelectedIndex = 0;
+            }
+
+            // Alignment Region
+
+            // Add the alignment options to the alignmentOptionsMenu
+            alignIpt.Items.Clear();
+            alignIpt.Items.AddRange(Enum.GetNames(typeof(Allignment)));
+            if (alignIpt.Items.Count > 0)
+            {
+                alignIpt.SelectedIndex = 0;
             }
         }
 

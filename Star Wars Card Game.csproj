@@ -54,10 +54,10 @@
     <ApplicationIcon>Resources\SW.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>StarWarsCardGameKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>SW CG Key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -72,10 +72,6 @@
     <StartupObject>Star_Wars_Card_Game.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MillerInc, Version=1.0.4.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Backend\DLLs\MillerInc.dll</HintPath>
-    </Reference>
     <Reference Include="RiptideNetworking, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Backend\DLLs\RiptideNetworking.dll</HintPath>
@@ -167,6 +163,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="StarWarsCardGameKey.pfx" />
+    <None Include="SW CG Key.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -177,10 +174,16 @@
     <Content Include="Backend\DLLs\RiptideNetworking.dll" />
     <Content Include="Backend\DLLs\RiptideNetworking.xml" />
     <Content Include="Notes.txt" />
+    <Content Include="Resources\ImageBlank.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\SW.ico" />
     <Content Include="Resources\SW.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MillerInc">
+      <Version>1.0.4</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
     </PackageReference>

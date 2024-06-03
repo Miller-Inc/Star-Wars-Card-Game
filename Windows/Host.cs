@@ -45,7 +45,7 @@ namespace Star_Wars_Card_Game.Windows
         private void RunServer()
         {
             //ServerBase.StartServer(Properties.Settings.Default.Port, 6);
-            Thread serverThread = new Thread(() => 
+            Thread serverThread = new(() => 
             {
                 ServerBase.Running = true; 
                 while (ServerBase.Running)
