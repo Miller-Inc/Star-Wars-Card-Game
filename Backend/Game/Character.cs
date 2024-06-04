@@ -23,7 +23,7 @@ namespace Star_Wars_Card_Game.Backend.Game
 
         public Allignment Allignment { get; set; }
 
-        public List<Ablility> Ablilities { get; set; }
+        public List<Ability> Ablilities { get; set; }
 
 
     }

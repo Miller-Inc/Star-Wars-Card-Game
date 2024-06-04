@@ -1,4 +1,5 @@
 ﻿using Star_Wars_Card_Game.Backend.Game;
+using Star_Wars_Card_Game.Windows.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,8 @@ namespace Star_Wars_Card_Game.Windows
 
     public partial class DevForm : Form
     {
+        public List<Ability> Abilities = [];
+
         internal static readonly Bitmap InitialImage = new("Resources/ImageBlank.png");
 
         public DevForm()
@@ -109,6 +112,24 @@ namespace Star_Wars_Card_Game.Windows
             Classes.SaveToFile();
             this.className.Text = "";
             LoadUI();
+        }
+
+        private void CreateAbility(AbilityType type)
+        {
+            AbilityPopup popup = new(PopupType.Add, type);
+            DialogResult result = popup.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                // Add the ability to the database
+                this.Abilities.Add(popup.Ability);
+                this.abilitesIptDisplay.Nodes.Add(popup.Ability.Name);
+            }
+        }
+
+
+        private void basicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateAbility(AbilityType.Basic);
         }
     }
 }

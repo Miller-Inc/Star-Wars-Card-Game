@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Star_Wars_Card_Game.Backend.Game
 {
-    public class Ablility
+    public class Ability
     {
         public string Name { get; set; } = "Not Set";
 
@@ -16,9 +16,9 @@ namespace Star_Wars_Card_Game.Backend.Game
 
         public int Cooldown { get; set; }
 
-        public AblilityType Type { get; set; }
+        public AbilityType Type { get; set; }
 
-        public Ablility(string name, string description, int damage, int cooldown, AblilityType type)
+        public Ability(string name, string description, int damage, int cooldown, AbilityType type)
         {
             Name = name;
             Description = description;
@@ -27,13 +27,13 @@ namespace Star_Wars_Card_Game.Backend.Game
             Type = type;
         }
 
-        public Ablility()
+        public Ability()
         {
 
         }
     }
 
-    public enum AblilityType
+    public enum AbilityType
     {
         Basic = 0, 
         Special = 1, 
