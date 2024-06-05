@@ -25,6 +25,10 @@ namespace Star_Wars_Card_Game.Backend.Game
 
         public List<Ability> Ablilities { get; set; }
 
+        public string ImagePath { get; set; }
+
+        public List<StatusEffect> StatusEffects { get; set; } = []; 
+
 
     }
 }

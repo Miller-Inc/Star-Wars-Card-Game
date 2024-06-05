@@ -44,7 +44,7 @@ namespace Star_Wars_Card_Game.Backend.Game
             Classes.ClassNames.Remove(ClassName);
         }
 
-        public static string FilePath { get; set; } = "Resources\\Classes.json";
+        public static string FilePath { get; set; } = Program.filePath + "\\Resources\\Classes.json";
 
         public static List<string> ClassNames { get; set; } = []; 
     }

@@ -10,6 +10,7 @@ namespace Star_Wars_Card_Game.Backend.Game
     {
         LightSide, 
         DarkSide, 
-        Neutral
+        Neutral, 
+        Any
     }
 }

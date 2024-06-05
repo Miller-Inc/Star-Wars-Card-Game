@@ -93,8 +93,10 @@
   <ItemGroup>
     <Compile Include="Backend\Client\ClientBase.cs" />
     <Compile Include="Backend\Client\PlayerClient.cs" />
+    <Compile Include="Backend\Game\Action.cs" />
     <Compile Include="Backend\Game\Allignment.cs" />
     <Compile Include="Backend\Game\Classes.cs" />
+    <Compile Include="Backend\Game\StatusEffect.cs" />
     <Compile Include="Backend\Server\Packet.cs" />
     <Compile Include="Backend\Server\Player.cs" />
     <Compile Include="Backend\Game\Ability.cs" />

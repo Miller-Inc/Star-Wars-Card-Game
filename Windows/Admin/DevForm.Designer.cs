@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Basic");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Basic");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.EditAbility = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editAbilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +68,7 @@
             this.RemoveCharacterTbPg = new System.Windows.Forms.TabPage();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.removeAbilityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ChooseImgDlg = new System.Windows.Forms.OpenFileDialog();
             this.EditAbility.SuspendLayout();
             this.devTabs.SuspendLayout();
             this.AddPlayers.SuspendLayout();
@@ -86,13 +87,14 @@
             this.removeAbilityToolStripMenuItem,
             this.addAbilityToolStripMenuItem});
             this.EditAbility.Name = "EditAbility";
-            this.EditAbility.Size = new System.Drawing.Size(181, 92);
+            this.EditAbility.Size = new System.Drawing.Size(179, 70);
             // 
             // editAbilityToolStripMenuItem
             // 
             this.editAbilityToolStripMenuItem.Name = "editAbilityToolStripMenuItem";
-            this.editAbilityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editAbilityToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.editAbilityToolStripMenuItem.Text = "Edit Selected Ability";
+            this.editAbilityToolStripMenuItem.Click += new System.EventHandler(this.editAbilityToolStripMenuItem_Click);
             // 
             // removeAbilityToolStripMenuItem
             // 
@@ -100,7 +102,7 @@
             this.toolStripComboBox1,
             this.removeAbilityToolStripMenuItem1});
             this.removeAbilityToolStripMenuItem.Name = "removeAbilityToolStripMenuItem";
-            this.removeAbilityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeAbilityToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.removeAbilityToolStripMenuItem.Text = "Remove Ability...";
             // 
             // addAbilityToolStripMenuItem
@@ -110,7 +112,7 @@
             this.specialToolStripMenuItem,
             this.ultimateToolStripMenuItem});
             this.addAbilityToolStripMenuItem.Name = "addAbilityToolStripMenuItem";
-            this.addAbilityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addAbilityToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.addAbilityToolStripMenuItem.Text = "Add Ability...";
             // 
             // basicToolStripMenuItem
@@ -198,12 +200,12 @@
             this.abilitesIptDisplay.ForeColor = System.Drawing.Color.White;
             this.abilitesIptDisplay.Location = new System.Drawing.Point(9, 363);
             this.abilitesIptDisplay.Name = "abilitesIptDisplay";
-            treeNode1.Checked = true;
-            treeNode1.ContextMenuStrip = this.EditAbility;
-            treeNode1.Name = "Basic";
-            treeNode1.Text = "Basic";
+            treeNode2.Checked = true;
+            treeNode2.ContextMenuStrip = this.EditAbility;
+            treeNode2.Name = "Basic";
+            treeNode2.Text = "Basic";
             this.abilitesIptDisplay.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.abilitesIptDisplay.Size = new System.Drawing.Size(278, 131);
             this.abilitesIptDisplay.TabIndex = 16;
             // 
@@ -337,6 +339,7 @@
             // 
             // CharacterPicture
             // 
+            this.CharacterPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CharacterPicture.Image = ((System.Drawing.Image)(resources.GetObject("CharacterPicture.Image")));
             this.CharacterPicture.InitialImage = ((System.Drawing.Image)(resources.GetObject("CharacterPicture.InitialImage")));
             this.CharacterPicture.Location = new System.Drawing.Point(469, 62);
@@ -344,6 +347,7 @@
             this.CharacterPicture.Size = new System.Drawing.Size(350, 350);
             this.CharacterPicture.TabIndex = 7;
             this.CharacterPicture.TabStop = false;
+            this.CharacterPicture.Click += new System.EventHandler(this.CharacterPicture_Click);
             // 
             // AlignLbl
             // 
@@ -439,6 +443,7 @@
             this.characterNameIn.Name = "characterNameIn";
             this.characterNameIn.Size = new System.Drawing.Size(275, 13);
             this.characterNameIn.TabIndex = 3;
+            this.characterNameIn.TextChanged += new System.EventHandler(this.characterNameIn_TextChanged);
             // 
             // CharacterClassLbl
             // 
@@ -481,6 +486,15 @@
             this.removeAbilityToolStripMenuItem1.Name = "removeAbilityToolStripMenuItem1";
             this.removeAbilityToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
             this.removeAbilityToolStripMenuItem1.Text = "Remove Ability";
+            // 
+            // ChooseImgDlg
+            // 
+            this.ChooseImgDlg.FileName = "Choose Character Image";
+            this.ChooseImgDlg.Filter = "\"Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif;...\"";
+            this.ChooseImgDlg.FilterIndex = 3;
+            this.ChooseImgDlg.ShowReadOnly = true;
+            this.ChooseImgDlg.SupportMultiDottedExtensions = true;
+            this.ChooseImgDlg.Title = "Choose Character Image";
             // 
             // DevForm
             // 
@@ -546,5 +560,6 @@
         private System.Windows.Forms.Label ImageLbl;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripMenuItem removeAbilityToolStripMenuItem1;
+        private System.Windows.Forms.OpenFileDialog ChooseImgDlg;
     }
 }

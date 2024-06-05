@@ -28,8 +28,8 @@ namespace Star_Wars_Card_Game
 
             if (Properties.Settings.Default.ColorPreference == "Dark") IsDarkMode = true;
             else IsDarkMode = false;
-           
-            Classes.FilePath = "Resources\\Classes.json";
+
+            Classes.FilePath = Program.filePath + "\\Resources\\Classes.json";
 
             if (System.IO.File.Exists(Classes.FilePath) == false)
                 System.IO.File.Create(Classes.FilePath);
@@ -66,6 +66,8 @@ namespace Star_Wars_Card_Game
         }
 
         public static bool IsDarkMode { get; set; } = false;
+
+        public static string filePath = Application.StartupPath;
 
         public static OpenForms CurrentForm { get; set; } = OpenForms.StartupForm;
 

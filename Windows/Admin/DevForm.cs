@@ -18,7 +18,9 @@ namespace Star_Wars_Card_Game.Windows
 
     public partial class DevForm : Form
     {
-        public List<Ability> Abilities = [];
+        public List<Ability> Abilities = [new Ability()];
+
+        public Character Character = new();
 
         internal static readonly Bitmap InitialImage = new("Resources/ImageBlank.png");
 
@@ -130,6 +132,54 @@ namespace Star_Wars_Card_Game.Windows
         private void basicToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateAbility(AbilityType.Basic);
+        }
+
+        private void editAbilityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AbilityPopup popup = new(PopupType.Edit, this.Abilities[this.abilitesIptDisplay.SelectedNode.Index]);
+                DialogResult result = popup.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    // Update the ability in the database
+                    this.Abilities[this.abilitesIptDisplay.SelectedNode.Index] = popup.Ability;
+                    this.abilitesIptDisplay.Nodes[this.abilitesIptDisplay.SelectedNode.Index].Text = popup.Ability.Name;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please select an ability to edit");
+            }
+        }
+
+        private void CharacterPicture_Click(object sender, EventArgs e)
+        {
+            DialogResult result = this.ChooseImgDlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Bitmap img = new(this.ChooseImgDlg.FileName);
+                Size size = new(350, 350);
+                this.CharacterPicture.Image = new Bitmap(img, size);
+                string fileName = this.Character.Name + ".bmp";
+                string directory = "\\Resources\\";
+                string filePath = Program.filePath + directory + fileName;
+
+                if (!System.IO.Directory.Exists(directory))
+                {
+                    System.IO.Directory.CreateDirectory(directory);
+                }
+
+                this.CharacterPicture.Image.Save(filePath);
+                this.Character.ImagePath = filePath;
+                this.CharacterPicture.Image.Save(Program.filePath + "/Resources/" + fileName);
+                this.Character.ImagePath = "Resources/" + fileName;
+            }
+        }
+
+        private void characterNameIn_TextChanged(object sender, EventArgs e)
+        {
+            this.Character.Name = characterNameIn.Text;
         }
     }
 }
