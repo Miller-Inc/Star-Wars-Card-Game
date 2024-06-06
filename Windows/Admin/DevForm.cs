@@ -155,6 +155,11 @@ namespace Star_Wars_Card_Game.Windows
 
         private void CharacterPicture_Click(object sender, EventArgs e)
         {
+            if (this.characterNameIn.Text == "")
+            {
+                MessageBox.Show("Please enter a name for the character");
+                return;
+            }
             DialogResult result = this.ChooseImgDlg.ShowDialog();
             if (result == DialogResult.OK)
             {

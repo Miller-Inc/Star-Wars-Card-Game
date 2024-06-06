@@ -42,14 +42,21 @@ namespace Star_Wars_Card_Game.Backend.Game
 
     public class DefaultStatusEffects
     {
-        public static StatusEffect ReduceMaxHealth = new(3, StatusApplicationType.Multiplicative, AffectedStat.Health, 0.85f);
-        public static StatusEffect DamageOverTime = new(3, StatusApplicationType.Additive, AffectedStat.Health, -10f);
-        public static StatusEffect ReduceSpeed = new(3,StatusApplicationType.Multiplicative, AffectedStat.Speed, 0.85f);
-        public static StatusEffect Stun = new(1,StatusApplicationType.LoseTurn, AffectedStat.Speed, 1.0f);
-        public static StatusEffect IncreaseSpeed = new(3,StatusApplicationType.Multiplicative, AffectedStat.Speed, 1.15f);
-        public static StatusEffect IncreaseAttack = new(3,StatusApplicationType.Multiplicative, AffectedStat.Attack, 1.15f);
-        public static StatusEffect IncreaseDefense = new(3,StatusApplicationType.Multiplicative, AffectedStat.Defense, 1.15f);
-        public static StatusEffect IncreaseHealth = new(3,StatusApplicationType.Multiplicative, AffectedStat.Health, 1.15f);
+        public static StatusEffect defReduceMaxHealth = new(3, StatusApplicationType.Multiplicative, AffectedStat.Health, 0.85f);
+        public static StatusEffect AlterMaxHealth(float amount) => new(3, StatusApplicationType.Multiplicative, AffectedStat.Health, amount);
+        public static StatusEffect defDamageOverTime = new(3, StatusApplicationType.Additive, AffectedStat.Health, -10f);
+        public static StatusEffect HealOverTime = new(3, StatusApplicationType.Additive, AffectedStat.Health, 10f);
+        public static StatusEffect DamageOverTime(float amount) => new(3, StatusApplicationType.Additive, AffectedStat.Health, amount);
+        public static StatusEffect defReduceSpeed = new(3,StatusApplicationType.Multiplicative, AffectedStat.Speed, 0.85f);
+        public static StatusEffect AlterSpeed(float amount) => new(3,StatusApplicationType.Multiplicative, AffectedStat.Speed, amount);
+        public static StatusEffect defStun = new(1, StatusApplicationType.LoseTurn, AffectedStat.Speed, 1.0f);
+        public static StatusEffect Stun(float amount) => new(1,StatusApplicationType.LoseTurn, AffectedStat.Speed, amount);
+        public static StatusEffect defIncreaseSpeed = new(3,StatusApplicationType.Multiplicative, AffectedStat.Speed, 1.15f);
+        public static StatusEffect defIncreaseAttack = new(3,StatusApplicationType.Multiplicative, AffectedStat.Attack, 1.15f);
+        public static StatusEffect AlterAttack(float amount) => new(3,StatusApplicationType.Multiplicative, AffectedStat.Attack, amount);
+        public static StatusEffect defIncreaseDefense = new(3,StatusApplicationType.Multiplicative, AffectedStat.Defense, 1.15f);
+        public static StatusEffect AlterDefense(float amount) => new(3,StatusApplicationType.Multiplicative, AffectedStat.Defense, amount);
+        public static StatusEffect defIncreaseHealth = new(3,StatusApplicationType.Multiplicative, AffectedStat.Health, 1.15f);
 
     }
 }
