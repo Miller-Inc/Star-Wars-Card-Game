@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Basic");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Basic");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.EditAbility = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editAbilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -200,12 +200,12 @@
             this.abilitesIptDisplay.ForeColor = System.Drawing.Color.White;
             this.abilitesIptDisplay.Location = new System.Drawing.Point(9, 363);
             this.abilitesIptDisplay.Name = "abilitesIptDisplay";
-            treeNode2.Checked = true;
-            treeNode2.ContextMenuStrip = this.EditAbility;
-            treeNode2.Name = "Basic";
-            treeNode2.Text = "Basic";
+            treeNode1.Checked = true;
+            treeNode1.ContextMenuStrip = this.EditAbility;
+            treeNode1.Name = "Basic";
+            treeNode1.Text = "Basic";
             this.abilitesIptDisplay.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.abilitesIptDisplay.Size = new System.Drawing.Size(278, 131);
             this.abilitesIptDisplay.TabIndex = 16;
             // 

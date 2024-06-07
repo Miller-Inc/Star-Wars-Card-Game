@@ -28,32 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Allied Leader");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Ally 2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Ally 3");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Ally 4");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Ally 5");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Allied Summon");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Allies", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Self");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Specific Character(s)");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Target Ally");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Allies", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Enemy Leader");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Enemy 2");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Enemy 3");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Enemy 4");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Enemy 5");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Enemy Summon");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Enemies", new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13});
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Enemy Leader");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Target Enemy ");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Specific Character(s)");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Enemies", new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7,
+            treeNode8});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AbilityPopup));
             this.CancelBttn = new System.Windows.Forms.Button();
             this.AddAbility = new System.Windows.Forms.Button();
@@ -67,28 +58,50 @@
             this.DescriptionLbl = new System.Windows.Forms.Label();
             this.affectOptionsTabControl = new System.Windows.Forms.TabControl();
             this.damagePage = new System.Windows.Forms.TabPage();
-            this.healPage = new System.Windows.Forms.TabPage();
-            this.StunPage = new System.Windows.Forms.TabPage();
-            this.ModifyStatsPage = new System.Windows.Forms.TabPage();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.DmgAmtLbl = new System.Windows.Forms.Label();
-            this.damageTarget = new System.Windows.Forms.ComboBox();
-            this.targetLbl = new System.Windows.Forms.Label();
-            this.percentageDmgBttn = new System.Windows.Forms.RadioButton();
             this.flatRateDmgBttn = new System.Windows.Forms.RadioButton();
+            this.percentageDmgBttn = new System.Windows.Forms.RadioButton();
+            this.targetLbl = new System.Windows.Forms.Label();
+            this.damageTarget = new System.Windows.Forms.ComboBox();
+            this.DmgAmtLbl = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.healPage = new System.Windows.Forms.TabPage();
+            this.CharHealLbl = new System.Windows.Forms.Label();
+            this.CharacterIptTreeView = new System.Windows.Forms.TreeView();
+            this.addCharacterHeal = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addCharMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.healCharIpt = new System.Windows.Forms.ToolStripTextBox();
+            this.addCharBttn = new System.Windows.Forms.ToolStripMenuItem();
+            this.rmvSelCharBttn = new System.Windows.Forms.ToolStripMenuItem();
+            this.healAlgnLbl = new System.Windows.Forms.Label();
+            this.HealingAlignmentBox = new System.Windows.Forms.ComboBox();
+            this.classInput = new System.Windows.Forms.CheckedListBox();
+            this.CharacterClassLbl = new System.Windows.Forms.Label();
             this.setAmtHealBttn = new System.Windows.Forms.RadioButton();
             this.percHealBttn = new System.Windows.Forms.RadioButton();
             this.affectedAlliesLbl = new System.Windows.Forms.Label();
             this.affectedAlies = new System.Windows.Forms.ComboBox();
             this.healAmtLbl = new System.Windows.Forms.Label();
             this.healAmt = new System.Windows.Forms.NumericUpDown();
-            this.classInput = new System.Windows.Forms.CheckedListBox();
-            this.CharacterClassLbl = new System.Windows.Forms.Label();
+            this.StunPage = new System.Windows.Forms.TabPage();
+            this.ModifyStatsPage = new System.Windows.Forms.TabPage();
+            this.charIptLblDmg = new System.Windows.Forms.Label();
+            this.dmgCharIpt = new System.Windows.Forms.TreeView();
+            this.algnLblDmg = new System.Windows.Forms.Label();
+            this.dmgAlgnIpt = new System.Windows.Forms.ComboBox();
+            this.dmgClassIpt = new System.Windows.Forms.CheckedListBox();
+            this.dmgClassLbl = new System.Windows.Forms.Label();
+            this.addCharacterDmg = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dmgAddCharMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.dmgCharNameIpt = new System.Windows.Forms.ToolStripTextBox();
+            this.addCharDmg = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeChar = new System.Windows.Forms.ToolStripMenuItem();
             this.affectOptionsTabControl.SuspendLayout();
             this.damagePage.SuspendLayout();
-            this.healPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.healPage.SuspendLayout();
+            this.addCharacterHeal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.healAmt)).BeginInit();
+            this.addCharacterDmg.SuspendLayout();
             this.SuspendLayout();
             // 
             // CancelBttn
@@ -116,7 +129,7 @@
             this.AddAbility.Name = "AddAbility";
             this.AddAbility.Size = new System.Drawing.Size(87, 34);
             this.AddAbility.TabIndex = 1;
-            this.AddAbility.Text = "Add";
+            this.AddAbility.Text = "Save";
             this.AddAbility.UseVisualStyleBackColor = false;
             this.AddAbility.Click += new System.EventHandler(this.AddAbility_Click);
             // 
@@ -151,36 +164,26 @@
             this.unitsChooser.Name = "unitsChooser";
             treeNode1.Name = "AlliedLeader";
             treeNode1.Text = "Allied Leader";
-            treeNode2.Name = "Ally2";
-            treeNode2.Text = "Ally 2";
-            treeNode3.Name = "Ally3";
-            treeNode3.Text = "Ally 3";
-            treeNode4.Name = "Ally4";
-            treeNode4.Text = "Ally 4";
-            treeNode5.Name = "Ally5";
-            treeNode5.Text = "Ally 5";
-            treeNode6.Name = "AlliedSummon";
-            treeNode6.Text = "Allied Summon";
-            treeNode7.Name = "AlliedUnits";
-            treeNode7.Text = "Allies";
-            treeNode8.Name = "EnemyLeader";
-            treeNode8.Text = "Enemy Leader";
-            treeNode9.Name = "Enemy2";
-            treeNode9.Text = "Enemy 2";
-            treeNode10.Name = "Enemy3";
-            treeNode10.Text = "Enemy 3";
-            treeNode11.Name = "Enemy4";
-            treeNode11.Text = "Enemy 4";
-            treeNode12.Name = "Enemy5";
-            treeNode12.Text = "Enemy 5";
-            treeNode13.Name = "EnemySummon";
-            treeNode13.Text = "Enemy Summon";
-            treeNode14.Name = "EnemyUnits";
-            treeNode14.Text = "Enemies";
+            treeNode2.Name = "Self";
+            treeNode2.Text = "Self";
+            treeNode3.Name = "SpecAlliedChars";
+            treeNode3.Text = "Specific Character(s)";
+            treeNode4.Name = "SelectedChar";
+            treeNode4.Text = "Target Ally";
+            treeNode5.Name = "AlliedUnits";
+            treeNode5.Text = "Allies";
+            treeNode6.Name = "EnemyLeader";
+            treeNode6.Text = "Enemy Leader";
+            treeNode7.Name = "TargetEnemy";
+            treeNode7.Text = "Target Enemy ";
+            treeNode8.Name = "SpecEnemyChars";
+            treeNode8.Text = "Specific Character(s)";
+            treeNode9.Name = "EnemyUnits";
+            treeNode9.Text = "Enemies";
             this.unitsChooser.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode14});
-            this.unitsChooser.Size = new System.Drawing.Size(336, 239);
+            treeNode5,
+            treeNode9});
+            this.unitsChooser.Size = new System.Drawing.Size(336, 250);
             this.unitsChooser.TabIndex = 4;
             // 
             // effectCheckBox
@@ -248,15 +251,21 @@
             this.affectOptionsTabControl.Controls.Add(this.healPage);
             this.affectOptionsTabControl.Controls.Add(this.StunPage);
             this.affectOptionsTabControl.Controls.Add(this.ModifyStatsPage);
-            this.affectOptionsTabControl.Location = new System.Drawing.Point(354, 144);
+            this.affectOptionsTabControl.Location = new System.Drawing.Point(354, 153);
             this.affectOptionsTabControl.Name = "affectOptionsTabControl";
             this.affectOptionsTabControl.SelectedIndex = 0;
-            this.affectOptionsTabControl.Size = new System.Drawing.Size(434, 248);
+            this.affectOptionsTabControl.Size = new System.Drawing.Size(434, 250);
             this.affectOptionsTabControl.TabIndex = 10;
             // 
             // damagePage
             // 
             this.damagePage.BackColor = System.Drawing.Color.Black;
+            this.damagePage.Controls.Add(this.charIptLblDmg);
+            this.damagePage.Controls.Add(this.dmgCharIpt);
+            this.damagePage.Controls.Add(this.algnLblDmg);
+            this.damagePage.Controls.Add(this.dmgAlgnIpt);
+            this.damagePage.Controls.Add(this.dmgClassIpt);
+            this.damagePage.Controls.Add(this.dmgClassLbl);
             this.damagePage.Controls.Add(this.flatRateDmgBttn);
             this.damagePage.Controls.Add(this.percentageDmgBttn);
             this.damagePage.Controls.Add(this.targetLbl);
@@ -267,50 +276,70 @@
             this.damagePage.Location = new System.Drawing.Point(4, 22);
             this.damagePage.Name = "damagePage";
             this.damagePage.Padding = new System.Windows.Forms.Padding(3);
-            this.damagePage.Size = new System.Drawing.Size(426, 147);
+            this.damagePage.Size = new System.Drawing.Size(426, 224);
             this.damagePage.TabIndex = 0;
             this.damagePage.Text = "Damage";
             // 
-            // healPage
+            // flatRateDmgBttn
             // 
-            this.healPage.BackColor = System.Drawing.Color.Black;
-            this.healPage.Controls.Add(this.classInput);
-            this.healPage.Controls.Add(this.CharacterClassLbl);
-            this.healPage.Controls.Add(this.setAmtHealBttn);
-            this.healPage.Controls.Add(this.percHealBttn);
-            this.healPage.Controls.Add(this.affectedAlliesLbl);
-            this.healPage.Controls.Add(this.affectedAlies);
-            this.healPage.Controls.Add(this.healAmtLbl);
-            this.healPage.Controls.Add(this.healAmt);
-            this.healPage.ForeColor = System.Drawing.Color.BlanchedAlmond;
-            this.healPage.Location = new System.Drawing.Point(4, 22);
-            this.healPage.Name = "healPage";
-            this.healPage.Padding = new System.Windows.Forms.Padding(3);
-            this.healPage.Size = new System.Drawing.Size(426, 222);
-            this.healPage.TabIndex = 1;
-            this.healPage.Text = "Heal";
+            this.flatRateDmgBttn.AutoSize = true;
+            this.flatRateDmgBttn.Checked = true;
+            this.flatRateDmgBttn.Location = new System.Drawing.Point(215, 60);
+            this.flatRateDmgBttn.Name = "flatRateDmgBttn";
+            this.flatRateDmgBttn.Size = new System.Drawing.Size(80, 17);
+            this.flatRateDmgBttn.TabIndex = 5;
+            this.flatRateDmgBttn.TabStop = true;
+            this.flatRateDmgBttn.Text = "Set Amount";
+            this.flatRateDmgBttn.UseVisualStyleBackColor = true;
+            this.flatRateDmgBttn.CheckedChanged += new System.EventHandler(this.flatRateDmgBttn_CheckedChanged);
             // 
-            // StunPage
+            // percentageDmgBttn
             // 
-            this.StunPage.BackColor = System.Drawing.Color.Black;
-            this.StunPage.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.StunPage.Location = new System.Drawing.Point(4, 22);
-            this.StunPage.Name = "StunPage";
-            this.StunPage.Padding = new System.Windows.Forms.Padding(3);
-            this.StunPage.Size = new System.Drawing.Size(426, 147);
-            this.StunPage.TabIndex = 2;
-            this.StunPage.Text = "Stun";
+            this.percentageDmgBttn.AutoSize = true;
+            this.percentageDmgBttn.Location = new System.Drawing.Point(215, 34);
+            this.percentageDmgBttn.Name = "percentageDmgBttn";
+            this.percentageDmgBttn.Size = new System.Drawing.Size(80, 17);
+            this.percentageDmgBttn.TabIndex = 4;
+            this.percentageDmgBttn.Text = "Percentage";
+            this.percentageDmgBttn.UseVisualStyleBackColor = true;
+            this.percentageDmgBttn.CheckedChanged += new System.EventHandler(this.percentageDmgBttn_CheckedChanged);
             // 
-            // ModifyStatsPage
+            // targetLbl
             // 
-            this.ModifyStatsPage.BackColor = System.Drawing.Color.Black;
-            this.ModifyStatsPage.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ModifyStatsPage.Location = new System.Drawing.Point(4, 22);
-            this.ModifyStatsPage.Name = "ModifyStatsPage";
-            this.ModifyStatsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ModifyStatsPage.Size = new System.Drawing.Size(426, 147);
-            this.ModifyStatsPage.TabIndex = 3;
-            this.ModifyStatsPage.Text = "Modify Stats";
+            this.targetLbl.AutoSize = true;
+            this.targetLbl.Location = new System.Drawing.Point(6, 60);
+            this.targetLbl.Name = "targetLbl";
+            this.targetLbl.Size = new System.Drawing.Size(90, 13);
+            this.targetLbl.TabIndex = 3;
+            this.targetLbl.Text = "Affected Enemies";
+            // 
+            // damageTarget
+            // 
+            this.damageTarget.BackColor = System.Drawing.Color.DimGray;
+            this.damageTarget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.damageTarget.ForeColor = System.Drawing.Color.White;
+            this.damageTarget.FormattingEnabled = true;
+            this.damageTarget.Items.AddRange(new object[] {
+            "Selected Enemy",
+            "All Enemies",
+            "Enemy Leader",
+            "Specific Character(s)",
+            "Specific Faction(s)",
+            "Specific Allignment(s)"});
+            this.damageTarget.Location = new System.Drawing.Point(6, 76);
+            this.damageTarget.Name = "damageTarget";
+            this.damageTarget.Size = new System.Drawing.Size(121, 21);
+            this.damageTarget.TabIndex = 2;
+            this.damageTarget.SelectedIndexChanged += new System.EventHandler(this.damageTarget_SelectedIndexChanged);
+            // 
+            // DmgAmtLbl
+            // 
+            this.DmgAmtLbl.AutoSize = true;
+            this.DmgAmtLbl.Location = new System.Drawing.Point(7, 15);
+            this.DmgAmtLbl.Name = "DmgAmtLbl";
+            this.DmgAmtLbl.Size = new System.Drawing.Size(86, 13);
+            this.DmgAmtLbl.TabIndex = 1;
+            this.DmgAmtLbl.Text = "Damage Amount";
             // 
             // numericUpDown1
             // 
@@ -327,63 +356,139 @@
             this.numericUpDown1.Size = new System.Drawing.Size(96, 20);
             this.numericUpDown1.TabIndex = 0;
             // 
-            // DmgAmtLbl
+            // healPage
             // 
-            this.DmgAmtLbl.AutoSize = true;
-            this.DmgAmtLbl.Location = new System.Drawing.Point(7, 15);
-            this.DmgAmtLbl.Name = "DmgAmtLbl";
-            this.DmgAmtLbl.Size = new System.Drawing.Size(86, 13);
-            this.DmgAmtLbl.TabIndex = 1;
-            this.DmgAmtLbl.Text = "Damage Amount";
+            this.healPage.BackColor = System.Drawing.Color.Black;
+            this.healPage.Controls.Add(this.CharHealLbl);
+            this.healPage.Controls.Add(this.CharacterIptTreeView);
+            this.healPage.Controls.Add(this.healAlgnLbl);
+            this.healPage.Controls.Add(this.HealingAlignmentBox);
+            this.healPage.Controls.Add(this.classInput);
+            this.healPage.Controls.Add(this.CharacterClassLbl);
+            this.healPage.Controls.Add(this.setAmtHealBttn);
+            this.healPage.Controls.Add(this.percHealBttn);
+            this.healPage.Controls.Add(this.affectedAlliesLbl);
+            this.healPage.Controls.Add(this.affectedAlies);
+            this.healPage.Controls.Add(this.healAmtLbl);
+            this.healPage.Controls.Add(this.healAmt);
+            this.healPage.ForeColor = System.Drawing.Color.BlanchedAlmond;
+            this.healPage.Location = new System.Drawing.Point(4, 22);
+            this.healPage.Name = "healPage";
+            this.healPage.Padding = new System.Windows.Forms.Padding(3);
+            this.healPage.Size = new System.Drawing.Size(426, 224);
+            this.healPage.TabIndex = 1;
+            this.healPage.Text = "Heal";
             // 
-            // damageTarget
+            // CharHealLbl
             // 
-            this.damageTarget.BackColor = System.Drawing.Color.DimGray;
-            this.damageTarget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.damageTarget.ForeColor = System.Drawing.Color.White;
-            this.damageTarget.FormattingEnabled = true;
-            this.damageTarget.Items.AddRange(new object[] {
-            "Selected Enemy",
-            "All Enemies",
-            "Random Enemy",
-            "Enemy Leader"});
-            this.damageTarget.Location = new System.Drawing.Point(6, 76);
-            this.damageTarget.Name = "damageTarget";
-            this.damageTarget.Size = new System.Drawing.Size(121, 21);
-            this.damageTarget.TabIndex = 2;
+            this.CharHealLbl.AutoSize = true;
+            this.CharHealLbl.BackColor = System.Drawing.Color.Black;
+            this.CharHealLbl.ForeColor = System.Drawing.Color.White;
+            this.CharHealLbl.Location = new System.Drawing.Point(6, 109);
+            this.CharHealLbl.Name = "CharHealLbl";
+            this.CharHealLbl.Size = new System.Drawing.Size(58, 13);
+            this.CharHealLbl.TabIndex = 17;
+            this.CharHealLbl.Text = "Characters";
             // 
-            // targetLbl
+            // CharacterIptTreeView
             // 
-            this.targetLbl.AutoSize = true;
-            this.targetLbl.Location = new System.Drawing.Point(6, 60);
-            this.targetLbl.Name = "targetLbl";
-            this.targetLbl.Size = new System.Drawing.Size(90, 13);
-            this.targetLbl.TabIndex = 3;
-            this.targetLbl.Text = "Affected Enemies";
+            this.CharacterIptTreeView.BackColor = System.Drawing.Color.DimGray;
+            this.CharacterIptTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CharacterIptTreeView.ContextMenuStrip = this.addCharacterHeal;
+            this.CharacterIptTreeView.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.CharacterIptTreeView.LineColor = System.Drawing.Color.WhiteSmoke;
+            this.CharacterIptTreeView.Location = new System.Drawing.Point(8, 125);
+            this.CharacterIptTreeView.Name = "CharacterIptTreeView";
+            this.CharacterIptTreeView.Size = new System.Drawing.Size(201, 90);
+            this.CharacterIptTreeView.TabIndex = 16;
             // 
-            // percentageDmgBttn
+            // addCharacterHeal
             // 
-            this.percentageDmgBttn.AutoSize = true;
-            this.percentageDmgBttn.Location = new System.Drawing.Point(215, 34);
-            this.percentageDmgBttn.Name = "percentageDmgBttn";
-            this.percentageDmgBttn.Size = new System.Drawing.Size(80, 17);
-            this.percentageDmgBttn.TabIndex = 4;
-            this.percentageDmgBttn.Text = "Percentage";
-            this.percentageDmgBttn.UseVisualStyleBackColor = true;
-            this.percentageDmgBttn.CheckedChanged += new System.EventHandler(this.percentageDmgBttn_CheckedChanged);
+            this.addCharacterHeal.BackColor = System.Drawing.Color.CadetBlue;
+            this.addCharacterHeal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addCharMenuHeader,
+            this.rmvSelCharBttn});
+            this.addCharacterHeal.Name = "addCharacterHeal";
+            this.addCharacterHeal.Size = new System.Drawing.Size(219, 48);
             // 
-            // flatRateDmgBttn
+            // addCharMenuHeader
             // 
-            this.flatRateDmgBttn.AutoSize = true;
-            this.flatRateDmgBttn.Checked = true;
-            this.flatRateDmgBttn.Location = new System.Drawing.Point(215, 60);
-            this.flatRateDmgBttn.Name = "flatRateDmgBttn";
-            this.flatRateDmgBttn.Size = new System.Drawing.Size(80, 17);
-            this.flatRateDmgBttn.TabIndex = 5;
-            this.flatRateDmgBttn.TabStop = true;
-            this.flatRateDmgBttn.Text = "Set Amount";
-            this.flatRateDmgBttn.UseVisualStyleBackColor = true;
-            this.flatRateDmgBttn.CheckedChanged += new System.EventHandler(this.flatRateDmgBttn_CheckedChanged);
+            this.addCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.healCharIpt,
+            this.addCharBttn});
+            this.addCharMenuHeader.Name = "addCharMenuHeader";
+            this.addCharMenuHeader.Size = new System.Drawing.Size(218, 22);
+            this.addCharMenuHeader.Text = "Add Character...";
+            // 
+            // healCharIpt
+            // 
+            this.healCharIpt.BackColor = System.Drawing.Color.CadetBlue;
+            this.healCharIpt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.healCharIpt.Name = "healCharIpt";
+            this.healCharIpt.Size = new System.Drawing.Size(100, 23);
+            // 
+            // addCharBttn
+            // 
+            this.addCharBttn.BackColor = System.Drawing.Color.CadetBlue;
+            this.addCharBttn.Name = "addCharBttn";
+            this.addCharBttn.Size = new System.Drawing.Size(180, 22);
+            this.addCharBttn.Text = "Add Character";
+            this.addCharBttn.Click += new System.EventHandler(this.addCharBttn_Click);
+            // 
+            // rmvSelCharBttn
+            // 
+            this.rmvSelCharBttn.Name = "rmvSelCharBttn";
+            this.rmvSelCharBttn.Size = new System.Drawing.Size(218, 22);
+            this.rmvSelCharBttn.Text = "Remove Selected Character";
+            this.rmvSelCharBttn.Click += new System.EventHandler(this.rmvSelCharBttn_Click);
+            // 
+            // healAlgnLbl
+            // 
+            this.healAlgnLbl.AutoSize = true;
+            this.healAlgnLbl.BackColor = System.Drawing.Color.Black;
+            this.healAlgnLbl.ForeColor = System.Drawing.Color.White;
+            this.healAlgnLbl.Location = new System.Drawing.Point(6, 109);
+            this.healAlgnLbl.Name = "healAlgnLbl";
+            this.healAlgnLbl.Size = new System.Drawing.Size(58, 13);
+            this.healAlgnLbl.TabIndex = 15;
+            this.healAlgnLbl.Text = "Alignments";
+            // 
+            // HealingAlignmentBox
+            // 
+            this.HealingAlignmentBox.BackColor = System.Drawing.Color.DimGray;
+            this.HealingAlignmentBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HealingAlignmentBox.ForeColor = System.Drawing.Color.White;
+            this.HealingAlignmentBox.FormattingEnabled = true;
+            this.HealingAlignmentBox.Items.AddRange(new object[] {
+            "Light Side",
+            "Dark Side",
+            "Neutral"});
+            this.HealingAlignmentBox.Location = new System.Drawing.Point(9, 125);
+            this.HealingAlignmentBox.Name = "HealingAlignmentBox";
+            this.HealingAlignmentBox.Size = new System.Drawing.Size(154, 21);
+            this.HealingAlignmentBox.TabIndex = 14;
+            // 
+            // classInput
+            // 
+            this.classInput.BackColor = System.Drawing.Color.DimGray;
+            this.classInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.classInput.ForeColor = System.Drawing.Color.White;
+            this.classInput.FormattingEnabled = true;
+            this.classInput.Location = new System.Drawing.Point(8, 125);
+            this.classInput.Name = "classInput";
+            this.classInput.Size = new System.Drawing.Size(201, 90);
+            this.classInput.TabIndex = 13;
+            // 
+            // CharacterClassLbl
+            // 
+            this.CharacterClassLbl.AutoSize = true;
+            this.CharacterClassLbl.BackColor = System.Drawing.Color.Black;
+            this.CharacterClassLbl.ForeColor = System.Drawing.Color.White;
+            this.CharacterClassLbl.Location = new System.Drawing.Point(5, 109);
+            this.CharacterClassLbl.Name = "CharacterClassLbl";
+            this.CharacterClassLbl.Size = new System.Drawing.Size(43, 13);
+            this.CharacterClassLbl.TabIndex = 12;
+            this.CharacterClassLbl.Text = "Classes";
             // 
             // setAmtHealBttn
             // 
@@ -462,27 +567,138 @@
             this.healAmt.Size = new System.Drawing.Size(96, 20);
             this.healAmt.TabIndex = 6;
             // 
-            // classInput
+            // StunPage
             // 
-            this.classInput.BackColor = System.Drawing.Color.DimGray;
-            this.classInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.classInput.ForeColor = System.Drawing.Color.White;
-            this.classInput.FormattingEnabled = true;
-            this.classInput.Location = new System.Drawing.Point(8, 125);
-            this.classInput.Name = "classInput";
-            this.classInput.Size = new System.Drawing.Size(201, 90);
-            this.classInput.TabIndex = 13;
+            this.StunPage.BackColor = System.Drawing.Color.Black;
+            this.StunPage.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.StunPage.Location = new System.Drawing.Point(4, 22);
+            this.StunPage.Name = "StunPage";
+            this.StunPage.Padding = new System.Windows.Forms.Padding(3);
+            this.StunPage.Size = new System.Drawing.Size(426, 224);
+            this.StunPage.TabIndex = 2;
+            this.StunPage.Text = "Stun";
             // 
-            // CharacterClassLbl
+            // ModifyStatsPage
             // 
-            this.CharacterClassLbl.AutoSize = true;
-            this.CharacterClassLbl.BackColor = System.Drawing.Color.Black;
-            this.CharacterClassLbl.ForeColor = System.Drawing.Color.White;
-            this.CharacterClassLbl.Location = new System.Drawing.Point(5, 109);
-            this.CharacterClassLbl.Name = "CharacterClassLbl";
-            this.CharacterClassLbl.Size = new System.Drawing.Size(43, 13);
-            this.CharacterClassLbl.TabIndex = 12;
-            this.CharacterClassLbl.Text = "Classes";
+            this.ModifyStatsPage.BackColor = System.Drawing.Color.Black;
+            this.ModifyStatsPage.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.ModifyStatsPage.Location = new System.Drawing.Point(4, 22);
+            this.ModifyStatsPage.Name = "ModifyStatsPage";
+            this.ModifyStatsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ModifyStatsPage.Size = new System.Drawing.Size(426, 224);
+            this.ModifyStatsPage.TabIndex = 3;
+            this.ModifyStatsPage.Text = "Modify Stats";
+            // 
+            // charIptLblDmg
+            // 
+            this.charIptLblDmg.AutoSize = true;
+            this.charIptLblDmg.BackColor = System.Drawing.Color.Black;
+            this.charIptLblDmg.ForeColor = System.Drawing.Color.White;
+            this.charIptLblDmg.Location = new System.Drawing.Point(212, 100);
+            this.charIptLblDmg.Name = "charIptLblDmg";
+            this.charIptLblDmg.Size = new System.Drawing.Size(58, 13);
+            this.charIptLblDmg.TabIndex = 23;
+            this.charIptLblDmg.Text = "Characters";
+            // 
+            // dmgCharIpt
+            // 
+            this.dmgCharIpt.BackColor = System.Drawing.Color.DimGray;
+            this.dmgCharIpt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dmgCharIpt.ContextMenuStrip = this.addCharacterHeal;
+            this.dmgCharIpt.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dmgCharIpt.LineColor = System.Drawing.Color.WhiteSmoke;
+            this.dmgCharIpt.Location = new System.Drawing.Point(215, 116);
+            this.dmgCharIpt.Name = "dmgCharIpt";
+            this.dmgCharIpt.Size = new System.Drawing.Size(201, 90);
+            this.dmgCharIpt.TabIndex = 22;
+            // 
+            // algnLblDmg
+            // 
+            this.algnLblDmg.AutoSize = true;
+            this.algnLblDmg.BackColor = System.Drawing.Color.Black;
+            this.algnLblDmg.ForeColor = System.Drawing.Color.White;
+            this.algnLblDmg.Location = new System.Drawing.Point(113, 100);
+            this.algnLblDmg.Name = "algnLblDmg";
+            this.algnLblDmg.Size = new System.Drawing.Size(58, 13);
+            this.algnLblDmg.TabIndex = 21;
+            this.algnLblDmg.Text = "Alignments";
+            // 
+            // dmgAlgnIpt
+            // 
+            this.dmgAlgnIpt.BackColor = System.Drawing.Color.DimGray;
+            this.dmgAlgnIpt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dmgAlgnIpt.ForeColor = System.Drawing.Color.White;
+            this.dmgAlgnIpt.FormattingEnabled = true;
+            this.dmgAlgnIpt.Items.AddRange(new object[] {
+            "Light Side",
+            "Dark Side",
+            "Neutral"});
+            this.dmgAlgnIpt.Location = new System.Drawing.Point(116, 116);
+            this.dmgAlgnIpt.Name = "dmgAlgnIpt";
+            this.dmgAlgnIpt.Size = new System.Drawing.Size(154, 21);
+            this.dmgAlgnIpt.TabIndex = 20;
+            // 
+            // dmgClassIpt
+            // 
+            this.dmgClassIpt.BackColor = System.Drawing.Color.DimGray;
+            this.dmgClassIpt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dmgClassIpt.ForeColor = System.Drawing.Color.White;
+            this.dmgClassIpt.FormattingEnabled = true;
+            this.dmgClassIpt.Location = new System.Drawing.Point(9, 116);
+            this.dmgClassIpt.Name = "dmgClassIpt";
+            this.dmgClassIpt.Size = new System.Drawing.Size(201, 90);
+            this.dmgClassIpt.TabIndex = 19;
+            // 
+            // dmgClassLbl
+            // 
+            this.dmgClassLbl.AutoSize = true;
+            this.dmgClassLbl.BackColor = System.Drawing.Color.Black;
+            this.dmgClassLbl.ForeColor = System.Drawing.Color.White;
+            this.dmgClassLbl.Location = new System.Drawing.Point(6, 100);
+            this.dmgClassLbl.Name = "dmgClassLbl";
+            this.dmgClassLbl.Size = new System.Drawing.Size(43, 13);
+            this.dmgClassLbl.TabIndex = 18;
+            this.dmgClassLbl.Text = "Classes";
+            // 
+            // addCharacterDmg
+            // 
+            this.addCharacterDmg.BackColor = System.Drawing.Color.CadetBlue;
+            this.addCharacterDmg.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dmgAddCharMenuHeader,
+            this.removeChar});
+            this.addCharacterDmg.Name = "addCharacterHeal";
+            this.addCharacterDmg.Size = new System.Drawing.Size(219, 48);
+            // 
+            // dmgAddCharMenuHeader
+            // 
+            this.dmgAddCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dmgCharNameIpt,
+            this.addCharDmg});
+            this.dmgAddCharMenuHeader.Name = "dmgAddCharMenuHeader";
+            this.dmgAddCharMenuHeader.Size = new System.Drawing.Size(218, 22);
+            this.dmgAddCharMenuHeader.Text = "Add Character...";
+            // 
+            // dmgCharNameIpt
+            // 
+            this.dmgCharNameIpt.BackColor = System.Drawing.Color.CadetBlue;
+            this.dmgCharNameIpt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dmgCharNameIpt.Name = "dmgCharNameIpt";
+            this.dmgCharNameIpt.Size = new System.Drawing.Size(100, 23);
+            // 
+            // addCharDmg
+            // 
+            this.addCharDmg.BackColor = System.Drawing.Color.CadetBlue;
+            this.addCharDmg.Name = "addCharDmg";
+            this.addCharDmg.Size = new System.Drawing.Size(180, 22);
+            this.addCharDmg.Text = "Add Character";
+            this.addCharDmg.Click += new System.EventHandler(this.addCharDmg_Click);
+            // 
+            // removeChar
+            // 
+            this.removeChar.Name = "removeChar";
+            this.removeChar.Size = new System.Drawing.Size(218, 22);
+            this.removeChar.Text = "Remove Selected Character";
+            this.removeChar.Click += new System.EventHandler(this.removeChar_Click);
             // 
             // AbilityPopup
             // 
@@ -507,14 +723,16 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AbilityPopup";
-            this.Text = "AbilityPopup";
+            this.Text = "Ability Popup";
             this.affectOptionsTabControl.ResumeLayout(false);
             this.damagePage.ResumeLayout(false);
             this.damagePage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.healPage.ResumeLayout(false);
             this.healPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.addCharacterHeal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.healAmt)).EndInit();
+            this.addCharacterDmg.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -551,5 +769,25 @@
         private System.Windows.Forms.NumericUpDown healAmt;
         private System.Windows.Forms.CheckedListBox classInput;
         private System.Windows.Forms.Label CharacterClassLbl;
+        private System.Windows.Forms.ContextMenuStrip addCharacterHeal;
+        private System.Windows.Forms.Label healAlgnLbl;
+        private System.Windows.Forms.ComboBox HealingAlignmentBox;
+        private System.Windows.Forms.ToolStripMenuItem addCharMenuHeader;
+        private System.Windows.Forms.ToolStripTextBox healCharIpt;
+        private System.Windows.Forms.ToolStripMenuItem addCharBttn;
+        private System.Windows.Forms.ToolStripMenuItem rmvSelCharBttn;
+        private System.Windows.Forms.TreeView CharacterIptTreeView;
+        private System.Windows.Forms.Label CharHealLbl;
+        private System.Windows.Forms.Label charIptLblDmg;
+        private System.Windows.Forms.TreeView dmgCharIpt;
+        private System.Windows.Forms.Label algnLblDmg;
+        private System.Windows.Forms.ComboBox dmgAlgnIpt;
+        private System.Windows.Forms.CheckedListBox dmgClassIpt;
+        private System.Windows.Forms.Label dmgClassLbl;
+        private System.Windows.Forms.ContextMenuStrip addCharacterDmg;
+        private System.Windows.Forms.ToolStripMenuItem dmgAddCharMenuHeader;
+        private System.Windows.Forms.ToolStripTextBox dmgCharNameIpt;
+        private System.Windows.Forms.ToolStripMenuItem addCharDmg;
+        private System.Windows.Forms.ToolStripMenuItem removeChar;
     }
 }

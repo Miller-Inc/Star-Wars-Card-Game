@@ -20,7 +20,7 @@ namespace Star_Wars_Card_Game.Backend.Game
 
         public AffectedStat AffectedStat { get; set; } = AffectedStat.Health;
 
-        List<Action> Actions { get; set; } = [];
+        public List<Action> Actions { get; set; } = [];
 
         public Ability(string name, string description, int damage, int cooldown, AbilityType type)
         {

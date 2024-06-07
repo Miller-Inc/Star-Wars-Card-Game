@@ -37,7 +37,8 @@ namespace Star_Wars_Card_Game.Backend.Game
     {
         Additive, 
         Multiplicative, 
-        LoseTurn
+        LoseTurn, 
+        AbilityBlock
     }
 
     public class DefaultStatusEffects
@@ -57,6 +58,7 @@ namespace Star_Wars_Card_Game.Backend.Game
         public static StatusEffect defIncreaseDefense = new(3,StatusApplicationType.Multiplicative, AffectedStat.Defense, 1.15f);
         public static StatusEffect AlterDefense(float amount) => new(3,StatusApplicationType.Multiplicative, AffectedStat.Defense, amount);
         public static StatusEffect defIncreaseHealth = new(3,StatusApplicationType.Multiplicative, AffectedStat.Health, 1.15f);
-
+        public static StatusEffect defAbilityBlock = new(1, StatusApplicationType.AbilityBlock, AffectedStat.Attack, 1f);
+        public static StatusEffect AbilityBlock(int turns) => new(turns, StatusApplicationType.AbilityBlock, AffectedStat.Attack, 1f);
     }
 }
