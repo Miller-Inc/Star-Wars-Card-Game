@@ -58,6 +58,17 @@
             this.DescriptionLbl = new System.Windows.Forms.Label();
             this.affectOptionsTabControl = new System.Windows.Forms.TabControl();
             this.damagePage = new System.Windows.Forms.TabPage();
+            this.charIptLblDmg = new System.Windows.Forms.Label();
+            this.dmgCharIpt = new System.Windows.Forms.TreeView();
+            this.addCharacterHeal = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addCharMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.healCharIpt = new System.Windows.Forms.ToolStripTextBox();
+            this.addCharBttn = new System.Windows.Forms.ToolStripMenuItem();
+            this.rmvSelCharBttn = new System.Windows.Forms.ToolStripMenuItem();
+            this.algnLblDmg = new System.Windows.Forms.Label();
+            this.dmgAlgnIpt = new System.Windows.Forms.ComboBox();
+            this.dmgClassIpt = new System.Windows.Forms.CheckedListBox();
+            this.dmgClassLbl = new System.Windows.Forms.Label();
             this.flatRateDmgBttn = new System.Windows.Forms.RadioButton();
             this.percentageDmgBttn = new System.Windows.Forms.RadioButton();
             this.targetLbl = new System.Windows.Forms.Label();
@@ -67,11 +78,6 @@
             this.healPage = new System.Windows.Forms.TabPage();
             this.CharHealLbl = new System.Windows.Forms.Label();
             this.CharacterIptTreeView = new System.Windows.Forms.TreeView();
-            this.addCharacterHeal = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addCharMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
-            this.healCharIpt = new System.Windows.Forms.ToolStripTextBox();
-            this.addCharBttn = new System.Windows.Forms.ToolStripMenuItem();
-            this.rmvSelCharBttn = new System.Windows.Forms.ToolStripMenuItem();
             this.healAlgnLbl = new System.Windows.Forms.Label();
             this.HealingAlignmentBox = new System.Windows.Forms.ComboBox();
             this.classInput = new System.Windows.Forms.CheckedListBox();
@@ -84,24 +90,50 @@
             this.healAmt = new System.Windows.Forms.NumericUpDown();
             this.StunPage = new System.Windows.Forms.TabPage();
             this.ModifyStatsPage = new System.Windows.Forms.TabPage();
-            this.charIptLblDmg = new System.Windows.Forms.Label();
-            this.dmgCharIpt = new System.Windows.Forms.TreeView();
-            this.algnLblDmg = new System.Windows.Forms.Label();
-            this.dmgAlgnIpt = new System.Windows.Forms.ComboBox();
-            this.dmgClassIpt = new System.Windows.Forms.CheckedListBox();
-            this.dmgClassLbl = new System.Windows.Forms.Label();
             this.addCharacterDmg = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dmgAddCharMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
             this.dmgCharNameIpt = new System.Windows.Forms.ToolStripTextBox();
             this.addCharDmg = new System.Windows.Forms.ToolStripMenuItem();
             this.removeChar = new System.Windows.Forms.ToolStripMenuItem();
+            this.stn_CharLbl = new System.Windows.Forms.Label();
+            this.stn_CharTreeView = new System.Windows.Forms.TreeView();
+            this.stn_AlignLbl = new System.Windows.Forms.Label();
+            this.stn_AlignDropDown = new System.Windows.Forms.ComboBox();
+            this.stn_ClassListBox = new System.Windows.Forms.CheckedListBox();
+            this.stn_ClassLbl = new System.Windows.Forms.Label();
+            this.stn_AffEnLbl = new System.Windows.Forms.Label();
+            this.stn_AffEnemies = new System.Windows.Forms.ComboBox();
+            this.stn_TurnNumLbl = new System.Windows.Forms.Label();
+            this.stn_NumberOfTurns = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.treeView2 = new System.Windows.Forms.TreeView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.stn_AddCharContextMen = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.stn_AddCharHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.stn_CharNmTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.stn_AddCharBttn = new System.Windows.Forms.ToolStripMenuItem();
+            this.stn_RmCharBttn = new System.Windows.Forms.ToolStripMenuItem();
             this.affectOptionsTabControl.SuspendLayout();
             this.damagePage.SuspendLayout();
+            this.addCharacterHeal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.healPage.SuspendLayout();
-            this.addCharacterHeal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.healAmt)).BeginInit();
+            this.StunPage.SuspendLayout();
+            this.ModifyStatsPage.SuspendLayout();
             this.addCharacterDmg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stn_NumberOfTurns)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            this.stn_AddCharContextMen.SuspendLayout();
             this.SuspendLayout();
             // 
             // CancelBttn
@@ -202,6 +234,7 @@
             this.effectCheckBox.Size = new System.Drawing.Size(147, 60);
             this.effectCheckBox.TabIndex = 5;
             this.effectCheckBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.effectCheckBox_ItemCheck);
+            this.effectCheckBox.MouseLeave += new System.EventHandler(this.effectCheckBox_MouseLeave);
             // 
             // AffectedUnitsLbl
             // 
@@ -279,6 +312,117 @@
             this.damagePage.Size = new System.Drawing.Size(426, 224);
             this.damagePage.TabIndex = 0;
             this.damagePage.Text = "Damage";
+            // 
+            // charIptLblDmg
+            // 
+            this.charIptLblDmg.AutoSize = true;
+            this.charIptLblDmg.BackColor = System.Drawing.Color.Black;
+            this.charIptLblDmg.ForeColor = System.Drawing.Color.White;
+            this.charIptLblDmg.Location = new System.Drawing.Point(212, 100);
+            this.charIptLblDmg.Name = "charIptLblDmg";
+            this.charIptLblDmg.Size = new System.Drawing.Size(58, 13);
+            this.charIptLblDmg.TabIndex = 23;
+            this.charIptLblDmg.Text = "Characters";
+            // 
+            // dmgCharIpt
+            // 
+            this.dmgCharIpt.BackColor = System.Drawing.Color.DimGray;
+            this.dmgCharIpt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dmgCharIpt.ContextMenuStrip = this.addCharacterHeal;
+            this.dmgCharIpt.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.dmgCharIpt.LineColor = System.Drawing.Color.WhiteSmoke;
+            this.dmgCharIpt.Location = new System.Drawing.Point(215, 116);
+            this.dmgCharIpt.Name = "dmgCharIpt";
+            this.dmgCharIpt.Size = new System.Drawing.Size(201, 90);
+            this.dmgCharIpt.TabIndex = 22;
+            // 
+            // addCharacterHeal
+            // 
+            this.addCharacterHeal.BackColor = System.Drawing.Color.CadetBlue;
+            this.addCharacterHeal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addCharMenuHeader,
+            this.rmvSelCharBttn});
+            this.addCharacterHeal.Name = "addCharacterHeal";
+            this.addCharacterHeal.Size = new System.Drawing.Size(219, 48);
+            // 
+            // addCharMenuHeader
+            // 
+            this.addCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.healCharIpt,
+            this.addCharBttn});
+            this.addCharMenuHeader.Name = "addCharMenuHeader";
+            this.addCharMenuHeader.Size = new System.Drawing.Size(218, 22);
+            this.addCharMenuHeader.Text = "Add Character...";
+            // 
+            // healCharIpt
+            // 
+            this.healCharIpt.BackColor = System.Drawing.Color.CadetBlue;
+            this.healCharIpt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.healCharIpt.Name = "healCharIpt";
+            this.healCharIpt.Size = new System.Drawing.Size(100, 23);
+            // 
+            // addCharBttn
+            // 
+            this.addCharBttn.BackColor = System.Drawing.Color.CadetBlue;
+            this.addCharBttn.Name = "addCharBttn";
+            this.addCharBttn.Size = new System.Drawing.Size(160, 22);
+            this.addCharBttn.Text = "Add Character";
+            this.addCharBttn.Click += new System.EventHandler(this.addCharBttn_Click);
+            // 
+            // rmvSelCharBttn
+            // 
+            this.rmvSelCharBttn.Name = "rmvSelCharBttn";
+            this.rmvSelCharBttn.Size = new System.Drawing.Size(218, 22);
+            this.rmvSelCharBttn.Text = "Remove Selected Character";
+            this.rmvSelCharBttn.Click += new System.EventHandler(this.rmvSelCharBttn_Click);
+            // 
+            // algnLblDmg
+            // 
+            this.algnLblDmg.AutoSize = true;
+            this.algnLblDmg.BackColor = System.Drawing.Color.Black;
+            this.algnLblDmg.ForeColor = System.Drawing.Color.White;
+            this.algnLblDmg.Location = new System.Drawing.Point(113, 100);
+            this.algnLblDmg.Name = "algnLblDmg";
+            this.algnLblDmg.Size = new System.Drawing.Size(58, 13);
+            this.algnLblDmg.TabIndex = 21;
+            this.algnLblDmg.Text = "Alignments";
+            // 
+            // dmgAlgnIpt
+            // 
+            this.dmgAlgnIpt.BackColor = System.Drawing.Color.DimGray;
+            this.dmgAlgnIpt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dmgAlgnIpt.ForeColor = System.Drawing.Color.White;
+            this.dmgAlgnIpt.FormattingEnabled = true;
+            this.dmgAlgnIpt.Items.AddRange(new object[] {
+            "Light Side",
+            "Dark Side",
+            "Neutral"});
+            this.dmgAlgnIpt.Location = new System.Drawing.Point(116, 116);
+            this.dmgAlgnIpt.Name = "dmgAlgnIpt";
+            this.dmgAlgnIpt.Size = new System.Drawing.Size(154, 21);
+            this.dmgAlgnIpt.TabIndex = 20;
+            // 
+            // dmgClassIpt
+            // 
+            this.dmgClassIpt.BackColor = System.Drawing.Color.DimGray;
+            this.dmgClassIpt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dmgClassIpt.ForeColor = System.Drawing.Color.White;
+            this.dmgClassIpt.FormattingEnabled = true;
+            this.dmgClassIpt.Location = new System.Drawing.Point(9, 116);
+            this.dmgClassIpt.Name = "dmgClassIpt";
+            this.dmgClassIpt.Size = new System.Drawing.Size(201, 90);
+            this.dmgClassIpt.TabIndex = 19;
+            // 
+            // dmgClassLbl
+            // 
+            this.dmgClassLbl.AutoSize = true;
+            this.dmgClassLbl.BackColor = System.Drawing.Color.Black;
+            this.dmgClassLbl.ForeColor = System.Drawing.Color.White;
+            this.dmgClassLbl.Location = new System.Drawing.Point(6, 100);
+            this.dmgClassLbl.Name = "dmgClassLbl";
+            this.dmgClassLbl.Size = new System.Drawing.Size(43, 13);
+            this.dmgClassLbl.TabIndex = 18;
+            this.dmgClassLbl.Text = "Classes";
             // 
             // flatRateDmgBttn
             // 
@@ -401,46 +545,6 @@
             this.CharacterIptTreeView.Name = "CharacterIptTreeView";
             this.CharacterIptTreeView.Size = new System.Drawing.Size(201, 90);
             this.CharacterIptTreeView.TabIndex = 16;
-            // 
-            // addCharacterHeal
-            // 
-            this.addCharacterHeal.BackColor = System.Drawing.Color.CadetBlue;
-            this.addCharacterHeal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCharMenuHeader,
-            this.rmvSelCharBttn});
-            this.addCharacterHeal.Name = "addCharacterHeal";
-            this.addCharacterHeal.Size = new System.Drawing.Size(219, 48);
-            // 
-            // addCharMenuHeader
-            // 
-            this.addCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.healCharIpt,
-            this.addCharBttn});
-            this.addCharMenuHeader.Name = "addCharMenuHeader";
-            this.addCharMenuHeader.Size = new System.Drawing.Size(218, 22);
-            this.addCharMenuHeader.Text = "Add Character...";
-            // 
-            // healCharIpt
-            // 
-            this.healCharIpt.BackColor = System.Drawing.Color.CadetBlue;
-            this.healCharIpt.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.healCharIpt.Name = "healCharIpt";
-            this.healCharIpt.Size = new System.Drawing.Size(100, 23);
-            // 
-            // addCharBttn
-            // 
-            this.addCharBttn.BackColor = System.Drawing.Color.CadetBlue;
-            this.addCharBttn.Name = "addCharBttn";
-            this.addCharBttn.Size = new System.Drawing.Size(180, 22);
-            this.addCharBttn.Text = "Add Character";
-            this.addCharBttn.Click += new System.EventHandler(this.addCharBttn_Click);
-            // 
-            // rmvSelCharBttn
-            // 
-            this.rmvSelCharBttn.Name = "rmvSelCharBttn";
-            this.rmvSelCharBttn.Size = new System.Drawing.Size(218, 22);
-            this.rmvSelCharBttn.Text = "Remove Selected Character";
-            this.rmvSelCharBttn.Click += new System.EventHandler(this.rmvSelCharBttn_Click);
             // 
             // healAlgnLbl
             // 
@@ -570,6 +674,16 @@
             // StunPage
             // 
             this.StunPage.BackColor = System.Drawing.Color.Black;
+            this.StunPage.Controls.Add(this.stn_CharLbl);
+            this.StunPage.Controls.Add(this.stn_CharTreeView);
+            this.StunPage.Controls.Add(this.stn_AlignLbl);
+            this.StunPage.Controls.Add(this.stn_AlignDropDown);
+            this.StunPage.Controls.Add(this.stn_ClassListBox);
+            this.StunPage.Controls.Add(this.stn_ClassLbl);
+            this.StunPage.Controls.Add(this.stn_AffEnLbl);
+            this.StunPage.Controls.Add(this.stn_AffEnemies);
+            this.StunPage.Controls.Add(this.stn_TurnNumLbl);
+            this.StunPage.Controls.Add(this.stn_NumberOfTurns);
             this.StunPage.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.StunPage.Location = new System.Drawing.Point(4, 22);
             this.StunPage.Name = "StunPage";
@@ -581,6 +695,18 @@
             // ModifyStatsPage
             // 
             this.ModifyStatsPage.BackColor = System.Drawing.Color.Black;
+            this.ModifyStatsPage.Controls.Add(this.label6);
+            this.ModifyStatsPage.Controls.Add(this.treeView2);
+            this.ModifyStatsPage.Controls.Add(this.label7);
+            this.ModifyStatsPage.Controls.Add(this.comboBox3);
+            this.ModifyStatsPage.Controls.Add(this.checkedListBox2);
+            this.ModifyStatsPage.Controls.Add(this.label8);
+            this.ModifyStatsPage.Controls.Add(this.radioButton3);
+            this.ModifyStatsPage.Controls.Add(this.radioButton4);
+            this.ModifyStatsPage.Controls.Add(this.label9);
+            this.ModifyStatsPage.Controls.Add(this.comboBox4);
+            this.ModifyStatsPage.Controls.Add(this.label10);
+            this.ModifyStatsPage.Controls.Add(this.numericUpDown3);
             this.ModifyStatsPage.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ModifyStatsPage.Location = new System.Drawing.Point(4, 22);
             this.ModifyStatsPage.Name = "ModifyStatsPage";
@@ -588,77 +714,6 @@
             this.ModifyStatsPage.Size = new System.Drawing.Size(426, 224);
             this.ModifyStatsPage.TabIndex = 3;
             this.ModifyStatsPage.Text = "Modify Stats";
-            // 
-            // charIptLblDmg
-            // 
-            this.charIptLblDmg.AutoSize = true;
-            this.charIptLblDmg.BackColor = System.Drawing.Color.Black;
-            this.charIptLblDmg.ForeColor = System.Drawing.Color.White;
-            this.charIptLblDmg.Location = new System.Drawing.Point(212, 100);
-            this.charIptLblDmg.Name = "charIptLblDmg";
-            this.charIptLblDmg.Size = new System.Drawing.Size(58, 13);
-            this.charIptLblDmg.TabIndex = 23;
-            this.charIptLblDmg.Text = "Characters";
-            // 
-            // dmgCharIpt
-            // 
-            this.dmgCharIpt.BackColor = System.Drawing.Color.DimGray;
-            this.dmgCharIpt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dmgCharIpt.ContextMenuStrip = this.addCharacterHeal;
-            this.dmgCharIpt.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.dmgCharIpt.LineColor = System.Drawing.Color.WhiteSmoke;
-            this.dmgCharIpt.Location = new System.Drawing.Point(215, 116);
-            this.dmgCharIpt.Name = "dmgCharIpt";
-            this.dmgCharIpt.Size = new System.Drawing.Size(201, 90);
-            this.dmgCharIpt.TabIndex = 22;
-            // 
-            // algnLblDmg
-            // 
-            this.algnLblDmg.AutoSize = true;
-            this.algnLblDmg.BackColor = System.Drawing.Color.Black;
-            this.algnLblDmg.ForeColor = System.Drawing.Color.White;
-            this.algnLblDmg.Location = new System.Drawing.Point(113, 100);
-            this.algnLblDmg.Name = "algnLblDmg";
-            this.algnLblDmg.Size = new System.Drawing.Size(58, 13);
-            this.algnLblDmg.TabIndex = 21;
-            this.algnLblDmg.Text = "Alignments";
-            // 
-            // dmgAlgnIpt
-            // 
-            this.dmgAlgnIpt.BackColor = System.Drawing.Color.DimGray;
-            this.dmgAlgnIpt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dmgAlgnIpt.ForeColor = System.Drawing.Color.White;
-            this.dmgAlgnIpt.FormattingEnabled = true;
-            this.dmgAlgnIpt.Items.AddRange(new object[] {
-            "Light Side",
-            "Dark Side",
-            "Neutral"});
-            this.dmgAlgnIpt.Location = new System.Drawing.Point(116, 116);
-            this.dmgAlgnIpt.Name = "dmgAlgnIpt";
-            this.dmgAlgnIpt.Size = new System.Drawing.Size(154, 21);
-            this.dmgAlgnIpt.TabIndex = 20;
-            // 
-            // dmgClassIpt
-            // 
-            this.dmgClassIpt.BackColor = System.Drawing.Color.DimGray;
-            this.dmgClassIpt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dmgClassIpt.ForeColor = System.Drawing.Color.White;
-            this.dmgClassIpt.FormattingEnabled = true;
-            this.dmgClassIpt.Location = new System.Drawing.Point(9, 116);
-            this.dmgClassIpt.Name = "dmgClassIpt";
-            this.dmgClassIpt.Size = new System.Drawing.Size(201, 90);
-            this.dmgClassIpt.TabIndex = 19;
-            // 
-            // dmgClassLbl
-            // 
-            this.dmgClassLbl.AutoSize = true;
-            this.dmgClassLbl.BackColor = System.Drawing.Color.Black;
-            this.dmgClassLbl.ForeColor = System.Drawing.Color.White;
-            this.dmgClassLbl.Location = new System.Drawing.Point(6, 100);
-            this.dmgClassLbl.Name = "dmgClassLbl";
-            this.dmgClassLbl.Size = new System.Drawing.Size(43, 13);
-            this.dmgClassLbl.TabIndex = 18;
-            this.dmgClassLbl.Text = "Classes";
             // 
             // addCharacterDmg
             // 
@@ -689,7 +744,7 @@
             // 
             this.addCharDmg.BackColor = System.Drawing.Color.CadetBlue;
             this.addCharDmg.Name = "addCharDmg";
-            this.addCharDmg.Size = new System.Drawing.Size(180, 22);
+            this.addCharDmg.Size = new System.Drawing.Size(160, 22);
             this.addCharDmg.Text = "Add Character";
             this.addCharDmg.Click += new System.EventHandler(this.addCharDmg_Click);
             // 
@@ -699,6 +754,312 @@
             this.removeChar.Size = new System.Drawing.Size(218, 22);
             this.removeChar.Text = "Remove Selected Character";
             this.removeChar.Click += new System.EventHandler(this.removeChar_Click);
+            // 
+            // stn_CharLbl
+            // 
+            this.stn_CharLbl.AutoSize = true;
+            this.stn_CharLbl.BackColor = System.Drawing.Color.Black;
+            this.stn_CharLbl.ForeColor = System.Drawing.Color.White;
+            this.stn_CharLbl.Location = new System.Drawing.Point(214, 102);
+            this.stn_CharLbl.Name = "stn_CharLbl";
+            this.stn_CharLbl.Size = new System.Drawing.Size(58, 13);
+            this.stn_CharLbl.TabIndex = 35;
+            this.stn_CharLbl.Text = "Characters";
+            // 
+            // stn_CharTreeView
+            // 
+            this.stn_CharTreeView.BackColor = System.Drawing.Color.DimGray;
+            this.stn_CharTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.stn_CharTreeView.ContextMenuStrip = this.stn_AddCharContextMen;
+            this.stn_CharTreeView.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.stn_CharTreeView.LineColor = System.Drawing.Color.WhiteSmoke;
+            this.stn_CharTreeView.Location = new System.Drawing.Point(217, 118);
+            this.stn_CharTreeView.Name = "stn_CharTreeView";
+            this.stn_CharTreeView.Size = new System.Drawing.Size(201, 90);
+            this.stn_CharTreeView.TabIndex = 34;
+            // 
+            // stn_AlignLbl
+            // 
+            this.stn_AlignLbl.AutoSize = true;
+            this.stn_AlignLbl.BackColor = System.Drawing.Color.Black;
+            this.stn_AlignLbl.ForeColor = System.Drawing.Color.White;
+            this.stn_AlignLbl.Location = new System.Drawing.Point(115, 102);
+            this.stn_AlignLbl.Name = "stn_AlignLbl";
+            this.stn_AlignLbl.Size = new System.Drawing.Size(58, 13);
+            this.stn_AlignLbl.TabIndex = 33;
+            this.stn_AlignLbl.Text = "Alignments";
+            // 
+            // stn_AlignDropDown
+            // 
+            this.stn_AlignDropDown.BackColor = System.Drawing.Color.DimGray;
+            this.stn_AlignDropDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stn_AlignDropDown.ForeColor = System.Drawing.Color.White;
+            this.stn_AlignDropDown.FormattingEnabled = true;
+            this.stn_AlignDropDown.Items.AddRange(new object[] {
+            "Light Side",
+            "Dark Side",
+            "Neutral"});
+            this.stn_AlignDropDown.Location = new System.Drawing.Point(118, 118);
+            this.stn_AlignDropDown.Name = "stn_AlignDropDown";
+            this.stn_AlignDropDown.Size = new System.Drawing.Size(154, 21);
+            this.stn_AlignDropDown.TabIndex = 32;
+            // 
+            // stn_ClassListBox
+            // 
+            this.stn_ClassListBox.BackColor = System.Drawing.Color.DimGray;
+            this.stn_ClassListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.stn_ClassListBox.ForeColor = System.Drawing.Color.White;
+            this.stn_ClassListBox.FormattingEnabled = true;
+            this.stn_ClassListBox.Location = new System.Drawing.Point(11, 118);
+            this.stn_ClassListBox.Name = "stn_ClassListBox";
+            this.stn_ClassListBox.Size = new System.Drawing.Size(201, 90);
+            this.stn_ClassListBox.TabIndex = 31;
+            // 
+            // stn_ClassLbl
+            // 
+            this.stn_ClassLbl.AutoSize = true;
+            this.stn_ClassLbl.BackColor = System.Drawing.Color.Black;
+            this.stn_ClassLbl.ForeColor = System.Drawing.Color.White;
+            this.stn_ClassLbl.Location = new System.Drawing.Point(8, 102);
+            this.stn_ClassLbl.Name = "stn_ClassLbl";
+            this.stn_ClassLbl.Size = new System.Drawing.Size(43, 13);
+            this.stn_ClassLbl.TabIndex = 30;
+            this.stn_ClassLbl.Text = "Classes";
+            // 
+            // stn_AffEnLbl
+            // 
+            this.stn_AffEnLbl.AutoSize = true;
+            this.stn_AffEnLbl.Location = new System.Drawing.Point(8, 62);
+            this.stn_AffEnLbl.Name = "stn_AffEnLbl";
+            this.stn_AffEnLbl.Size = new System.Drawing.Size(90, 13);
+            this.stn_AffEnLbl.TabIndex = 27;
+            this.stn_AffEnLbl.Text = "Affected Enemies";
+            // 
+            // stn_AffEnemies
+            // 
+            this.stn_AffEnemies.BackColor = System.Drawing.Color.DimGray;
+            this.stn_AffEnemies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stn_AffEnemies.ForeColor = System.Drawing.Color.White;
+            this.stn_AffEnemies.FormattingEnabled = true;
+            this.stn_AffEnemies.Items.AddRange(new object[] {
+            "Selected Enemy",
+            "All Enemies",
+            "Enemy Leader",
+            "Specific Character(s)",
+            "Specific Faction(s)",
+            "Specific Allignment(s)"});
+            this.stn_AffEnemies.Location = new System.Drawing.Point(8, 78);
+            this.stn_AffEnemies.Name = "stn_AffEnemies";
+            this.stn_AffEnemies.Size = new System.Drawing.Size(121, 21);
+            this.stn_AffEnemies.TabIndex = 26;
+            this.stn_AffEnemies.SelectedIndexChanged += new System.EventHandler(this.stn_AffEnemies_SelectedIndexChanged);
+            // 
+            // stn_TurnNumLbl
+            // 
+            this.stn_TurnNumLbl.AutoSize = true;
+            this.stn_TurnNumLbl.Location = new System.Drawing.Point(9, 17);
+            this.stn_TurnNumLbl.Name = "stn_TurnNumLbl";
+            this.stn_TurnNumLbl.Size = new System.Drawing.Size(88, 13);
+            this.stn_TurnNumLbl.TabIndex = 25;
+            this.stn_TurnNumLbl.Text = "Number Of Turns";
+            // 
+            // stn_NumberOfTurns
+            // 
+            this.stn_NumberOfTurns.BackColor = System.Drawing.Color.DimGray;
+            this.stn_NumberOfTurns.ForeColor = System.Drawing.Color.White;
+            this.stn_NumberOfTurns.Location = new System.Drawing.Point(8, 36);
+            this.stn_NumberOfTurns.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.stn_NumberOfTurns.Name = "stn_NumberOfTurns";
+            this.stn_NumberOfTurns.Size = new System.Drawing.Size(96, 20);
+            this.stn_NumberOfTurns.TabIndex = 24;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Black;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(214, 102);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Characters";
+            // 
+            // treeView2
+            // 
+            this.treeView2.BackColor = System.Drawing.Color.DimGray;
+            this.treeView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView2.ContextMenuStrip = this.addCharacterHeal;
+            this.treeView2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.treeView2.LineColor = System.Drawing.Color.WhiteSmoke;
+            this.treeView2.Location = new System.Drawing.Point(217, 118);
+            this.treeView2.Name = "treeView2";
+            this.treeView2.Size = new System.Drawing.Size(201, 90);
+            this.treeView2.TabIndex = 34;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Black;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(115, 102);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Alignments";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.BackColor = System.Drawing.Color.DimGray;
+            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox3.ForeColor = System.Drawing.Color.White;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Light Side",
+            "Dark Side",
+            "Neutral"});
+            this.comboBox3.Location = new System.Drawing.Point(118, 118);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(154, 21);
+            this.comboBox3.TabIndex = 32;
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.BackColor = System.Drawing.Color.DimGray;
+            this.checkedListBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBox2.ForeColor = System.Drawing.Color.White;
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(11, 118);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(201, 90);
+            this.checkedListBox2.TabIndex = 31;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Black;
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(8, 102);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "Classes";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
+            this.radioButton3.Location = new System.Drawing.Point(217, 62);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(80, 17);
+            this.radioButton3.TabIndex = 29;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Set Amount";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(217, 36);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(80, 17);
+            this.radioButton4.TabIndex = 28;
+            this.radioButton4.Text = "Percentage";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 62);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(90, 13);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Affected Enemies";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.BackColor = System.Drawing.Color.DimGray;
+            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox4.ForeColor = System.Drawing.Color.White;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "Selected Enemy",
+            "All Enemies",
+            "Enemy Leader",
+            "Specific Character(s)",
+            "Specific Faction(s)",
+            "Specific Allignment(s)"});
+            this.comboBox4.Location = new System.Drawing.Point(8, 78);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 26;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Damage Amount";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.BackColor = System.Drawing.Color.DimGray;
+            this.numericUpDown3.DecimalPlaces = 4;
+            this.numericUpDown3.ForeColor = System.Drawing.Color.White;
+            this.numericUpDown3.Location = new System.Drawing.Point(8, 36);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(96, 20);
+            this.numericUpDown3.TabIndex = 24;
+            // 
+            // stn_AddCharContextMen
+            // 
+            this.stn_AddCharContextMen.BackColor = System.Drawing.Color.CadetBlue;
+            this.stn_AddCharContextMen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stn_AddCharHeader,
+            this.stn_RmCharBttn});
+            this.stn_AddCharContextMen.Name = "addCharacterHeal";
+            this.stn_AddCharContextMen.Size = new System.Drawing.Size(219, 48);
+            // 
+            // stn_AddCharHeader
+            // 
+            this.stn_AddCharHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stn_CharNmTextBox,
+            this.stn_AddCharBttn});
+            this.stn_AddCharHeader.Name = "stn_AddCharHeader";
+            this.stn_AddCharHeader.Size = new System.Drawing.Size(218, 22);
+            this.stn_AddCharHeader.Text = "Add Character...";
+            // 
+            // stn_CharNmTextBox
+            // 
+            this.stn_CharNmTextBox.BackColor = System.Drawing.Color.CadetBlue;
+            this.stn_CharNmTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.stn_CharNmTextBox.Name = "stn_CharNmTextBox";
+            this.stn_CharNmTextBox.Size = new System.Drawing.Size(100, 23);
+            // 
+            // stn_AddCharBttn
+            // 
+            this.stn_AddCharBttn.BackColor = System.Drawing.Color.CadetBlue;
+            this.stn_AddCharBttn.Name = "stn_AddCharBttn";
+            this.stn_AddCharBttn.Size = new System.Drawing.Size(180, 22);
+            this.stn_AddCharBttn.Text = "Add Character";
+            this.stn_AddCharBttn.Click += new System.EventHandler(this.stn_AddCharBttn_Click);
+            // 
+            // stn_RmCharBttn
+            // 
+            this.stn_RmCharBttn.Name = "stn_RmCharBttn";
+            this.stn_RmCharBttn.Size = new System.Drawing.Size(218, 22);
+            this.stn_RmCharBttn.Text = "Remove Selected Character";
+            this.stn_RmCharBttn.Click += new System.EventHandler(this.stn_RmCharBttn_Click);
             // 
             // AbilityPopup
             // 
@@ -727,12 +1088,19 @@
             this.affectOptionsTabControl.ResumeLayout(false);
             this.damagePage.ResumeLayout(false);
             this.damagePage.PerformLayout();
+            this.addCharacterHeal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.healPage.ResumeLayout(false);
             this.healPage.PerformLayout();
-            this.addCharacterHeal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.healAmt)).EndInit();
+            this.StunPage.ResumeLayout(false);
+            this.StunPage.PerformLayout();
+            this.ModifyStatsPage.ResumeLayout(false);
+            this.ModifyStatsPage.PerformLayout();
             this.addCharacterDmg.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.stn_NumberOfTurns)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            this.stn_AddCharContextMen.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -789,5 +1157,32 @@
         private System.Windows.Forms.ToolStripTextBox dmgCharNameIpt;
         private System.Windows.Forms.ToolStripMenuItem addCharDmg;
         private System.Windows.Forms.ToolStripMenuItem removeChar;
+        private System.Windows.Forms.Label stn_CharLbl;
+        private System.Windows.Forms.TreeView stn_CharTreeView;
+        private System.Windows.Forms.Label stn_AlignLbl;
+        private System.Windows.Forms.ComboBox stn_AlignDropDown;
+        private System.Windows.Forms.CheckedListBox stn_ClassListBox;
+        private System.Windows.Forms.Label stn_ClassLbl;
+        private System.Windows.Forms.Label stn_AffEnLbl;
+        private System.Windows.Forms.ComboBox stn_AffEnemies;
+        private System.Windows.Forms.Label stn_TurnNumLbl;
+        private System.Windows.Forms.NumericUpDown stn_NumberOfTurns;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TreeView treeView2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.ContextMenuStrip stn_AddCharContextMen;
+        private System.Windows.Forms.ToolStripMenuItem stn_AddCharHeader;
+        private System.Windows.Forms.ToolStripTextBox stn_CharNmTextBox;
+        private System.Windows.Forms.ToolStripMenuItem stn_AddCharBttn;
+        private System.Windows.Forms.ToolStripMenuItem stn_RmCharBttn;
     }
 }

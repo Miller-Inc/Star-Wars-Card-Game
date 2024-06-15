@@ -61,6 +61,16 @@ namespace Star_Wars_Card_Game.Windows.Admin
             this.dmgAlgnIpt.Visible = false;
             this.dmgCharIpt.Visible = false;
             this.charIptLblDmg.Visible = false;
+            this.dmgCharIpt.Nodes.Clear();
+            this.stn_ClassLbl.Visible = false;
+            this.stn_ClassListBox.Visible = false;
+            this.stn_AlignDropDown.Visible = false;
+            this.stn_AlignLbl.Visible = false;
+            this.stn_CharTreeView.Visible = false;
+            this.stn_CharLbl.Visible = false;
+            this.stn_CharTreeView.Nodes.Clear();
+            this.stn_ClassListBox.Items.Clear();
+            this.stn_ClassListBox.Items.AddRange(Backend.Game.Classes.ClassNames.ToArray());
             if (type == PopupType.Add)
             {
                 // Setup a clear UI
@@ -210,6 +220,7 @@ namespace Star_Wars_Card_Game.Windows.Admin
             ResetAlliedNodes();
             Color color = Color.White;
             if (this.effectCheckBox.CheckedItems.Contains(this.effectCheckBox.Items[1])) color = Color.Yellow;
+            else { return; }
             switch (this.affectedAlies.SelectedIndex)
             {
                 case 0:
@@ -400,6 +411,108 @@ namespace Star_Wars_Card_Game.Windows.Admin
             }
         }
 
+        private void StnUpdate()
+        {
+            ResetEnemyNodes();
+            Color color = Color.White;
+            if (this.effectCheckBox.CheckedItems.Contains(this.effectCheckBox.Items[2])) color = Color.Yellow;
+            switch (this.stn_AffEnemies.SelectedIndex)
+            {
+                // Leader
+                // Selected Enemy 
+                // Specific Character(s)
+
+                // Selected Enemy
+                // All Enemies
+                // Random Enemy (no)
+                // Enemy Leader
+                case 0:
+                    // Selected Enemy
+                    this.stn_ClassLbl.Visible = false;
+                    this.stn_ClassListBox.Visible = false;
+                    this.stn_AlignDropDown.Visible = false;
+                    this.stn_AlignLbl.Visible = false;
+                    this.stn_CharTreeView.Visible = false;
+                    this.stn_CharLbl.Visible = false;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[1].ForeColor = color;
+                    break;
+                case 1:
+                    // All Enemies
+                    this.stn_ClassLbl.Visible = false;
+                    this.stn_ClassListBox.Visible = false;
+                    this.stn_AlignDropDown.Visible = false;
+                    this.stn_AlignLbl.Visible = false;
+                    this.stn_CharTreeView.Visible = false;
+                    this.stn_CharLbl.Visible = false;
+                    this.unitsChooser.Nodes[1].Checked = true;
+                    this.unitsChooser.Nodes[1].ForeColor = color;
+                    foreach (TreeNode node in this.unitsChooser.Nodes[1].Nodes)
+                    {
+                        node.Checked = true;
+                        node.ForeColor = color;
+                    }
+                    break;
+                case 9:
+                    // Was set to Random Enemy, but no longer exists
+                    this.stn_ClassLbl.Visible = false;
+                    this.stn_ClassListBox.Visible = false;
+                    this.stn_AlignDropDown.Visible = false;
+                    this.stn_AlignLbl.Visible = false;
+                    this.stn_CharTreeView.Visible = false;
+                    this.stn_CharLbl.Visible = false;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[1].ForeColor = color;
+                    this.unitsChooser.Nodes[1].Nodes[1].Checked = true;
+                    break;
+                case 2:
+                    // Enemy Leader
+                    this.stn_ClassLbl.Visible = false;
+                    this.stn_ClassListBox.Visible = false;
+                    this.stn_AlignDropDown.Visible = false;
+                    this.stn_AlignLbl.Visible = false;
+                    this.stn_CharTreeView.Visible = false;
+                    this.stn_CharLbl.Visible = false;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[0].ForeColor = color;
+                    break;
+                case 3:
+                    // Specific Character(s)
+                    this.stn_ClassLbl.Visible = false;
+                    this.stn_ClassListBox.Visible = false;
+                    this.stn_AlignDropDown.Visible = false;
+                    this.stn_AlignLbl.Visible = false;
+                    this.stn_CharTreeView.Visible = true;
+                    this.stn_CharLbl.Visible = true;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[2].ForeColor = color;
+                    break;
+                case 4:
+                    // Specific Faction(s)
+                    this.stn_ClassLbl.Visible = true;
+                    this.stn_ClassListBox.Visible = true;
+                    this.stn_AlignDropDown.Visible = false;
+                    this.stn_AlignLbl.Visible = false;
+                    this.stn_CharTreeView.Visible = false;
+                    this.stn_CharLbl.Visible = false;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[2].ForeColor = color;
+                    break;
+                case 5:
+                    // Specific Allignment(s)
+                    this.stn_ClassLbl.Visible = false;
+                    this.stn_ClassListBox.Visible = false;
+                    this.stn_AlignDropDown.Visible = true;
+                    this.stn_AlignLbl.Visible = true;
+                    this.stn_CharTreeView.Visible = false;
+                    this.stn_CharLbl.Visible = false;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[2].ForeColor = color;
+                    break;
+
+            }
+        }
+
         private void addCharBttn_Click(object sender, EventArgs e)
         {
             this.CharacterIptTreeView.Nodes.Add(this.healCharIpt.Text);
@@ -425,6 +538,29 @@ namespace Star_Wars_Card_Game.Windows.Admin
         private void removeChar_Click(object sender, EventArgs e)
         {
             this.dmgCharIpt.Nodes.Remove(this.dmgCharIpt.SelectedNode);
+        }
+
+        private void effectCheckBox_MouseLeave(object sender, EventArgs e)
+        {
+            HealUpdate(); 
+            DmgUpdate();
+            StnUpdate(); 
+        }
+
+        private void stn_AddCharBttn_Click(object sender, EventArgs e)
+        {
+            this.stn_CharTreeView.Nodes.Add(this.stn_CharNmTextBox.Text);
+            this.stn_CharNmTextBox.Text = "";
+        }
+
+        private void stn_RmCharBttn_Click(object sender, EventArgs e)
+        {
+            this.stn_CharTreeView.Nodes.Remove(this.stn_CharTreeView.SelectedNode);
+        }
+
+        private void stn_AffEnemies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StnUpdate();
         }
     }
 
