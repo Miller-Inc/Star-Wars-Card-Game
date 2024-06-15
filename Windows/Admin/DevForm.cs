@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Star_Wars_Card_Game.Backend.Game.Enums;
 
 namespace Star_Wars_Card_Game.Windows
 {

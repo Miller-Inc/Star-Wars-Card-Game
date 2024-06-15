@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Star_Wars_Card_Game.Backend.Game.Enums;
 
 namespace Star_Wars_Card_Game.Backend.Game
 {
@@ -46,15 +47,6 @@ namespace Star_Wars_Card_Game.Backend.Game
         {
 
         }
-    }
-
-    public enum ActionType
-    {
-        Damage = 0,
-        Heal = 1,
-        ApplyStatusEffect = 2,
-        RemoveStatusEffect = 3,
-        ModifyStat = 4,
     }
 
     #region DefaultActions

@@ -94,8 +94,13 @@
     <Compile Include="Backend\Client\ClientBase.cs" />
     <Compile Include="Backend\Client\PlayerClient.cs" />
     <Compile Include="Backend\Game\Action.cs" />
-    <Compile Include="Backend\Game\Allignment.cs" />
+    <Compile Include="Backend\Game\Enums\AbilityType.cs" />
+    <Compile Include="Backend\Game\Enums\ActionType.cs" />
+    <Compile Include="Backend\Game\Enums\AffectedStat.cs" />
+    <Compile Include="Backend\Game\Enums\Allignment.cs" />
     <Compile Include="Backend\Game\Classes.cs" />
+    <Compile Include="Backend\Game\Enums\CharactersAffected.cs" />
+    <Compile Include="Backend\Game\Enums\PopupType.cs" />
     <Compile Include="Backend\Game\StatusEffect.cs" />
     <Compile Include="Backend\Server\Packet.cs" />
     <Compile Include="Backend\Server\Player.cs" />
@@ -211,5 +216,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
