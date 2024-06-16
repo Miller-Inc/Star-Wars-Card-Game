@@ -73,6 +73,9 @@ namespace Star_Wars_Card_Game
 
     }
 
+    /// <summary>
+    /// The form for the program to open
+    /// </summary>
     public enum OpenForms
     {
         Quit, 
