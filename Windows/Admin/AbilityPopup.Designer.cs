@@ -74,7 +74,7 @@
             this.targetLbl = new System.Windows.Forms.Label();
             this.damageTarget = new System.Windows.Forms.ComboBox();
             this.DmgAmtLbl = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.damageIptAmount = new System.Windows.Forms.NumericUpDown();
             this.healPage = new System.Windows.Forms.TabPage();
             this.CharHealLbl = new System.Windows.Forms.Label();
             this.CharacterIptTreeView = new System.Windows.Forms.TreeView();
@@ -123,10 +123,14 @@
             this.addCharDmg = new System.Windows.Forms.ToolStripMenuItem();
             this.removeChar = new System.Windows.Forms.ToolStripMenuItem();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.main_AbilityTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.main_AbilityLbl = new System.Windows.Forms.Label();
+            this.main_Cooldown = new System.Windows.Forms.NumericUpDown();
+            this.main_CooldownLbl = new System.Windows.Forms.Label();
             this.affectOptionsTabControl.SuspendLayout();
             this.damagePage.SuspendLayout();
             this.addCharacterHeal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.damageIptAmount)).BeginInit();
             this.healPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.healAmt)).BeginInit();
             this.StunPage.SuspendLayout();
@@ -135,6 +139,7 @@
             this.ModifyStatsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buff_AffectAmt)).BeginInit();
             this.addCharacterDmg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.main_Cooldown)).BeginInit();
             this.SuspendLayout();
             // 
             // CancelBttn
@@ -305,7 +310,7 @@
             this.damagePage.Controls.Add(this.targetLbl);
             this.damagePage.Controls.Add(this.damageTarget);
             this.damagePage.Controls.Add(this.DmgAmtLbl);
-            this.damagePage.Controls.Add(this.numericUpDown1);
+            this.damagePage.Controls.Add(this.damageIptAmount);
             this.damagePage.ForeColor = System.Drawing.Color.BlanchedAlmond;
             this.damagePage.Location = new System.Drawing.Point(4, 22);
             this.damagePage.Name = "damagePage";
@@ -486,20 +491,20 @@
             this.DmgAmtLbl.TabIndex = 1;
             this.DmgAmtLbl.Text = "Damage Amount";
             // 
-            // numericUpDown1
+            // damageIptAmount
             // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.DimGray;
-            this.numericUpDown1.DecimalPlaces = 4;
-            this.numericUpDown1.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown1.Location = new System.Drawing.Point(6, 34);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.damageIptAmount.BackColor = System.Drawing.Color.DimGray;
+            this.damageIptAmount.DecimalPlaces = 4;
+            this.damageIptAmount.ForeColor = System.Drawing.Color.White;
+            this.damageIptAmount.Location = new System.Drawing.Point(6, 34);
+            this.damageIptAmount.Maximum = new decimal(new int[] {
             1000000000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(96, 20);
-            this.numericUpDown1.TabIndex = 0;
+            this.damageIptAmount.Name = "damageIptAmount";
+            this.damageIptAmount.Size = new System.Drawing.Size(96, 20);
+            this.damageIptAmount.TabIndex = 0;
             // 
             // healPage
             // 
@@ -1070,6 +1075,59 @@
             this.removeChar.Text = "Remove Selected Character";
             this.removeChar.Click += new System.EventHandler(this.removeChar_Click);
             // 
+            // main_AbilityTypeComboBox
+            // 
+            this.main_AbilityTypeComboBox.BackColor = System.Drawing.Color.DimGray;
+            this.main_AbilityTypeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.main_AbilityTypeComboBox.ForeColor = System.Drawing.Color.White;
+            this.main_AbilityTypeComboBox.FormattingEnabled = true;
+            this.main_AbilityTypeComboBox.Items.AddRange(new object[] {
+            "Self",
+            "Selected Ally",
+            "Allied Leader",
+            "Specific Character(s) (Allies)",
+            "Specific Faction(s) (Allies)",
+            "Specific Allignment(s) (Allies)",
+            "Selected Enemy",
+            "All Enemies",
+            "Enemy Leader",
+            "Specific Character(s) (Enemy)",
+            "Specific Faction(s) (Enemy)",
+            "Specific Allignment(s) (Enemy)"});
+            this.main_AbilityTypeComboBox.Location = new System.Drawing.Point(358, 27);
+            this.main_AbilityTypeComboBox.Name = "main_AbilityTypeComboBox";
+            this.main_AbilityTypeComboBox.Size = new System.Drawing.Size(147, 21);
+            this.main_AbilityTypeComboBox.TabIndex = 36;
+            // 
+            // main_AbilityLbl
+            // 
+            this.main_AbilityLbl.AutoSize = true;
+            this.main_AbilityLbl.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.main_AbilityLbl.Location = new System.Drawing.Point(355, 9);
+            this.main_AbilityLbl.Name = "main_AbilityLbl";
+            this.main_AbilityLbl.Size = new System.Drawing.Size(61, 13);
+            this.main_AbilityLbl.TabIndex = 37;
+            this.main_AbilityLbl.Text = "Ability Type";
+            // 
+            // main_Cooldown
+            // 
+            this.main_Cooldown.BackColor = System.Drawing.Color.DimGray;
+            this.main_Cooldown.ForeColor = System.Drawing.Color.White;
+            this.main_Cooldown.Location = new System.Drawing.Point(534, 27);
+            this.main_Cooldown.Name = "main_Cooldown";
+            this.main_Cooldown.Size = new System.Drawing.Size(96, 20);
+            this.main_Cooldown.TabIndex = 36;
+            // 
+            // main_CooldownLbl
+            // 
+            this.main_CooldownLbl.AutoSize = true;
+            this.main_CooldownLbl.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.main_CooldownLbl.Location = new System.Drawing.Point(531, 8);
+            this.main_CooldownLbl.Name = "main_CooldownLbl";
+            this.main_CooldownLbl.Size = new System.Drawing.Size(54, 13);
+            this.main_CooldownLbl.TabIndex = 38;
+            this.main_CooldownLbl.Text = "Cooldown";
+            // 
             // AbilityPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1077,6 +1135,10 @@
             this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.CancelBttn;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.main_CooldownLbl);
+            this.Controls.Add(this.main_Cooldown);
+            this.Controls.Add(this.main_AbilityLbl);
+            this.Controls.Add(this.main_AbilityTypeComboBox);
             this.Controls.Add(this.affectOptionsTabControl);
             this.Controls.Add(this.DescriptionLbl);
             this.Controls.Add(this.AbilityDescription);
@@ -1098,7 +1160,7 @@
             this.damagePage.ResumeLayout(false);
             this.damagePage.PerformLayout();
             this.addCharacterHeal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.damageIptAmount)).EndInit();
             this.healPage.ResumeLayout(false);
             this.healPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.healAmt)).EndInit();
@@ -1110,6 +1172,7 @@
             this.ModifyStatsPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buff_AffectAmt)).EndInit();
             this.addCharacterDmg.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.main_Cooldown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1132,7 +1195,7 @@
         private System.Windows.Forms.TabPage healPage;
         private System.Windows.Forms.TabPage StunPage;
         private System.Windows.Forms.TabPage ModifyStatsPage;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown damageIptAmount;
         private System.Windows.Forms.Label DmgAmtLbl;
         private System.Windows.Forms.RadioButton percentageDmgBttn;
         private System.Windows.Forms.Label targetLbl;
@@ -1194,5 +1257,9 @@
         private System.Windows.Forms.ToolStripMenuItem stn_AddCharBttn;
         private System.Windows.Forms.ToolStripMenuItem stn_RmCharBttn;
         private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.ComboBox main_AbilityTypeComboBox;
+        private System.Windows.Forms.Label main_AbilityLbl;
+        private System.Windows.Forms.NumericUpDown main_Cooldown;
+        private System.Windows.Forms.Label main_CooldownLbl;
     }
 }

@@ -13,7 +13,7 @@ namespace Star_Wars_Card_Game.Backend.Game
 
         public string Description { get; set; } = "The most basic, default attack that does almost nothing";
 
-        public float BaseDamage { get; set; } = 1f;
+        public float BaseAmount { get; set; } = 1f;
 
         public int Cooldown { get; set; } = 0; 
 
@@ -23,11 +23,11 @@ namespace Star_Wars_Card_Game.Backend.Game
 
         public List<AbilityAction> Actions { get; set; } = [];
 
-        public Ability(string name, string description, int damage, int cooldown, AbilityType type)
+        public Ability(string name, string description, int baseAmount, int cooldown, AbilityType type)
         {
             Name = name;
             Description = description;
-            BaseDamage = damage;
+            BaseAmount = baseAmount;
             Cooldown = cooldown;
             Type = type;
         }

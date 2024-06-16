@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Star_Wars_Card_Game.Backend.Game.Enums;
 using System.Windows.Forms.VisualStyles;
 using AbilityAction = Star_Wars_Card_Game.Backend.Game.AbilityAction;
+using System.Runtime.CompilerServices;
 
 namespace Star_Wars_Card_Game.Windows.Admin
 {
@@ -18,6 +19,12 @@ namespace Star_Wars_Card_Game.Windows.Admin
     {
 
         public Ability Ability { get; set; } = new();
+
+        public CharactersAffected Dmg_AffectedChars { get; set; } = CharactersAffected.None;
+
+        public CharactersAffected Heal_AffectedChars { get; set; } = CharactersAffected.None;
+
+        public CharactersAffected Stn_AffectedChars { get; set; } = CharactersAffected.None;
 
         public AbilityAction BuffAction { get; set; } = new()
             {
@@ -115,9 +122,66 @@ namespace Star_Wars_Card_Game.Windows.Admin
 
         #region Event Handlers
 
+        /// <summary>
+        /// In progress
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddAbility_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+            // Save ability
+            this.Ability.Name = this.abilityName.Text;
+            this.Ability.Description = this.AbilityDescription.Text;
+            this.Ability.Type = (AbilityType)Enum.Parse(typeof(AbilityType), this.main_AbilityTypeComboBox.Text);
+            if (this.effectCheckBox.CheckedItems.Contains(this.effectCheckBox.Items[0]))
+            {
+                // Damage
+                AbilityAction action = new()
+                {
+                    AffectedCharacters = this.Dmg_AffectedChars,
+                    AffectedClasses = [],
+                    AffectedAllignments = [],
+                    StatusEffect = new()
+                    {
+                        AffectedStat = AffectedStat.Health,
+                        Duration = 0,
+                        Amount = 0,
+                        ApplicationType = StatusApplicationType.Multiplicative,
+                    },
+                    AffectedStatValue = 0,
+                    AffectedUnits = [],
+                    Description = "",
+                    Type = ActionType.Damage,
+                    NumberOfTargets = 0,
+                };
+
+                if (this.dmgClassIpt.Visible)
+                {
+                    foreach (int item in this.dmgClassIpt.CheckedIndices)
+                    {
+                        action.AffectedClasses.Add(item, this.dmgClassIpt.Items[item].ToString());
+                    }
+                }
+                this.Ability.BaseAmount = (float)this.damageIptAmount.Value;
+            }
+            if (this.main_AbilityTypeComboBox.Text == "Basic")
+            {
+                this.Ability.Cooldown = 0;
+            }
+            else
+            {
+                this.Ability.Cooldown = (int)this.main_Cooldown.Value;
+            }
+            if (this.effectCheckBox.CheckedItems.Contains(this.effectCheckBox.Items[3]))
+            {
+                // buff/debuff
+                this.Ability.Actions.Add(this.BuffAction);
+            }
+
+            
+            
+
             this.Close();
         }
 
