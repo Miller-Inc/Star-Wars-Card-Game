@@ -89,14 +89,13 @@
             this.healAmtLbl = new System.Windows.Forms.Label();
             this.healAmt = new System.Windows.Forms.NumericUpDown();
             this.StunPage = new System.Windows.Forms.TabPage();
-            this.ModifyStatsPage = new System.Windows.Forms.TabPage();
-            this.addCharacterDmg = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dmgAddCharMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
-            this.dmgCharNameIpt = new System.Windows.Forms.ToolStripTextBox();
-            this.addCharDmg = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeChar = new System.Windows.Forms.ToolStripMenuItem();
             this.stn_CharLbl = new System.Windows.Forms.Label();
             this.stn_CharTreeView = new System.Windows.Forms.TreeView();
+            this.stn_AddCharContextMen = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.stn_AddCharHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.stn_CharNmTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.stn_AddCharBttn = new System.Windows.Forms.ToolStripMenuItem();
+            this.stn_RmCharBttn = new System.Windows.Forms.ToolStripMenuItem();
             this.stn_AlignLbl = new System.Windows.Forms.Label();
             this.stn_AlignDropDown = new System.Windows.Forms.ComboBox();
             this.stn_ClassListBox = new System.Windows.Forms.CheckedListBox();
@@ -105,23 +104,25 @@
             this.stn_AffEnemies = new System.Windows.Forms.ComboBox();
             this.stn_TurnNumLbl = new System.Windows.Forms.Label();
             this.stn_NumberOfTurns = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.treeView2 = new System.Windows.Forms.TreeView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.stn_AddCharContextMen = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.stn_AddCharHeader = new System.Windows.Forms.ToolStripMenuItem();
-            this.stn_CharNmTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.stn_AddCharBttn = new System.Windows.Forms.ToolStripMenuItem();
-            this.stn_RmCharBttn = new System.Windows.Forms.ToolStripMenuItem();
+            this.ModifyStatsPage = new System.Windows.Forms.TabPage();
+            this.buff_CharsLbl = new System.Windows.Forms.Label();
+            this.buff_CharsTreeView = new System.Windows.Forms.TreeView();
+            this.buff_AlignLbl = new System.Windows.Forms.Label();
+            this.buff_AlignDropDown = new System.Windows.Forms.ComboBox();
+            this.buff_ClassesSelectorCheckLsBx = new System.Windows.Forms.CheckedListBox();
+            this.buff_ClassesLbl = new System.Windows.Forms.Label();
+            this.buff_SetAmt = new System.Windows.Forms.RadioButton();
+            this.buff_Perc = new System.Windows.Forms.RadioButton();
+            this.buff_UnitsLbl = new System.Windows.Forms.Label();
+            this.buff_UnitsSelector = new System.Windows.Forms.ComboBox();
+            this.buff_AffectAmtLbl = new System.Windows.Forms.Label();
+            this.buff_AffectAmt = new System.Windows.Forms.NumericUpDown();
+            this.addCharacterDmg = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dmgAddCharMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.dmgCharNameIpt = new System.Windows.Forms.ToolStripTextBox();
+            this.addCharDmg = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeChar = new System.Windows.Forms.ToolStripMenuItem();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.affectOptionsTabControl.SuspendLayout();
             this.damagePage.SuspendLayout();
             this.addCharacterHeal.SuspendLayout();
@@ -129,11 +130,11 @@
             this.healPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.healAmt)).BeginInit();
             this.StunPage.SuspendLayout();
-            this.ModifyStatsPage.SuspendLayout();
-            this.addCharacterDmg.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.stn_NumberOfTurns)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.stn_AddCharContextMen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.stn_NumberOfTurns)).BeginInit();
+            this.ModifyStatsPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buff_AffectAmt)).BeginInit();
+            this.addCharacterDmg.SuspendLayout();
             this.SuspendLayout();
             // 
             // CancelBttn
@@ -692,69 +693,6 @@
             this.StunPage.TabIndex = 2;
             this.StunPage.Text = "Stun";
             // 
-            // ModifyStatsPage
-            // 
-            this.ModifyStatsPage.BackColor = System.Drawing.Color.Black;
-            this.ModifyStatsPage.Controls.Add(this.label6);
-            this.ModifyStatsPage.Controls.Add(this.treeView2);
-            this.ModifyStatsPage.Controls.Add(this.label7);
-            this.ModifyStatsPage.Controls.Add(this.comboBox3);
-            this.ModifyStatsPage.Controls.Add(this.checkedListBox2);
-            this.ModifyStatsPage.Controls.Add(this.label8);
-            this.ModifyStatsPage.Controls.Add(this.radioButton3);
-            this.ModifyStatsPage.Controls.Add(this.radioButton4);
-            this.ModifyStatsPage.Controls.Add(this.label9);
-            this.ModifyStatsPage.Controls.Add(this.comboBox4);
-            this.ModifyStatsPage.Controls.Add(this.label10);
-            this.ModifyStatsPage.Controls.Add(this.numericUpDown3);
-            this.ModifyStatsPage.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ModifyStatsPage.Location = new System.Drawing.Point(4, 22);
-            this.ModifyStatsPage.Name = "ModifyStatsPage";
-            this.ModifyStatsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ModifyStatsPage.Size = new System.Drawing.Size(426, 224);
-            this.ModifyStatsPage.TabIndex = 3;
-            this.ModifyStatsPage.Text = "Modify Stats";
-            // 
-            // addCharacterDmg
-            // 
-            this.addCharacterDmg.BackColor = System.Drawing.Color.CadetBlue;
-            this.addCharacterDmg.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dmgAddCharMenuHeader,
-            this.removeChar});
-            this.addCharacterDmg.Name = "addCharacterHeal";
-            this.addCharacterDmg.Size = new System.Drawing.Size(219, 48);
-            // 
-            // dmgAddCharMenuHeader
-            // 
-            this.dmgAddCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dmgCharNameIpt,
-            this.addCharDmg});
-            this.dmgAddCharMenuHeader.Name = "dmgAddCharMenuHeader";
-            this.dmgAddCharMenuHeader.Size = new System.Drawing.Size(218, 22);
-            this.dmgAddCharMenuHeader.Text = "Add Character...";
-            // 
-            // dmgCharNameIpt
-            // 
-            this.dmgCharNameIpt.BackColor = System.Drawing.Color.CadetBlue;
-            this.dmgCharNameIpt.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dmgCharNameIpt.Name = "dmgCharNameIpt";
-            this.dmgCharNameIpt.Size = new System.Drawing.Size(100, 23);
-            // 
-            // addCharDmg
-            // 
-            this.addCharDmg.BackColor = System.Drawing.Color.CadetBlue;
-            this.addCharDmg.Name = "addCharDmg";
-            this.addCharDmg.Size = new System.Drawing.Size(160, 22);
-            this.addCharDmg.Text = "Add Character";
-            this.addCharDmg.Click += new System.EventHandler(this.addCharDmg_Click);
-            // 
-            // removeChar
-            // 
-            this.removeChar.Name = "removeChar";
-            this.removeChar.Size = new System.Drawing.Size(218, 22);
-            this.removeChar.Text = "Remove Selected Character";
-            this.removeChar.Click += new System.EventHandler(this.removeChar_Click);
-            // 
             // stn_CharLbl
             // 
             this.stn_CharLbl.AutoSize = true;
@@ -777,6 +715,46 @@
             this.stn_CharTreeView.Name = "stn_CharTreeView";
             this.stn_CharTreeView.Size = new System.Drawing.Size(201, 90);
             this.stn_CharTreeView.TabIndex = 34;
+            // 
+            // stn_AddCharContextMen
+            // 
+            this.stn_AddCharContextMen.BackColor = System.Drawing.Color.CadetBlue;
+            this.stn_AddCharContextMen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stn_AddCharHeader,
+            this.stn_RmCharBttn});
+            this.stn_AddCharContextMen.Name = "addCharacterHeal";
+            this.stn_AddCharContextMen.Size = new System.Drawing.Size(219, 48);
+            // 
+            // stn_AddCharHeader
+            // 
+            this.stn_AddCharHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stn_CharNmTextBox,
+            this.stn_AddCharBttn});
+            this.stn_AddCharHeader.Name = "stn_AddCharHeader";
+            this.stn_AddCharHeader.Size = new System.Drawing.Size(218, 22);
+            this.stn_AddCharHeader.Text = "Add Character...";
+            // 
+            // stn_CharNmTextBox
+            // 
+            this.stn_CharNmTextBox.BackColor = System.Drawing.Color.CadetBlue;
+            this.stn_CharNmTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.stn_CharNmTextBox.Name = "stn_CharNmTextBox";
+            this.stn_CharNmTextBox.Size = new System.Drawing.Size(100, 23);
+            // 
+            // stn_AddCharBttn
+            // 
+            this.stn_AddCharBttn.BackColor = System.Drawing.Color.CadetBlue;
+            this.stn_AddCharBttn.Name = "stn_AddCharBttn";
+            this.stn_AddCharBttn.Size = new System.Drawing.Size(160, 22);
+            this.stn_AddCharBttn.Text = "Add Character";
+            this.stn_AddCharBttn.Click += new System.EventHandler(this.stn_AddCharBttn_Click);
+            // 
+            // stn_RmCharBttn
+            // 
+            this.stn_RmCharBttn.Name = "stn_RmCharBttn";
+            this.stn_RmCharBttn.Size = new System.Drawing.Size(218, 22);
+            this.stn_RmCharBttn.Text = "Remove Selected Character";
+            this.stn_RmCharBttn.Click += new System.EventHandler(this.stn_RmCharBttn_Click);
             // 
             // stn_AlignLbl
             // 
@@ -877,189 +855,220 @@
             this.stn_NumberOfTurns.Size = new System.Drawing.Size(96, 20);
             this.stn_NumberOfTurns.TabIndex = 24;
             // 
-            // label6
+            // ModifyStatsPage
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Black;
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(214, 102);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "Characters";
+            this.ModifyStatsPage.BackColor = System.Drawing.Color.Black;
+            this.ModifyStatsPage.Controls.Add(this.buff_CharsLbl);
+            this.ModifyStatsPage.Controls.Add(this.buff_CharsTreeView);
+            this.ModifyStatsPage.Controls.Add(this.buff_AlignLbl);
+            this.ModifyStatsPage.Controls.Add(this.buff_AlignDropDown);
+            this.ModifyStatsPage.Controls.Add(this.buff_ClassesSelectorCheckLsBx);
+            this.ModifyStatsPage.Controls.Add(this.buff_ClassesLbl);
+            this.ModifyStatsPage.Controls.Add(this.buff_SetAmt);
+            this.ModifyStatsPage.Controls.Add(this.buff_Perc);
+            this.ModifyStatsPage.Controls.Add(this.buff_UnitsLbl);
+            this.ModifyStatsPage.Controls.Add(this.buff_UnitsSelector);
+            this.ModifyStatsPage.Controls.Add(this.buff_AffectAmtLbl);
+            this.ModifyStatsPage.Controls.Add(this.buff_AffectAmt);
+            this.ModifyStatsPage.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.ModifyStatsPage.Location = new System.Drawing.Point(4, 22);
+            this.ModifyStatsPage.Name = "ModifyStatsPage";
+            this.ModifyStatsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ModifyStatsPage.Size = new System.Drawing.Size(426, 224);
+            this.ModifyStatsPage.TabIndex = 3;
+            this.ModifyStatsPage.Text = "Modify Stats";
             // 
-            // treeView2
+            // buff_CharsLbl
             // 
-            this.treeView2.BackColor = System.Drawing.Color.DimGray;
-            this.treeView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView2.ContextMenuStrip = this.addCharacterHeal;
-            this.treeView2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.treeView2.LineColor = System.Drawing.Color.WhiteSmoke;
-            this.treeView2.Location = new System.Drawing.Point(217, 118);
-            this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(201, 90);
-            this.treeView2.TabIndex = 34;
+            this.buff_CharsLbl.AutoSize = true;
+            this.buff_CharsLbl.BackColor = System.Drawing.Color.Black;
+            this.buff_CharsLbl.ForeColor = System.Drawing.Color.White;
+            this.buff_CharsLbl.Location = new System.Drawing.Point(214, 102);
+            this.buff_CharsLbl.Name = "buff_CharsLbl";
+            this.buff_CharsLbl.Size = new System.Drawing.Size(58, 13);
+            this.buff_CharsLbl.TabIndex = 35;
+            this.buff_CharsLbl.Text = "Characters";
             // 
-            // label7
+            // buff_CharsTreeView
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Black;
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(115, 102);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 13);
-            this.label7.TabIndex = 33;
-            this.label7.Text = "Alignments";
+            this.buff_CharsTreeView.BackColor = System.Drawing.Color.DimGray;
+            this.buff_CharsTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.buff_CharsTreeView.ContextMenuStrip = this.addCharacterHeal;
+            this.buff_CharsTreeView.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.buff_CharsTreeView.LineColor = System.Drawing.Color.WhiteSmoke;
+            this.buff_CharsTreeView.Location = new System.Drawing.Point(217, 118);
+            this.buff_CharsTreeView.Name = "buff_CharsTreeView";
+            this.buff_CharsTreeView.Size = new System.Drawing.Size(201, 90);
+            this.buff_CharsTreeView.TabIndex = 34;
             // 
-            // comboBox3
+            // buff_AlignLbl
             // 
-            this.comboBox3.BackColor = System.Drawing.Color.DimGray;
-            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox3.ForeColor = System.Drawing.Color.White;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.buff_AlignLbl.AutoSize = true;
+            this.buff_AlignLbl.BackColor = System.Drawing.Color.Black;
+            this.buff_AlignLbl.ForeColor = System.Drawing.Color.White;
+            this.buff_AlignLbl.Location = new System.Drawing.Point(115, 102);
+            this.buff_AlignLbl.Name = "buff_AlignLbl";
+            this.buff_AlignLbl.Size = new System.Drawing.Size(58, 13);
+            this.buff_AlignLbl.TabIndex = 33;
+            this.buff_AlignLbl.Text = "Alignments";
+            // 
+            // buff_AlignDropDown
+            // 
+            this.buff_AlignDropDown.BackColor = System.Drawing.Color.DimGray;
+            this.buff_AlignDropDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buff_AlignDropDown.ForeColor = System.Drawing.Color.White;
+            this.buff_AlignDropDown.FormattingEnabled = true;
+            this.buff_AlignDropDown.Items.AddRange(new object[] {
             "Light Side",
             "Dark Side",
             "Neutral"});
-            this.comboBox3.Location = new System.Drawing.Point(118, 118);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(154, 21);
-            this.comboBox3.TabIndex = 32;
+            this.buff_AlignDropDown.Location = new System.Drawing.Point(118, 118);
+            this.buff_AlignDropDown.Name = "buff_AlignDropDown";
+            this.buff_AlignDropDown.Size = new System.Drawing.Size(154, 21);
+            this.buff_AlignDropDown.TabIndex = 32;
             // 
-            // checkedListBox2
+            // buff_ClassesSelectorCheckLsBx
             // 
-            this.checkedListBox2.BackColor = System.Drawing.Color.DimGray;
-            this.checkedListBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox2.ForeColor = System.Drawing.Color.White;
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(11, 118);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(201, 90);
-            this.checkedListBox2.TabIndex = 31;
+            this.buff_ClassesSelectorCheckLsBx.BackColor = System.Drawing.Color.DimGray;
+            this.buff_ClassesSelectorCheckLsBx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.buff_ClassesSelectorCheckLsBx.ForeColor = System.Drawing.Color.White;
+            this.buff_ClassesSelectorCheckLsBx.FormattingEnabled = true;
+            this.buff_ClassesSelectorCheckLsBx.Location = new System.Drawing.Point(11, 118);
+            this.buff_ClassesSelectorCheckLsBx.Name = "buff_ClassesSelectorCheckLsBx";
+            this.buff_ClassesSelectorCheckLsBx.Size = new System.Drawing.Size(201, 90);
+            this.buff_ClassesSelectorCheckLsBx.TabIndex = 31;
             // 
-            // label8
+            // buff_ClassesLbl
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Black;
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(8, 102);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Classes";
+            this.buff_ClassesLbl.AutoSize = true;
+            this.buff_ClassesLbl.BackColor = System.Drawing.Color.Black;
+            this.buff_ClassesLbl.ForeColor = System.Drawing.Color.White;
+            this.buff_ClassesLbl.Location = new System.Drawing.Point(8, 102);
+            this.buff_ClassesLbl.Name = "buff_ClassesLbl";
+            this.buff_ClassesLbl.Size = new System.Drawing.Size(43, 13);
+            this.buff_ClassesLbl.TabIndex = 30;
+            this.buff_ClassesLbl.Text = "Classes";
             // 
-            // radioButton3
+            // buff_SetAmt
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(217, 62);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(80, 17);
-            this.radioButton3.TabIndex = 29;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Set Amount";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.buff_SetAmt.AutoSize = true;
+            this.buff_SetAmt.Checked = true;
+            this.buff_SetAmt.Location = new System.Drawing.Point(217, 62);
+            this.buff_SetAmt.Name = "buff_SetAmt";
+            this.buff_SetAmt.Size = new System.Drawing.Size(80, 17);
+            this.buff_SetAmt.TabIndex = 29;
+            this.buff_SetAmt.TabStop = true;
+            this.buff_SetAmt.Text = "Set Amount";
+            this.buff_SetAmt.UseVisualStyleBackColor = true;
+            this.buff_SetAmt.CheckedChanged += new System.EventHandler(this.buff_SetAmt_CheckedChanged);
             // 
-            // radioButton4
+            // buff_Perc
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(217, 36);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(80, 17);
-            this.radioButton4.TabIndex = 28;
-            this.radioButton4.Text = "Percentage";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.buff_Perc.AutoSize = true;
+            this.buff_Perc.Location = new System.Drawing.Point(217, 36);
+            this.buff_Perc.Name = "buff_Perc";
+            this.buff_Perc.Size = new System.Drawing.Size(80, 17);
+            this.buff_Perc.TabIndex = 28;
+            this.buff_Perc.Text = "Percentage";
+            this.buff_Perc.UseVisualStyleBackColor = true;
+            this.buff_Perc.CheckedChanged += new System.EventHandler(this.buff_Perc_CheckedChanged);
             // 
-            // label9
+            // buff_UnitsLbl
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 62);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(90, 13);
-            this.label9.TabIndex = 27;
-            this.label9.Text = "Affected Enemies";
+            this.buff_UnitsLbl.AutoSize = true;
+            this.buff_UnitsLbl.Location = new System.Drawing.Point(8, 62);
+            this.buff_UnitsLbl.Name = "buff_UnitsLbl";
+            this.buff_UnitsLbl.Size = new System.Drawing.Size(74, 13);
+            this.buff_UnitsLbl.TabIndex = 27;
+            this.buff_UnitsLbl.Text = "Affected Units";
             // 
-            // comboBox4
+            // buff_UnitsSelector
             // 
-            this.comboBox4.BackColor = System.Drawing.Color.DimGray;
-            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox4.ForeColor = System.Drawing.Color.White;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.buff_UnitsSelector.BackColor = System.Drawing.Color.DimGray;
+            this.buff_UnitsSelector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buff_UnitsSelector.ForeColor = System.Drawing.Color.White;
+            this.buff_UnitsSelector.FormattingEnabled = true;
+            this.buff_UnitsSelector.Items.AddRange(new object[] {
+            "Self",
+            "Selected Ally",
+            "Allied Leader",
+            "Specific Character(s) (Allies)",
+            "Specific Faction(s) (Allies)",
+            "Specific Allignment(s) (Allies)",
             "Selected Enemy",
             "All Enemies",
             "Enemy Leader",
-            "Specific Character(s)",
-            "Specific Faction(s)",
-            "Specific Allignment(s)"});
-            this.comboBox4.Location = new System.Drawing.Point(8, 78);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 26;
+            "Specific Character(s) (Enemy)",
+            "Specific Faction(s) (Enemy)",
+            "Specific Allignment(s) (Enemy)"});
+            this.buff_UnitsSelector.Location = new System.Drawing.Point(8, 78);
+            this.buff_UnitsSelector.Name = "buff_UnitsSelector";
+            this.buff_UnitsSelector.Size = new System.Drawing.Size(121, 21);
+            this.buff_UnitsSelector.TabIndex = 26;
             // 
-            // label10
+            // buff_AffectAmtLbl
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 17);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 13);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Damage Amount";
+            this.buff_AffectAmtLbl.AutoSize = true;
+            this.buff_AffectAmtLbl.Location = new System.Drawing.Point(9, 17);
+            this.buff_AffectAmtLbl.Name = "buff_AffectAmtLbl";
+            this.buff_AffectAmtLbl.Size = new System.Drawing.Size(74, 13);
+            this.buff_AffectAmtLbl.TabIndex = 25;
+            this.buff_AffectAmtLbl.Text = "Affect Amount";
             // 
-            // numericUpDown3
+            // buff_AffectAmt
             // 
-            this.numericUpDown3.BackColor = System.Drawing.Color.DimGray;
-            this.numericUpDown3.DecimalPlaces = 4;
-            this.numericUpDown3.ForeColor = System.Drawing.Color.White;
-            this.numericUpDown3.Location = new System.Drawing.Point(8, 36);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.buff_AffectAmt.BackColor = System.Drawing.Color.DimGray;
+            this.buff_AffectAmt.DecimalPlaces = 4;
+            this.buff_AffectAmt.ForeColor = System.Drawing.Color.White;
+            this.buff_AffectAmt.Location = new System.Drawing.Point(8, 36);
+            this.buff_AffectAmt.Maximum = new decimal(new int[] {
             1000000000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(96, 20);
-            this.numericUpDown3.TabIndex = 24;
+            this.buff_AffectAmt.Name = "buff_AffectAmt";
+            this.buff_AffectAmt.Size = new System.Drawing.Size(96, 20);
+            this.buff_AffectAmt.TabIndex = 24;
             // 
-            // stn_AddCharContextMen
+            // addCharacterDmg
             // 
-            this.stn_AddCharContextMen.BackColor = System.Drawing.Color.CadetBlue;
-            this.stn_AddCharContextMen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stn_AddCharHeader,
-            this.stn_RmCharBttn});
-            this.stn_AddCharContextMen.Name = "addCharacterHeal";
-            this.stn_AddCharContextMen.Size = new System.Drawing.Size(219, 48);
+            this.addCharacterDmg.BackColor = System.Drawing.Color.CadetBlue;
+            this.addCharacterDmg.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dmgAddCharMenuHeader,
+            this.removeChar});
+            this.addCharacterDmg.Name = "addCharacterHeal";
+            this.addCharacterDmg.Size = new System.Drawing.Size(219, 48);
             // 
-            // stn_AddCharHeader
+            // dmgAddCharMenuHeader
             // 
-            this.stn_AddCharHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stn_CharNmTextBox,
-            this.stn_AddCharBttn});
-            this.stn_AddCharHeader.Name = "stn_AddCharHeader";
-            this.stn_AddCharHeader.Size = new System.Drawing.Size(218, 22);
-            this.stn_AddCharHeader.Text = "Add Character...";
+            this.dmgAddCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dmgCharNameIpt,
+            this.addCharDmg});
+            this.dmgAddCharMenuHeader.Name = "dmgAddCharMenuHeader";
+            this.dmgAddCharMenuHeader.Size = new System.Drawing.Size(218, 22);
+            this.dmgAddCharMenuHeader.Text = "Add Character...";
             // 
-            // stn_CharNmTextBox
+            // dmgCharNameIpt
             // 
-            this.stn_CharNmTextBox.BackColor = System.Drawing.Color.CadetBlue;
-            this.stn_CharNmTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.stn_CharNmTextBox.Name = "stn_CharNmTextBox";
-            this.stn_CharNmTextBox.Size = new System.Drawing.Size(100, 23);
+            this.dmgCharNameIpt.BackColor = System.Drawing.Color.CadetBlue;
+            this.dmgCharNameIpt.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dmgCharNameIpt.Name = "dmgCharNameIpt";
+            this.dmgCharNameIpt.Size = new System.Drawing.Size(100, 23);
             // 
-            // stn_AddCharBttn
+            // addCharDmg
             // 
-            this.stn_AddCharBttn.BackColor = System.Drawing.Color.CadetBlue;
-            this.stn_AddCharBttn.Name = "stn_AddCharBttn";
-            this.stn_AddCharBttn.Size = new System.Drawing.Size(180, 22);
-            this.stn_AddCharBttn.Text = "Add Character";
-            this.stn_AddCharBttn.Click += new System.EventHandler(this.stn_AddCharBttn_Click);
+            this.addCharDmg.BackColor = System.Drawing.Color.CadetBlue;
+            this.addCharDmg.Name = "addCharDmg";
+            this.addCharDmg.Size = new System.Drawing.Size(160, 22);
+            this.addCharDmg.Text = "Add Character";
+            this.addCharDmg.Click += new System.EventHandler(this.addCharDmg_Click);
             // 
-            // stn_RmCharBttn
+            // removeChar
             // 
-            this.stn_RmCharBttn.Name = "stn_RmCharBttn";
-            this.stn_RmCharBttn.Size = new System.Drawing.Size(218, 22);
-            this.stn_RmCharBttn.Text = "Remove Selected Character";
-            this.stn_RmCharBttn.Click += new System.EventHandler(this.stn_RmCharBttn_Click);
+            this.removeChar.Name = "removeChar";
+            this.removeChar.Size = new System.Drawing.Size(218, 22);
+            this.removeChar.Text = "Remove Selected Character";
+            this.removeChar.Click += new System.EventHandler(this.removeChar_Click);
             // 
             // AbilityPopup
             // 
@@ -1095,12 +1104,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.healAmt)).EndInit();
             this.StunPage.ResumeLayout(false);
             this.StunPage.PerformLayout();
+            this.stn_AddCharContextMen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.stn_NumberOfTurns)).EndInit();
             this.ModifyStatsPage.ResumeLayout(false);
             this.ModifyStatsPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buff_AffectAmt)).EndInit();
             this.addCharacterDmg.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.stn_NumberOfTurns)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            this.stn_AddCharContextMen.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1167,22 +1176,23 @@
         private System.Windows.Forms.ComboBox stn_AffEnemies;
         private System.Windows.Forms.Label stn_TurnNumLbl;
         private System.Windows.Forms.NumericUpDown stn_NumberOfTurns;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TreeView treeView2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Label buff_CharsLbl;
+        private System.Windows.Forms.TreeView buff_CharsTreeView;
+        private System.Windows.Forms.Label buff_AlignLbl;
+        private System.Windows.Forms.ComboBox buff_AlignDropDown;
+        private System.Windows.Forms.CheckedListBox buff_ClassesSelectorCheckLsBx;
+        private System.Windows.Forms.Label buff_ClassesLbl;
+        private System.Windows.Forms.RadioButton buff_SetAmt;
+        private System.Windows.Forms.RadioButton buff_Perc;
+        private System.Windows.Forms.Label buff_UnitsLbl;
+        private System.Windows.Forms.ComboBox buff_UnitsSelector;
+        private System.Windows.Forms.Label buff_AffectAmtLbl;
+        private System.Windows.Forms.NumericUpDown buff_AffectAmt;
         private System.Windows.Forms.ContextMenuStrip stn_AddCharContextMen;
         private System.Windows.Forms.ToolStripMenuItem stn_AddCharHeader;
         private System.Windows.Forms.ToolStripTextBox stn_CharNmTextBox;
         private System.Windows.Forms.ToolStripMenuItem stn_AddCharBttn;
         private System.Windows.Forms.ToolStripMenuItem stn_RmCharBttn;
+        private System.Windows.Forms.FontDialog fontDialog1;
     }
 }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Star_Wars_Card_Game.Backend.Game.Enums;
 using System.Windows.Forms.VisualStyles;
+using AbilityAction = Star_Wars_Card_Game.Backend.Game.AbilityAction;
 
 namespace Star_Wars_Card_Game.Windows.Admin
 {
@@ -17,6 +18,26 @@ namespace Star_Wars_Card_Game.Windows.Admin
     {
 
         public Ability Ability { get; set; } = new();
+
+        public AbilityAction BuffAction { get; set; } = new()
+            {
+                AffectedCharacters = CharactersAffected.None,
+                AffectedClasses = [],
+                AffectedAllignments = [],
+                StatusEffect = new()
+                {
+                    AffectedStat = AffectedStat.Health,
+                    Duration = 0,
+                    Amount = 0,
+                    ApplicationType = StatusApplicationType.Multiplicative,
+                    
+                },
+                AffectedStatValue = 0,
+                AffectedUnits = [], 
+                Description = "", 
+                Type = ActionType.Heal,
+                NumberOfTargets = 0, 
+            };
 
         #region Initialization
 
@@ -254,17 +275,31 @@ namespace Star_Wars_Card_Game.Windows.Admin
             UpdateChars();
         }
 
+        private void buff_Perc_CheckedChanged(object sender, EventArgs e)
+        {
+            this.buff_SetAmt.Checked = !this.buff_Perc.Checked;
+        }
+
+        private void buff_SetAmt_CheckedChanged(object sender, EventArgs e)
+        {
+            this.buff_Perc.Checked = !this.buff_SetAmt.Checked;
+        }
+
         #endregion
 
         #region Update UI
 
         private void UpdateChars()
         {
+            // Update UIs based on the selected effect
+            HealUpdate();
+            DmgUpdate();
+            StnUpdate();
+            buff_Hide();
+
+            // Reset the colors of the nodes since the effect has changed
             ResetEnemyNodes();
             ResetAlliedNodes();
-            // HealUpdate();
-            // DmgUpdate();
-            // StnUpdate();
 
             // Check Damage Page 
             if (this.effectCheckBox.CheckedItems.Contains(this.effectCheckBox.Items[0]))
@@ -368,7 +403,77 @@ namespace Star_Wars_Card_Game.Windows.Admin
 
             // Check Buff/Debuff Page
             // In Progress
-            
+            if (this.effectCheckBox.CheckedIndices.Contains(3))
+            {
+                // In Progress
+                /*
+                    Self
+                    Selected Ally
+                    Allied Leader
+                    Specific Character(s) (Allies)
+                    Specific Faction(s) (Allies)
+                    Specific Allignment(s) (Allies)
+                    Selected Enemy
+                    All Enemies
+                    Enemy Leader
+                    Specific Character(s) (Enemy)
+                    Specific Faction(s) (Enemy)
+                    Specific Allignment(s) (Enemy)
+                */
+                switch (this.buff_UnitsSelector.SelectedIndex)
+                {
+                    case 0:
+                        // Self
+                        HighlightChars(CharactersAffected.Self);
+                        break;
+                    case 1:
+                        // Selected Ally
+                        HighlightChars(CharactersAffected.TargetAlly);
+                        break;
+                    case 2:
+                        // Allied Leader
+                        HighlightChars(CharactersAffected.AllyLeader);
+                        break;
+                    case 3:
+                        // Specific Character(s) (Allies)
+                        HighlightChars(CharactersAffected.AllySpecificUnit);
+
+                        break;
+                    case 4:
+                        // Specific Faction(s) (Allies)
+                        HighlightChars(CharactersAffected.AllySpecificClass);
+                        break;
+                    case 5:
+                        // Specific Allignment(s) (Allies)
+                        HighlightChars(CharactersAffected.AllySpecificAllignment);
+                        break;
+                    case 6:
+                        // Selected Enemy
+                        HighlightChars(CharactersAffected.TargetEnemy);
+                        break;
+                    case 7:
+                        // All Enemies
+                        HighlightChars(CharactersAffected.AllEnemies);
+                        break;
+                    case 8:
+                        // Enemy Leader
+                        HighlightChars(CharactersAffected.EnemyLeader);
+                        break;
+                    case 9:
+                        // Specific Character(s) (Enemy)
+                        HighlightChars(CharactersAffected.EnemySpecificUnit);
+                        break;
+                    case 10:
+                        // Specific Faction(s) (Enemy)
+                        HighlightChars(CharactersAffected.EnemySpecificClass);
+                        break;
+                    case 11:
+                        // Specific Allignment(s) (Enemy)
+                        HighlightChars(CharactersAffected.EnemySpecificAllignment);
+                        break;
+                }
+            }
+
         }
 
         /// <summary>
@@ -473,7 +578,6 @@ namespace Star_Wars_Card_Game.Windows.Admin
         /// <summary>
         /// Outdated method, use UpdateChars() instead; Used to update the UI based on the selected effect
         /// </summary>
-        [Obsolete("Use UpdateChars() instead")]
         internal void HealUpdate()
         {
             //ResetAlliedNodes();
@@ -572,7 +676,6 @@ namespace Star_Wars_Card_Game.Windows.Admin
         /// <summary>
         /// Outdated method, use UpdateChars() instead; Used to update the UI based on the selected effect
         /// </summary>
-        [Obsolete("Use UpdateChars() instead")]
         internal void DmgUpdate()
         {
             //ResetEnemyNodes();
@@ -679,7 +782,6 @@ namespace Star_Wars_Card_Game.Windows.Admin
         /// <summary>
         /// Outdated method, use UpdateChars() instead; Used to update the UI based on the selected effect
         /// </summary>
-        [Obsolete("Use UpdateChars() instead")]
         internal void StnUpdate()
         {
             //ResetEnemyNodes();
@@ -776,7 +878,21 @@ namespace Star_Wars_Card_Game.Windows.Admin
             }
         }
 
+        /// <summary>
+        ///  Hides all of the buff UI elements
+        /// </summary>
+        private void buff_Hide()
+        {
+            buff_ClassesLbl.Visible = false;
+            buff_ClassesSelectorCheckLsBx.Visible = false;
+            buff_AlignLbl.Visible = false;
+            buff_AlignDropDown.Visible = false;
+            buff_CharsTreeView.Visible = false;
+            buff_CharsLbl.Visible = false;
+        }
+
         #endregion
+
     }
 
 

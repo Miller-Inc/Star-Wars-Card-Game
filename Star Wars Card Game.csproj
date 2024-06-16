@@ -93,7 +93,7 @@
   <ItemGroup>
     <Compile Include="Backend\Client\ClientBase.cs" />
     <Compile Include="Backend\Client\PlayerClient.cs" />
-    <Compile Include="Backend\Game\Action.cs" />
+    <Compile Include="Backend\Game\AbilityAction.cs" />
     <Compile Include="Backend\Game\Enums\AbilityType.cs" />
     <Compile Include="Backend\Game\Enums\ActionType.cs" />
     <Compile Include="Backend\Game\Enums\AffectedStat.cs" />

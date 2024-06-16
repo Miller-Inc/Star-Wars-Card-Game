@@ -8,6 +8,7 @@ namespace Star_Wars_Card_Game.Backend.Game.Enums
 {
     public enum CharactersAffected
     {
+        None = -1,
         Self = 0,
         TargetAlly = 1,
         TargetEnemy = 2,
