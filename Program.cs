@@ -73,6 +73,9 @@ namespace Star_Wars_Card_Game
 
     }
 
+    /// <summary>
+    /// The form for the program to open
+    /// </summary>
     public enum OpenForms
     {
         Quit, 
@@ -82,6 +85,9 @@ namespace Star_Wars_Card_Game
         Game, 
     }
 
+    /// <summary>
+    /// The color preference for the current instance
+    ///</summary>
     public enum ColorPreferences
     {
         Light,
