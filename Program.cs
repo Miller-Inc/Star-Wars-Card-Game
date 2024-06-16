@@ -82,6 +82,9 @@ namespace Star_Wars_Card_Game
         Game, 
     }
 
+    /// <summary>
+    /// The color preference for the current instance
+    ///</summary>
     public enum ColorPreferences
     {
         Light,
