@@ -34,14 +34,6 @@ namespace Star_Wars_Card_Game.Backend.Game
         }
     }
 
-    public enum  StatusApplicationType
-    {
-        Additive, 
-        Multiplicative, 
-        LoseTurn, 
-        AbilityBlock
-    }
-
     public class DefaultStatusEffects
     {
         public static StatusEffect defReduceMaxHealth = new(3, StatusApplicationType.Multiplicative, AffectedStat.Health, 0.85f);

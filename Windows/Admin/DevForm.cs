@@ -19,7 +19,7 @@ namespace Star_Wars_Card_Game.Windows
 
     public partial class DevForm : Form
     {
-        public List<Ability> Abilities = [new Ability()];
+        public List<Ability> Abilities = [new Ability() { Actions = [new AbilityAction() { AffectedCharacters = CharactersAffected.TargetEnemy }] }];
 
         public Character Character = new();
 
@@ -148,7 +148,7 @@ namespace Star_Wars_Card_Game.Windows
                     this.abilitesIptDisplay.Nodes[this.abilitesIptDisplay.SelectedNode.Index].Text = popup.Ability.Name;
                 }
             }
-            catch (Exception)
+            catch (IndexOutOfRangeException)
             {
                 MessageBox.Show("Please select an ability to edit");
             }

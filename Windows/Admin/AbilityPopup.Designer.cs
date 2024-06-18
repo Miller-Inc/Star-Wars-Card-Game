@@ -122,11 +122,15 @@
             this.dmgCharNameIpt = new System.Windows.Forms.ToolStripTextBox();
             this.addCharDmg = new System.Windows.Forms.ToolStripMenuItem();
             this.removeChar = new System.Windows.Forms.ToolStripMenuItem();
-            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.main_AbilityTypeComboBox = new System.Windows.Forms.ComboBox();
             this.main_AbilityLbl = new System.Windows.Forms.Label();
             this.main_Cooldown = new System.Windows.Forms.NumericUpDown();
             this.main_CooldownLbl = new System.Windows.Forms.Label();
+            this.buff_ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.buff_DefaultMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.buff_DefaultDropdown = new System.Windows.Forms.ToolStripComboBox();
+            this.buff_ChooseSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.buff_AboutBttn = new System.Windows.Forms.ToolStripMenuItem();
             this.affectOptionsTabControl.SuspendLayout();
             this.damagePage.SuspendLayout();
             this.addCharacterHeal.SuspendLayout();
@@ -140,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.buff_AffectAmt)).BeginInit();
             this.addCharacterDmg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.main_Cooldown)).BeginInit();
+            this.buff_ContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // CancelBttn
@@ -863,6 +868,7 @@
             // ModifyStatsPage
             // 
             this.ModifyStatsPage.BackColor = System.Drawing.Color.Black;
+            this.ModifyStatsPage.ContextMenuStrip = this.buff_ContextMenuStrip;
             this.ModifyStatsPage.Controls.Add(this.buff_CharsLbl);
             this.ModifyStatsPage.Controls.Add(this.buff_CharsTreeView);
             this.ModifyStatsPage.Controls.Add(this.buff_AlignLbl);
@@ -1082,22 +1088,14 @@
             this.main_AbilityTypeComboBox.ForeColor = System.Drawing.Color.White;
             this.main_AbilityTypeComboBox.FormattingEnabled = true;
             this.main_AbilityTypeComboBox.Items.AddRange(new object[] {
-            "Self",
-            "Selected Ally",
-            "Allied Leader",
-            "Specific Character(s) (Allies)",
-            "Specific Faction(s) (Allies)",
-            "Specific Allignment(s) (Allies)",
-            "Selected Enemy",
-            "All Enemies",
-            "Enemy Leader",
-            "Specific Character(s) (Enemy)",
-            "Specific Faction(s) (Enemy)",
-            "Specific Allignment(s) (Enemy)"});
+            "Basic",
+            "Special",
+            "Ultimate"});
             this.main_AbilityTypeComboBox.Location = new System.Drawing.Point(358, 27);
             this.main_AbilityTypeComboBox.Name = "main_AbilityTypeComboBox";
             this.main_AbilityTypeComboBox.Size = new System.Drawing.Size(147, 21);
             this.main_AbilityTypeComboBox.TabIndex = 36;
+            this.main_AbilityTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.main_AbilityTypeComboBox_SelectedIndexChanged);
             // 
             // main_AbilityLbl
             // 
@@ -1127,6 +1125,40 @@
             this.main_CooldownLbl.Size = new System.Drawing.Size(54, 13);
             this.main_CooldownLbl.TabIndex = 38;
             this.main_CooldownLbl.Text = "Cooldown";
+            // 
+            // buff_ContextMenuStrip
+            // 
+            this.buff_ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buff_DefaultMenuHeader,
+            this.buff_AboutBttn});
+            this.buff_ContextMenuStrip.Name = "buff_ContextMenuStrip";
+            this.buff_ContextMenuStrip.Size = new System.Drawing.Size(169, 48);
+            // 
+            // buff_DefaultMenuHeader
+            // 
+            this.buff_DefaultMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.buff_DefaultDropdown,
+            this.buff_ChooseSelected});
+            this.buff_DefaultMenuHeader.Name = "buff_DefaultMenuHeader";
+            this.buff_DefaultMenuHeader.Size = new System.Drawing.Size(168, 22);
+            this.buff_DefaultMenuHeader.Text = "Set from default...";
+            // 
+            // buff_DefaultDropdown
+            // 
+            this.buff_DefaultDropdown.Name = "buff_DefaultDropdown";
+            this.buff_DefaultDropdown.Size = new System.Drawing.Size(121, 23);
+            // 
+            // buff_ChooseSelected
+            // 
+            this.buff_ChooseSelected.Name = "buff_ChooseSelected";
+            this.buff_ChooseSelected.Size = new System.Drawing.Size(181, 22);
+            this.buff_ChooseSelected.Text = "Chose Selected";
+            // 
+            // buff_AboutBttn
+            // 
+            this.buff_AboutBttn.Name = "buff_AboutBttn";
+            this.buff_AboutBttn.Size = new System.Drawing.Size(168, 22);
+            this.buff_AboutBttn.Text = "About";
             // 
             // AbilityPopup
             // 
@@ -1173,6 +1205,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.buff_AffectAmt)).EndInit();
             this.addCharacterDmg.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.main_Cooldown)).EndInit();
+            this.buff_ContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1256,10 +1289,14 @@
         private System.Windows.Forms.ToolStripTextBox stn_CharNmTextBox;
         private System.Windows.Forms.ToolStripMenuItem stn_AddCharBttn;
         private System.Windows.Forms.ToolStripMenuItem stn_RmCharBttn;
-        private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.ComboBox main_AbilityTypeComboBox;
         private System.Windows.Forms.Label main_AbilityLbl;
         private System.Windows.Forms.NumericUpDown main_Cooldown;
         private System.Windows.Forms.Label main_CooldownLbl;
+        private System.Windows.Forms.ContextMenuStrip buff_ContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem buff_DefaultMenuHeader;
+        private System.Windows.Forms.ToolStripComboBox buff_DefaultDropdown;
+        private System.Windows.Forms.ToolStripMenuItem buff_ChooseSelected;
+        private System.Windows.Forms.ToolStripMenuItem buff_AboutBttn;
     }
 }

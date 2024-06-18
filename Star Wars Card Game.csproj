@@ -101,6 +101,8 @@
     <Compile Include="Backend\Game\Classes.cs" />
     <Compile Include="Backend\Game\Enums\CharactersAffected.cs" />
     <Compile Include="Backend\Game\Enums\PopupType.cs" />
+    <Compile Include="Backend\Game\Enums\ApplicationType.cs" />
+    <Compile Include="Backend\Game\Enums\StatusApplicationType.cs" />
     <Compile Include="Backend\Game\StatusEffect.cs" />
     <Compile Include="Backend\Server\Packet.cs" />
     <Compile Include="Backend\Server\Player.cs" />

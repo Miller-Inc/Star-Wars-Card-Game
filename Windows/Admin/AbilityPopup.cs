@@ -100,12 +100,36 @@ namespace Star_Wars_Card_Game.Windows.Admin
             this.stn_AlignLbl.Visible = false;
             this.stn_CharTreeView.Visible = false;
             this.stn_CharLbl.Visible = false;
+            this.buff_ClassesLbl.Visible = false;
+            this.buff_ClassesSelectorCheckLsBx.Visible = false;
+            this.buff_AlignLbl.Visible = false;
+            this.buff_AlignDropDown.Visible = false;
+            this.buff_UnitsSelector.Visible = false;
+            this.buff_UnitsLbl.Visible = false;
             this.stn_CharTreeView.Nodes.Clear();
             this.stn_ClassListBox.Items.Clear();
             this.stn_ClassListBox.Items.AddRange(Backend.Game.Classes.ClassNames.ToArray());
             this.dmgClassIpt.Items.Clear();
             this.dmgClassIpt.Items.AddRange(Backend.Game.Classes.ClassNames.ToArray());
             this.unitsChooser.ExpandAll();
+
+            // Set the default types of buffs and debuffs
+            this.buff_DefaultDropdown.Items.Clear();
+            Type defaultType = typeof(DefaultStatusEffects);
+            foreach (var item in defaultType.GetMethods())
+            {
+                if (item.ReturnType == typeof(StatusEffect))
+                {
+                    this.buff_DefaultDropdown.Items.Add(item.Name);
+                }
+
+            }
+
+            if (this.buff_DefaultDropdown.Items.Count > 0)
+            {
+                this.buff_DefaultDropdown.SelectedIndex = 0;
+            }
+
             if (type == PopupType.Add)
             {
                 // Setup a clear UI
@@ -114,7 +138,181 @@ namespace Star_Wars_Card_Game.Windows.Admin
             }
             else if (type == PopupType.Edit)
             {
-                // 
+                // set all of the fields to active
+                if (this.Ability.Type == AbilityType.Basic)
+                {
+                    this.main_Cooldown.Visible = false;
+                    this.main_CooldownLbl.Visible = false;
+                }
+                else
+                {
+                    this.main_Cooldown.Visible = true;
+                    this.main_CooldownLbl.Visible = true;
+                }
+
+                this.abilityName.Enabled = true;
+                this.AbilityDescription.Enabled = true;
+                this.abilityName.Text = this.Ability.Name;
+                this.AbilityDescription.Text = this.Ability.Description;
+                switch (this.Ability.Type)
+                {
+                    case AbilityType.Basic:
+                        this.main_AbilityTypeComboBox.SelectedIndex = 0;
+                        break;
+                    case AbilityType.Special:
+                        this.main_AbilityTypeComboBox.SelectedIndex = 1;
+                        break;
+                    case AbilityType.Ultimate:
+                        this.main_AbilityTypeComboBox.SelectedIndex = 2;
+                        break;
+                }
+
+                this.main_Cooldown.Value = this.Ability.Cooldown;
+                foreach (var item in this.Ability.Actions)
+                {
+                    switch (item.Type)
+                    {
+                        case ActionType.Damage:
+                            this.effectCheckBox.SetItemChecked(0, true);
+                            this.damageIptAmount.Value = (decimal)this.Ability.BaseAmount;
+                            /*
+                                0 Selected Enemy
+                                1 All Enemies
+                                2 Enemy Leader
+                                3 Specific Character(s)
+                                4 Specific Faction(s) 
+                                5 Specific Allignment(s)
+                             */
+                            switch (item.AffectedCharacters)
+                            {
+                                case(CharactersAffected.EnemyLeader):
+                                    this.damageTarget.SelectedIndex = 2; 
+                                    break; 
+                                case(CharactersAffected.EnemySpecificClass):
+                                    this.damageTarget.SelectedIndex = 4;
+
+                                    foreach (var char_class in item.AffectedClasses) 
+                                    {
+                                        try
+                                        {
+                                            this.dmgClassIpt.SetItemChecked(this.dmgClassIpt.FindStringExact(char_class.Value), true);
+                                        } catch 
+                                        {
+                                            MessageBox.Show("Internal Error", "Class, " + char_class.Value + " was not found. This error has been handled, but was not included in the list. " +
+                                                "To see the class as an available option, go to the previous window and add it then open this window again. ");
+                                        }
+                                    }
+
+                                    break;
+                                case(CharactersAffected.EnemySpecificAllignment):
+                                    this.damageTarget.SelectedIndex = 5;
+
+                                    /*
+                                     * Light
+                                     * Dark
+                                     * Neutral 
+                                     */
+
+                                    switch (item.AffectedAllignments[0])
+                                    {
+                                        case(Allignment.LightSide):
+                                            this.dmgAlgnIpt.SelectedIndex = 0;
+                                            break;
+                                        case (Allignment.DarkSide):
+                                            this.damageTarget.SelectedIndex = 1;
+                                            break;
+                                        case (Allignment.Neutral):
+                                            this.damageTarget.SelectedIndex = 2;
+                                            break;
+                                        default: 
+                                            this.damageTarget.SelectedIndex = 2;
+                                            break;
+                                    }
+
+                                    break;
+                                case(CharactersAffected.EnemySpecificUnit):
+                                    this.damageTarget.SelectedIndex = 3;
+
+                                    foreach (var unit in item.AffectedUnits)
+                                    {
+                                        this.dmgCharIpt.Nodes.Add(unit.Value);
+                                    }
+
+                                    break;
+                                case(CharactersAffected.AllEnemies):
+                                    this.damageTarget.SelectedIndex = 1; 
+                                    break;
+                                case (CharactersAffected.TargetEnemy):
+                                    this.damageTarget.SelectedIndex = 0;
+                                    break;
+                                default: 
+                                    this.damageTarget.SelectedIndex = 0;
+                                    break;
+                            }
+
+                            if (item.ApplicationType == ApplicationType.Additive)
+                            {
+                                this.flatRateDmgBttn.Checked = true;
+                                this.percentageDmgBttn.Checked = false; 
+                            }
+                            else
+                            {
+                                this.flatRateDmgBttn.Checked = false;
+                                this.percentageDmgBttn.Checked = true; 
+                            }
+
+                            
+
+                            break;
+                        case ActionType.Heal:
+                            this.effectCheckBox.SetItemChecked(1, true);
+                            break;
+                        case ActionType.ModifyStat:
+                            switch (item.StatusEffect.ApplicationType)
+                            {
+                                case StatusApplicationType.LoseTurn:
+                                    // Stun 
+                                    this.effectCheckBox.SetItemChecked(2, true);
+
+                                    // Work on finishing to this type
+
+                                    switch (item.AffectedCharacters)
+                                    {
+                                        case (CharactersAffected.EnemyLeader):
+                                            this.damageTarget.SelectedIndex = 2;
+                                            break;
+                                        case (CharactersAffected.EnemySpecificClass):
+                                            this.damageTarget.SelectedIndex = 4;
+                                            break;
+                                        case (CharactersAffected.EnemySpecificAllignment):
+                                            this.damageTarget.SelectedIndex = 5;
+                                            break;
+                                        case (CharactersAffected.EnemySpecificUnit):
+                                            this.damageTarget.SelectedIndex = 3;
+                                            break;
+                                        case (CharactersAffected.AllEnemies):
+                                            this.damageTarget.SelectedIndex = 1;
+                                            break;
+                                        case (CharactersAffected.TargetEnemy):
+                                            this.damageTarget.SelectedIndex = 0;
+                                            break;
+                                        default:
+                                            this.damageTarget.SelectedIndex = 0;
+                                            break;
+                                    }
+                                    break;
+                                default:
+                                    // Buff/Debuff
+                                    this.effectCheckBox.SetItemChecked(3, true);
+                                    this.BuffAction = item;
+                                    break;
+                            }
+                            this.effectCheckBox.SetItemChecked(2, true);
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         }
 
@@ -373,26 +571,32 @@ namespace Star_Wars_Card_Game.Windows.Admin
                     case 0:
                         // Selected Enemy
                         HighlightChars(CharactersAffected.TargetEnemy);
+                        Dmg_AffectedChars = CharactersAffected.TargetEnemy;
                         break;
                     case 1:
                         // All Enemies
                         HighlightChars(CharactersAffected.AllEnemies);
+                        Dmg_AffectedChars = CharactersAffected.AllEnemies;
                         break;
                     case 2:
                         // Enemy Leader
                         HighlightChars(CharactersAffected.EnemyLeader);
+                        Dmg_AffectedChars = CharactersAffected.EnemyLeader;
                         break;
                     case 3:
                         // Specific Character(s)
                         HighlightChars(CharactersAffected.EnemySpecificUnit);
+                        Dmg_AffectedChars = CharactersAffected.EnemySpecificUnit;
                         break;
                     case 4:
                         // Specific Faction(s)
                         HighlightChars(CharactersAffected.EnemySpecificClass);
+                        Dmg_AffectedChars = CharactersAffected.EnemySpecificClass;
                         break;
                     case 5:
                         // Specific Allignment(s)
                         HighlightChars(CharactersAffected.EnemySpecificAllignment);
+                        Dmg_AffectedChars = CharactersAffected.EnemySpecificAllignment;
                         break;
                 }
             }
@@ -405,26 +609,32 @@ namespace Star_Wars_Card_Game.Windows.Admin
                     case 0:
                         // Selected Enemy
                         HighlightChars(CharactersAffected.TargetEnemy);
+                        Stn_AffectedChars = CharactersAffected.TargetEnemy;
                         break;
                     case 1:
                         // All Enemies
                         HighlightChars(CharactersAffected.AllEnemies);
+                        Stn_AffectedChars = CharactersAffected.AllEnemies;
                         break;
                     case 2:
                         // Enemy Leader
                         HighlightChars(CharactersAffected.EnemyLeader);
+                        Stn_AffectedChars = CharactersAffected.EnemyLeader;
                         break;
                     case 3:
                         // Specific Character(s)
                         HighlightChars(CharactersAffected.EnemySpecificUnit);
+                        Stn_AffectedChars = CharactersAffected.EnemySpecificUnit;
                         break;
                     case 4:
                         // Specific Faction(s)
                         HighlightChars(CharactersAffected.EnemySpecificClass);
+                        Stn_AffectedChars = CharactersAffected.EnemySpecificClass;
                         break;
                     case 5:
                         // Specific Allignment(s)
                         HighlightChars(CharactersAffected.EnemySpecificAllignment);
+                        Stn_AffectedChars = CharactersAffected.EnemySpecificAllignment;
                         break;
                 }
             }   
@@ -437,30 +647,37 @@ namespace Star_Wars_Card_Game.Windows.Admin
                     case 0:
                         // Selected Ally
                         HighlightChars(CharactersAffected.TargetAlly);
+                        Heal_AffectedChars = CharactersAffected.TargetAlly;
                         break;
                     case 1:
                         // All Allies
                         HighlightChars(CharactersAffected.AllAllies);
+                        Heal_AffectedChars = CharactersAffected.AllAllies;
                         break;
                     case 2:
                         // Self
                         HighlightChars(CharactersAffected.Self);
+                        Heal_AffectedChars = CharactersAffected.Self;
                         break;
                     case 3:
                         // Allied Leader
                         HighlightChars(CharactersAffected.AllyLeader);
+                        Heal_AffectedChars = CharactersAffected.AllyLeader;
                         break;
                     case 4:
                         // Specific Character(s)
                         HighlightChars(CharactersAffected.AllySpecificUnit);
+                        Heal_AffectedChars = CharactersAffected.AllySpecificUnit;
                         break;
                     case 5:
                         // Specific Faction(s)
                         HighlightChars(CharactersAffected.AllySpecificClass);
+                        Heal_AffectedChars = CharactersAffected.AllySpecificClass;
                         break;
                     case 6:
                         // Specific Allignment(s)
                         HighlightChars(CharactersAffected.AllySpecificAllignment);
+                        Heal_AffectedChars = CharactersAffected.AllySpecificAllignment;
                         break;
                 }
             }
@@ -489,6 +706,7 @@ namespace Star_Wars_Card_Game.Windows.Admin
                     case 0:
                         // Self
                         HighlightChars(CharactersAffected.Self);
+                        
                         break;
                     case 1:
                         // Selected Ally
@@ -957,6 +1175,30 @@ namespace Star_Wars_Card_Game.Windows.Admin
 
         #endregion
 
+        private void main_AbilityTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(this.main_AbilityTypeComboBox.SelectedIndex)
+            {
+                case 0:
+                    // Basic
+                    this.main_Cooldown.Value = 0;
+                    this.main_Cooldown.ReadOnly = true;
+                    break;
+                case 1:
+                    // Special
+                    this.main_Cooldown.Value = 1;
+                    this.main_Cooldown.ReadOnly = false;
+                    break;
+                case 2:
+                    // Ultimate
+                    this.main_Cooldown.Value = 3;
+                    this.main_Cooldown.ReadOnly = false;
+                    break;
+                case 3:
+                    // Passive
+                    break;
+            }
+        }
     }
 
 

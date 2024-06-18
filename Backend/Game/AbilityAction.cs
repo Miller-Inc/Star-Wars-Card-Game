@@ -22,6 +22,8 @@ namespace Star_Wars_Card_Game.Backend.Game
 
         public CharactersAffected AffectedCharacters { get; set; } = CharactersAffected.TargetEnemy;
 
+        public ApplicationType ApplicationType { get; set; } = ApplicationType.Additive; 
+
         public Dictionary<int, Allignment> AffectedAllignments { get; set; } = new Dictionary<int, Allignment>() { { 1, Allignment.Any } };
 
         public Dictionary<int, string> AffectedClasses { get; set; } = new Dictionary<int, string>() { { 1, "Any" } };
