@@ -139,6 +139,8 @@ namespace Star_Wars_Card_Game.Windows.Admin
             else if (type == PopupType.Edit)
             {
                 // set all of the fields to active
+
+                // Set the ability type
                 if (this.Ability.Type == AbilityType.Basic)
                 {
                     this.main_Cooldown.Visible = false;
@@ -150,10 +152,13 @@ namespace Star_Wars_Card_Game.Windows.Admin
                     this.main_CooldownLbl.Visible = true;
                 }
 
+                // Set the ability name and description
                 this.abilityName.Enabled = true;
                 this.AbilityDescription.Enabled = true;
                 this.abilityName.Text = this.Ability.Name;
                 this.AbilityDescription.Text = this.Ability.Description;
+
+                // Set the ability type
                 switch (this.Ability.Type)
                 {
                     case AbilityType.Basic:
@@ -167,11 +172,15 @@ namespace Star_Wars_Card_Game.Windows.Admin
                         break;
                 }
 
+                // Set the cooldown
                 this.main_Cooldown.Value = this.Ability.Cooldown;
+
+                // Set the effects of the ability
                 foreach (var item in this.Ability.Actions)
                 {
                     switch (item.Type)
                     {
+                        // Damage
                         case ActionType.Damage:
                             this.effectCheckBox.SetItemChecked(0, true);
                             this.damageIptAmount.Value = (decimal)this.Ability.BaseAmount;
@@ -183,6 +192,7 @@ namespace Star_Wars_Card_Game.Windows.Admin
                                 4 Specific Faction(s) 
                                 5 Specific Allignment(s)
                              */
+
                             switch (item.AffectedCharacters)
                             {
                                 case(CharactersAffected.EnemyLeader):
@@ -191,6 +201,7 @@ namespace Star_Wars_Card_Game.Windows.Admin
                                 case(CharactersAffected.EnemySpecificClass):
                                     this.damageTarget.SelectedIndex = 4;
 
+                                    // Affected Classes
                                     foreach (var char_class in item.AffectedClasses) 
                                     {
                                         try
@@ -241,6 +252,7 @@ namespace Star_Wars_Card_Game.Windows.Admin
                                     break;
                                 case(CharactersAffected.AllEnemies):
                                     this.damageTarget.SelectedIndex = 1; 
+                                    this.UpdateChars();
                                     break;
                                 case (CharactersAffected.TargetEnemy):
                                     this.damageTarget.SelectedIndex = 0;
@@ -264,15 +276,28 @@ namespace Star_Wars_Card_Game.Windows.Admin
                             
 
                             break;
+
+                        // Heal
                         case ActionType.Heal:
                             this.effectCheckBox.SetItemChecked(1, true);
                             break;
+
+                        // Stun & Buff/Debuff
                         case ActionType.ModifyStat:
                             switch (item.StatusEffect.ApplicationType)
                             {
                                 case StatusApplicationType.LoseTurn:
                                     // Stun 
                                     this.effectCheckBox.SetItemChecked(2, true);
+                                    stn_NumberOfTurns.Value = item.StatusEffect.Duration;
+                                    /*
+                                        0 Selected Enemy 
+                                        1 All Enemies
+                                        2 Enemy Leader
+                                        3 Specific Character(s)
+                                        4 Specific Faction(s)
+                                        5 Specific Allignment(s)
+                                     */
 
                                     // Work on finishing to this type
 
@@ -283,18 +308,66 @@ namespace Star_Wars_Card_Game.Windows.Admin
                                             break;
                                         case (CharactersAffected.EnemySpecificClass):
                                             this.damageTarget.SelectedIndex = 4;
+                                            
+                                            // Affected Classes
+                                            foreach (var char_class in item.AffectedClasses)
+                                            {
+                                                try
+                                                {
+                                                    this.dmgClassIpt.SetItemChecked(this.dmgClassIpt.FindString(char_class.Value), true);
+                                                }
+                                                catch
+                                                {
+                                                    MessageBox.Show("Internal Error", "Class, " + char_class.Value + 
+                                                        " was not found. This error has been handled, but was not included in the list. " +
+                                                        "To see the class as an available option, go to the previous window and add it then open this window again. ");
+                                                }
+                                            }
+
                                             break;
                                         case (CharactersAffected.EnemySpecificAllignment):
                                             this.damageTarget.SelectedIndex = 5;
+
+                                            /*
+                                             * Light
+                                             * Dark
+                                             * Neutral 
+                                            */
+                                            
+                                            switch (item.AffectedAllignments[0])
+                                            {
+                                                case (Allignment.LightSide):
+                                                    this.dmgAlgnIpt.SelectedIndex = 0;
+                                                    break;
+                                                case (Allignment.DarkSide):
+                                                    this.damageTarget.SelectedIndex = 1;
+                                                    break;
+                                                case (Allignment.Neutral):
+                                                    this.damageTarget.SelectedIndex = 2;
+                                                    break;
+                                                default:
+                                                    this.damageTarget.SelectedIndex = 2;
+                                                    break;
+                                            }
+                                            
                                             break;
                                         case (CharactersAffected.EnemySpecificUnit):
                                             this.damageTarget.SelectedIndex = 3;
+
+                                            foreach (var unit in item.AffectedUnits)
+                                            {
+                                                this.dmgCharIpt.Nodes.Add(unit.Value);
+                                            }
+
                                             break;
                                         case (CharactersAffected.AllEnemies):
                                             this.damageTarget.SelectedIndex = 1;
                                             break;
                                         case (CharactersAffected.TargetEnemy):
                                             this.damageTarget.SelectedIndex = 0;
+                                            break;
+                                        case CharactersAffected.None:
+                                            MessageBox.Show("Internal Error", "No characters were affected by the stun. This error has been handled, but the stun was not applied. ");
                                             break;
                                         default:
                                             this.damageTarget.SelectedIndex = 0;
@@ -305,6 +378,161 @@ namespace Star_Wars_Card_Game.Windows.Admin
                                     // Buff/Debuff
                                     this.effectCheckBox.SetItemChecked(3, true);
                                     this.BuffAction = item;
+                                    /*
+                                        0 Self
+                                        1 Selected Ally
+                                        2 Allied Leader
+                                        3 Specific Character(s) (Allies)
+                                        4 Specific Faction(s) (Allies)
+                                        5 Specific Allignment(s) (Allies)
+                                        6 Selected Enemy
+                                        7 All Enemies
+                                        8 Enemy Leader
+                                        9 Specific Character(s) (Enemy)
+                                        10 Specific Faction(s) (Enemy)
+                                        11 Specific Allignment(s) (Enemy)
+                                     */
+                                    switch (item.AffectedCharacters)
+                                    {
+                                        case (CharactersAffected.EnemyLeader):
+                                            this.damageTarget.SelectedIndex = 8;
+                                            break;
+                                        case (CharactersAffected.EnemySpecificClass):
+                                            this.damageTarget.SelectedIndex = 10;
+
+                                            // Affected Classes
+                                            foreach (var char_class in item.AffectedClasses)
+                                            {
+                                                try
+                                                {
+                                                    this.dmgClassIpt.SetItemChecked(this.dmgClassIpt.FindString(char_class.Value), true);
+                                                }
+                                                catch
+                                                {
+                                                    MessageBox.Show("Internal Error", "Class, " + char_class.Value +
+                                                        ", was not found. This error has been handled, but was not included in the list. " +
+                                                        "To see the class as an available option, go to the previous window and add it then " +
+                                                        "open this window again. ");
+                                                }
+                                            }
+
+                                            break;
+                                        case (CharactersAffected.EnemySpecificAllignment):
+                                            this.damageTarget.SelectedIndex = 11;
+
+                                            /*
+                                             * Light
+                                             * Dark
+                                             * Neutral 
+                                             */
+
+                                            // Affected Allignments
+                                            foreach (var allignment in item.AffectedAllignments)
+                                            {
+                                                switch (allignment.Value)
+                                                {
+                                                    case (Allignment.LightSide):
+                                                        this.dmgAlgnIpt.SelectedIndex = 0;
+                                                        break;
+                                                    case (Allignment.DarkSide):
+                                                        this.damageTarget.SelectedIndex = 1;
+                                                        break;
+                                                    case (Allignment.Neutral):
+                                                        this.damageTarget.SelectedIndex = 2;
+                                                        break;
+                                                    default:
+                                                        this.damageTarget.SelectedIndex = 2;
+                                                        break;
+                                                }
+                                            }
+
+                                            break;
+                                        case (CharactersAffected.EnemySpecificUnit):
+                                            this.damageTarget.SelectedIndex = 9;
+
+                                            foreach (var unit in item.AffectedUnits)
+                                            {
+                                                this.dmgCharIpt.Nodes.Add(unit.Value);
+                                            }
+
+                                            break;
+                                        case (CharactersAffected.AllEnemies):
+                                            this.damageTarget.SelectedIndex = 7;
+                                            break;
+                                        case (CharactersAffected.TargetEnemy):
+                                            this.damageTarget.SelectedIndex = 6;
+                                            break;
+                                        case CharactersAffected.None:
+                                            MessageBox.Show("Internal Error", "No characters were affected by the stun. This error has been handled, but the stun was not applied. ");
+                                            break;
+                                        case CharactersAffected.Self:
+                                            this.buff_UnitsSelector.SelectedIndex = 0;
+                                            break;
+                                        case CharactersAffected.TargetAlly:
+                                            this.buff_UnitsSelector.SelectedIndex = 1;
+                                            break;
+                                        case CharactersAffected.AllyLeader:
+                                                this.buff_UnitsSelector.SelectedIndex = 2;
+                                            break;
+                                        case CharactersAffected.AllySpecificUnit:
+                                            this.buff_UnitsSelector.SelectedIndex = 3;
+
+                                            foreach (var unit in item.AffectedUnits)
+                                            {
+                                                this.stn_CharTreeView.Nodes.Add(unit.Value);
+                                            }
+
+                                            break;
+                                        case CharactersAffected.AllySpecificClass:
+                                            this.buff_UnitsSelector.SelectedIndex = 4;
+
+                                            foreach (var char_class in item.AffectedClasses)
+                                            {
+                                                try
+                                                {
+                                                    this.buff_ClassesSelectorCheckLsBx.SetItemChecked(this.buff_ClassesSelectorCheckLsBx.FindString(char_class.Value), true);
+                                                }
+                                                catch
+                                                {
+                                                    MessageBox.Show("Internal Error", "Class, " + char_class.Value +
+                                                        ", was not found. This error has been handled, but was not included in the list. " +
+                                                        "To see the class as an available option, go to the previous window and add it then " +
+                                                                                                                                                                                                                             "open this window again. ");
+                                                }
+                                            }
+
+                                            break;
+                                        case CharactersAffected.AllySpecificAllignment:
+                                            this.buff_UnitsSelector.SelectedIndex = 5;
+
+                                            foreach (var alignment in item.AffectedAllignments)
+                                            {
+                                                switch (alignment.Value)
+                                                {
+                                                    case Allignment.LightSide:
+                                                        this.buff_AlignDropDown.SelectedIndex = 0;
+                                                        break;
+                                                    case Allignment.DarkSide:
+                                                        this.buff_AlignDropDown.SelectedIndex = 1;
+                                                        break;
+                                                    case Allignment.Neutral:
+                                                        this.buff_AlignDropDown.SelectedIndex = 2;
+                                                        break;
+                                                    case Allignment.Any:
+                                                        this.buff_AlignDropDown.SelectedIndex = 3;
+                                                        break;
+                                                    default:
+                                                        this.buff_AlignDropDown.SelectedIndex = 2;
+                                                        break;
+                                                }
+                                            }
+
+                                            break;
+                                        default:
+                                            this.damageTarget.SelectedIndex = 0;
+                                            break;
+                                    }
+
                                     break;
                             }
                             this.effectCheckBox.SetItemChecked(2, true);
@@ -312,6 +540,7 @@ namespace Star_Wars_Card_Game.Windows.Admin
                         default:
                             break;
                     }
+                    this.UpdateChars();
                 }
             }
         }
