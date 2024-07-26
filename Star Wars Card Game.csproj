@@ -192,6 +192,7 @@
     <Content Include="Backend\DLLs\RiptideNetworking.dll" />
     <Content Include="Backend\DLLs\RiptideNetworking.xml" />
     <Content Include="Notes.txt" />
+    <Content Include="README.md" />
     <Content Include="Resources\ImageBlank.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
