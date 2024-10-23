@@ -53,5 +53,20 @@ namespace Star_Wars_Card_Game.Backend.Game
         public static StatusEffect defIncreaseHealth = new(3,StatusApplicationType.Multiplicative, AffectedStat.Health, 1.15f);
         public static StatusEffect defAbilityBlock = new(1, StatusApplicationType.AbilityBlock, AffectedStat.Attack, 1f);
         public static StatusEffect AbilityBlock(int turns) => new(turns, StatusApplicationType.AbilityBlock, AffectedStat.Attack, 1f);
+        
+        private static readonly List<string> DefaultEffects = new()
+        {
+            "Heal Over Time 10%",
+            "Damage Over Time 10%",
+            "Increase Speed 10%",
+            "Increase Attack 10%",
+            "Increase Defense 10%",
+            "Increase Health 10%",
+            "Ability Block 1 turn",
+            "Decrease Speed -10%", 
+            "Decrease Attack -10%",
+            "Decrease Defense -10%",
+            "Decrease Health -10%"
+        };
     }
 }

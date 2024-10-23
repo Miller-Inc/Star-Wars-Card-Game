@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using Star_Wars_Card_Game.Backend.Game.Enums;
 
 namespace Star_Wars_Card_Game.Windows
@@ -186,6 +187,11 @@ namespace Star_Wars_Card_Game.Windows
         private void characterNameIn_TextChanged(object sender, EventArgs e)
         {
             this.Character.Name = characterNameIn.Text;
+        }
+
+        private void devButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Newtonsoft.Json.JsonConvert.SerializeObject(this.Abilities[0]));
         }
     }
 }

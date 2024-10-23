@@ -34,12 +34,15 @@
             this.EditAbility = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editAbilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeAbilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.removeAbilityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.addAbilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.basicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.specialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ultimateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.devTabs = new System.Windows.Forms.TabControl();
             this.AddPlayers = new System.Windows.Forms.TabPage();
+            this.devButton = new System.Windows.Forms.Button();
             this.ImageLbl = new System.Windows.Forms.Label();
             this.abilitiesLbl = new System.Windows.Forms.Label();
             this.abilitesIptDisplay = new System.Windows.Forms.TreeView();
@@ -66,8 +69,6 @@
             this.CharacterClassLbl = new System.Windows.Forms.Label();
             this.charNameLbl = new System.Windows.Forms.Label();
             this.RemoveCharacterTbPg = new System.Windows.Forms.TabPage();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.removeAbilityToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ChooseImgDlg = new System.Windows.Forms.OpenFileDialog();
             this.EditAbility.SuspendLayout();
             this.devTabs.SuspendLayout();
@@ -82,10 +83,7 @@
             // 
             // EditAbility
             // 
-            this.EditAbility.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editAbilityToolStripMenuItem,
-            this.removeAbilityToolStripMenuItem,
-            this.addAbilityToolStripMenuItem});
+            this.EditAbility.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.editAbilityToolStripMenuItem, this.removeAbilityToolStripMenuItem, this.addAbilityToolStripMenuItem });
             this.EditAbility.Name = "EditAbility";
             this.EditAbility.Size = new System.Drawing.Size(179, 70);
             // 
@@ -98,19 +96,25 @@
             // 
             // removeAbilityToolStripMenuItem
             // 
-            this.removeAbilityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox1,
-            this.removeAbilityToolStripMenuItem1});
+            this.removeAbilityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.toolStripComboBox1, this.removeAbilityToolStripMenuItem1 });
             this.removeAbilityToolStripMenuItem.Name = "removeAbilityToolStripMenuItem";
             this.removeAbilityToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.removeAbilityToolStripMenuItem.Text = "Remove Ability...";
             // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            // 
+            // removeAbilityToolStripMenuItem1
+            // 
+            this.removeAbilityToolStripMenuItem1.Name = "removeAbilityToolStripMenuItem1";
+            this.removeAbilityToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
+            this.removeAbilityToolStripMenuItem1.Text = "Remove Ability";
+            // 
             // addAbilityToolStripMenuItem
             // 
-            this.addAbilityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.basicToolStripMenuItem,
-            this.specialToolStripMenuItem,
-            this.ultimateToolStripMenuItem});
+            this.addAbilityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.basicToolStripMenuItem, this.specialToolStripMenuItem, this.ultimateToolStripMenuItem });
             this.addAbilityToolStripMenuItem.Name = "addAbilityToolStripMenuItem";
             this.addAbilityToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.addAbilityToolStripMenuItem.Text = "Add Ability...";
@@ -118,20 +122,20 @@
             // basicToolStripMenuItem
             // 
             this.basicToolStripMenuItem.Name = "basicToolStripMenuItem";
-            this.basicToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.basicToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.basicToolStripMenuItem.Text = "Basic";
             this.basicToolStripMenuItem.Click += new System.EventHandler(this.basicToolStripMenuItem_Click);
             // 
             // specialToolStripMenuItem
             // 
             this.specialToolStripMenuItem.Name = "specialToolStripMenuItem";
-            this.specialToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.specialToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.specialToolStripMenuItem.Text = "Special";
             // 
             // ultimateToolStripMenuItem
             // 
             this.ultimateToolStripMenuItem.Name = "ultimateToolStripMenuItem";
-            this.ultimateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ultimateToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.ultimateToolStripMenuItem.Text = "Ultimate";
             // 
             // devTabs
@@ -147,6 +151,7 @@
             // AddPlayers
             // 
             this.AddPlayers.BackColor = System.Drawing.Color.Black;
+            this.AddPlayers.Controls.Add(this.devButton);
             this.AddPlayers.Controls.Add(this.ImageLbl);
             this.AddPlayers.Controls.Add(this.abilitiesLbl);
             this.AddPlayers.Controls.Add(this.abilitesIptDisplay);
@@ -171,6 +176,18 @@
             this.AddPlayers.Size = new System.Drawing.Size(965, 500);
             this.AddPlayers.TabIndex = 0;
             this.AddPlayers.Text = "Add Characters";
+            // 
+            // devButton
+            // 
+            this.devButton.FlatAppearance.BorderSize = 0;
+            this.devButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.devButton.ForeColor = System.Drawing.Color.Black;
+            this.devButton.Location = new System.Drawing.Point(305, 19);
+            this.devButton.Name = "devButton";
+            this.devButton.Size = new System.Drawing.Size(87, 30);
+            this.devButton.TabIndex = 19;
+            this.devButton.UseVisualStyleBackColor = true;
+            this.devButton.Click += new System.EventHandler(this.devButton_Click);
             // 
             // ImageLbl
             // 
@@ -204,32 +221,19 @@
             treeNode1.ContextMenuStrip = this.EditAbility;
             treeNode1.Name = "Basic";
             treeNode1.Text = "Basic";
-            this.abilitesIptDisplay.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            this.abilitesIptDisplay.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode1 });
             this.abilitesIptDisplay.Size = new System.Drawing.Size(278, 131);
             this.abilitesIptDisplay.TabIndex = 16;
             // 
             // baseAtkIpt
             // 
             this.baseAtkIpt.Location = new System.Drawing.Point(171, 325);
-            this.baseAtkIpt.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.baseAtkIpt.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.baseAtkIpt.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            this.baseAtkIpt.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.baseAtkIpt.Name = "baseAtkIpt";
             this.baseAtkIpt.Size = new System.Drawing.Size(116, 20);
             this.baseAtkIpt.TabIndex = 15;
-            this.baseAtkIpt.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.baseAtkIpt.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // AttckLbl
             // 
@@ -244,24 +248,12 @@
             // baseSpdIn
             // 
             this.baseSpdIn.Location = new System.Drawing.Point(12, 325);
-            this.baseSpdIn.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.baseSpdIn.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.baseSpdIn.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            this.baseSpdIn.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.baseSpdIn.Name = "baseSpdIn";
             this.baseSpdIn.Size = new System.Drawing.Size(133, 20);
             this.baseSpdIn.TabIndex = 13;
-            this.baseSpdIn.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.baseSpdIn.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // SpdLbl
             // 
@@ -276,24 +268,12 @@
             // baseDefIpt
             // 
             this.baseDefIpt.Location = new System.Drawing.Point(171, 277);
-            this.baseDefIpt.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.baseDefIpt.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.baseDefIpt.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            this.baseDefIpt.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.baseDefIpt.Name = "baseDefIpt";
             this.baseDefIpt.Size = new System.Drawing.Size(116, 20);
             this.baseDefIpt.TabIndex = 11;
-            this.baseDefIpt.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.baseDefIpt.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // DefenseLbl
             // 
@@ -308,24 +288,12 @@
             // baseHltIpt
             // 
             this.baseHltIpt.Location = new System.Drawing.Point(9, 277);
-            this.baseHltIpt.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.baseHltIpt.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.baseHltIpt.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
+            this.baseHltIpt.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             this.baseHltIpt.Name = "baseHltIpt";
             this.baseHltIpt.Size = new System.Drawing.Size(136, 20);
             this.baseHltIpt.TabIndex = 9;
-            this.baseHltIpt.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.baseHltIpt.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // HealthLbl
             // 
@@ -381,25 +349,20 @@
             // 
             // ClassMenu
             // 
-            this.ClassMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewToolStripMenuItem,
-            this.removeClassToolStripMenuItem});
+            this.ClassMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.addNewToolStripMenuItem, this.removeClassToolStripMenuItem });
             this.ClassMenu.Name = "ClassMenu";
             this.ClassMenu.Size = new System.Drawing.Size(157, 48);
             this.ClassMenu.Text = "Class Options";
             // 
             // addNewToolStripMenuItem
             // 
-            this.addNewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.className,
-            this.addClassToolStripMenuItem});
+            this.addNewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.className, this.addClassToolStripMenuItem });
             this.addNewToolStripMenuItem.Name = "addNewToolStripMenuItem";
             this.addNewToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.addNewToolStripMenuItem.Text = "Add New Class";
             // 
             // className
             // 
-            this.className.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.className.Name = "className";
             this.className.Size = new System.Drawing.Size(100, 23);
             // 
@@ -412,9 +375,7 @@
             // 
             // removeClassToolStripMenuItem
             // 
-            this.removeClassToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.classOptionsMenu,
-            this.removeToolStripMenuItem});
+            this.removeClassToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.classOptionsMenu, this.removeToolStripMenuItem });
             this.removeClassToolStripMenuItem.Name = "removeClassToolStripMenuItem";
             this.removeClassToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.removeClassToolStripMenuItem.Text = "Remove Class...";
@@ -422,8 +383,7 @@
             // classOptionsMenu
             // 
             this.classOptionsMenu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.classOptionsMenu.Items.AddRange(new object[] {
-            "(No Items Loaded)"});
+            this.classOptionsMenu.Items.AddRange(new object[] { "(No Items Loaded)" });
             this.classOptionsMenu.Name = "classOptionsMenu";
             this.classOptionsMenu.Size = new System.Drawing.Size(121, 23);
             // 
@@ -476,17 +436,6 @@
             this.RemoveCharacterTbPg.TabIndex = 1;
             this.RemoveCharacterTbPg.Text = "Remove Character";
             // 
-            // toolStripComboBox1
-            // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
-            // 
-            // removeAbilityToolStripMenuItem1
-            // 
-            this.removeAbilityToolStripMenuItem1.Name = "removeAbilityToolStripMenuItem1";
-            this.removeAbilityToolStripMenuItem1.Size = new System.Drawing.Size(181, 22);
-            this.removeAbilityToolStripMenuItem1.Text = "Remove Ability";
-            // 
             // ChooseImgDlg
             // 
             this.ChooseImgDlg.FileName = "Choose Character Image";
@@ -518,8 +467,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.CharacterPicture)).EndInit();
             this.ClassMenu.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
+
+        private System.Windows.Forms.Button devButton;
 
         #endregion
 

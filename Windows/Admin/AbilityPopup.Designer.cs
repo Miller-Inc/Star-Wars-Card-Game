@@ -33,18 +33,11 @@
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Self");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Specific Character(s)");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Target Ally");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Allies", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Allies", new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode3, treeNode4 });
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Enemy Leader");
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Target Enemy ");
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Specific Character(s)");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Enemies", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Enemies", new System.Windows.Forms.TreeNode[] { treeNode6, treeNode7, treeNode8 });
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AbilityPopup));
             this.CancelBttn = new System.Windows.Forms.Button();
             this.AddAbility = new System.Windows.Forms.Button();
@@ -105,6 +98,11 @@
             this.stn_TurnNumLbl = new System.Windows.Forms.Label();
             this.stn_NumberOfTurns = new System.Windows.Forms.NumericUpDown();
             this.ModifyStatsPage = new System.Windows.Forms.TabPage();
+            this.buff_ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.buff_DefaultMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
+            this.buff_DefaultDropdown = new System.Windows.Forms.ToolStripComboBox();
+            this.buff_ChooseSelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.buff_AboutBttn = new System.Windows.Forms.ToolStripMenuItem();
             this.buff_CharsLbl = new System.Windows.Forms.Label();
             this.buff_CharsTreeView = new System.Windows.Forms.TreeView();
             this.buff_AlignLbl = new System.Windows.Forms.Label();
@@ -126,11 +124,12 @@
             this.main_AbilityLbl = new System.Windows.Forms.Label();
             this.main_Cooldown = new System.Windows.Forms.NumericUpDown();
             this.main_CooldownLbl = new System.Windows.Forms.Label();
-            this.buff_ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.buff_DefaultMenuHeader = new System.Windows.Forms.ToolStripMenuItem();
-            this.buff_DefaultDropdown = new System.Windows.Forms.ToolStripComboBox();
-            this.buff_ChooseSelected = new System.Windows.Forms.ToolStripMenuItem();
-            this.buff_AboutBttn = new System.Windows.Forms.ToolStripMenuItem();
+            this.buff_addEffect = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.buff_submenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.buff_subtitleInstructions = new System.Windows.Forms.ToolStripMenuItem();
+            this.buff_DropdownPreBuilt = new System.Windows.Forms.ToolStripComboBox();
+            this.buff_confirmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.affectOptionsTabControl.SuspendLayout();
             this.damagePage.SuspendLayout();
             this.addCharacterHeal.SuspendLayout();
@@ -141,10 +140,11 @@
             this.stn_AddCharContextMen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stn_NumberOfTurns)).BeginInit();
             this.ModifyStatsPage.SuspendLayout();
+            this.buff_ContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.buff_AffectAmt)).BeginInit();
             this.addCharacterDmg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.main_Cooldown)).BeginInit();
-            this.buff_ContextMenuStrip.SuspendLayout();
+            this.buff_addEffect.SuspendLayout();
             this.SuspendLayout();
             // 
             // CancelBttn
@@ -223,9 +223,7 @@
             treeNode8.Text = "Specific Character(s)";
             treeNode9.Name = "EnemyUnits";
             treeNode9.Text = "Enemies";
-            this.unitsChooser.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode9});
+            this.unitsChooser.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode5, treeNode9 });
             this.unitsChooser.Size = new System.Drawing.Size(336, 250);
             this.unitsChooser.TabIndex = 4;
             // 
@@ -235,11 +233,7 @@
             this.effectCheckBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.effectCheckBox.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.effectCheckBox.FormattingEnabled = true;
-            this.effectCheckBox.Items.AddRange(new object[] {
-            "Damage",
-            "Heal",
-            "Stun",
-            "Modify Stats (Buff/Debuff)"});
+            this.effectCheckBox.Items.AddRange(new object[] { "Damage", "Heal", "Stun", "Modify Stats (Buff/Debuff)" });
             this.effectCheckBox.Location = new System.Drawing.Point(358, 78);
             this.effectCheckBox.Name = "effectCheckBox";
             this.effectCheckBox.Size = new System.Drawing.Size(147, 60);
@@ -350,17 +344,13 @@
             // addCharacterHeal
             // 
             this.addCharacterHeal.BackColor = System.Drawing.Color.CadetBlue;
-            this.addCharacterHeal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCharMenuHeader,
-            this.rmvSelCharBttn});
+            this.addCharacterHeal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.addCharMenuHeader, this.rmvSelCharBttn });
             this.addCharacterHeal.Name = "addCharacterHeal";
             this.addCharacterHeal.Size = new System.Drawing.Size(219, 48);
             // 
             // addCharMenuHeader
             // 
-            this.addCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.healCharIpt,
-            this.addCharBttn});
+            this.addCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.healCharIpt, this.addCharBttn });
             this.addCharMenuHeader.Name = "addCharMenuHeader";
             this.addCharMenuHeader.Size = new System.Drawing.Size(218, 22);
             this.addCharMenuHeader.Text = "Add Character...";
@@ -368,7 +358,6 @@
             // healCharIpt
             // 
             this.healCharIpt.BackColor = System.Drawing.Color.CadetBlue;
-            this.healCharIpt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.healCharIpt.Name = "healCharIpt";
             this.healCharIpt.Size = new System.Drawing.Size(100, 23);
             // 
@@ -404,10 +393,7 @@
             this.dmgAlgnIpt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dmgAlgnIpt.ForeColor = System.Drawing.Color.White;
             this.dmgAlgnIpt.FormattingEnabled = true;
-            this.dmgAlgnIpt.Items.AddRange(new object[] {
-            "Light Side",
-            "Dark Side",
-            "Neutral"});
+            this.dmgAlgnIpt.Items.AddRange(new object[] { "Light Side", "Dark Side", "Neutral" });
             this.dmgAlgnIpt.Location = new System.Drawing.Point(116, 116);
             this.dmgAlgnIpt.Name = "dmgAlgnIpt";
             this.dmgAlgnIpt.Size = new System.Drawing.Size(154, 21);
@@ -474,13 +460,7 @@
             this.damageTarget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.damageTarget.ForeColor = System.Drawing.Color.White;
             this.damageTarget.FormattingEnabled = true;
-            this.damageTarget.Items.AddRange(new object[] {
-            "Selected Enemy",
-            "All Enemies",
-            "Enemy Leader",
-            "Specific Character(s)",
-            "Specific Faction(s)",
-            "Specific Allignment(s)"});
+            this.damageTarget.Items.AddRange(new object[] { "Selected Enemy", "All Enemies", "Enemy Leader", "Specific Character(s)", "Specific Faction(s)", "Specific Allignment(s)" });
             this.damageTarget.Location = new System.Drawing.Point(6, 76);
             this.damageTarget.Name = "damageTarget";
             this.damageTarget.Size = new System.Drawing.Size(121, 21);
@@ -502,11 +482,7 @@
             this.damageIptAmount.DecimalPlaces = 4;
             this.damageIptAmount.ForeColor = System.Drawing.Color.White;
             this.damageIptAmount.Location = new System.Drawing.Point(6, 34);
-            this.damageIptAmount.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
+            this.damageIptAmount.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             this.damageIptAmount.Name = "damageIptAmount";
             this.damageIptAmount.Size = new System.Drawing.Size(96, 20);
             this.damageIptAmount.TabIndex = 0;
@@ -574,10 +550,7 @@
             this.HealingAlignmentBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HealingAlignmentBox.ForeColor = System.Drawing.Color.White;
             this.HealingAlignmentBox.FormattingEnabled = true;
-            this.HealingAlignmentBox.Items.AddRange(new object[] {
-            "Light Side",
-            "Dark Side",
-            "Neutral"});
+            this.HealingAlignmentBox.Items.AddRange(new object[] { "Light Side", "Dark Side", "Neutral" });
             this.HealingAlignmentBox.Location = new System.Drawing.Point(9, 125);
             this.HealingAlignmentBox.Name = "HealingAlignmentBox";
             this.HealingAlignmentBox.Size = new System.Drawing.Size(154, 21);
@@ -644,14 +617,7 @@
             this.affectedAlies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.affectedAlies.ForeColor = System.Drawing.Color.White;
             this.affectedAlies.FormattingEnabled = true;
-            this.affectedAlies.Items.AddRange(new object[] {
-            "Selected Ally",
-            "All Allies",
-            "Self",
-            "Allied Leader",
-            "Specific Character(s)",
-            "Specific Faction(s)",
-            "Specific Allignment(s)"});
+            this.affectedAlies.Items.AddRange(new object[] { "Selected Ally", "All Allies", "Self", "Allied Leader", "Specific Character(s)", "Specific Faction(s)", "Specific Allignment(s)" });
             this.affectedAlies.Location = new System.Drawing.Point(5, 76);
             this.affectedAlies.Name = "affectedAlies";
             this.affectedAlies.Size = new System.Drawing.Size(121, 21);
@@ -673,11 +639,7 @@
             this.healAmt.DecimalPlaces = 4;
             this.healAmt.ForeColor = System.Drawing.Color.White;
             this.healAmt.Location = new System.Drawing.Point(5, 34);
-            this.healAmt.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
+            this.healAmt.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             this.healAmt.Name = "healAmt";
             this.healAmt.Size = new System.Drawing.Size(96, 20);
             this.healAmt.TabIndex = 6;
@@ -729,17 +691,13 @@
             // stn_AddCharContextMen
             // 
             this.stn_AddCharContextMen.BackColor = System.Drawing.Color.CadetBlue;
-            this.stn_AddCharContextMen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stn_AddCharHeader,
-            this.stn_RmCharBttn});
+            this.stn_AddCharContextMen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.stn_AddCharHeader, this.stn_RmCharBttn });
             this.stn_AddCharContextMen.Name = "addCharacterHeal";
             this.stn_AddCharContextMen.Size = new System.Drawing.Size(219, 48);
             // 
             // stn_AddCharHeader
             // 
-            this.stn_AddCharHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stn_CharNmTextBox,
-            this.stn_AddCharBttn});
+            this.stn_AddCharHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.stn_CharNmTextBox, this.stn_AddCharBttn });
             this.stn_AddCharHeader.Name = "stn_AddCharHeader";
             this.stn_AddCharHeader.Size = new System.Drawing.Size(218, 22);
             this.stn_AddCharHeader.Text = "Add Character...";
@@ -747,7 +705,6 @@
             // stn_CharNmTextBox
             // 
             this.stn_CharNmTextBox.BackColor = System.Drawing.Color.CadetBlue;
-            this.stn_CharNmTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.stn_CharNmTextBox.Name = "stn_CharNmTextBox";
             this.stn_CharNmTextBox.Size = new System.Drawing.Size(100, 23);
             // 
@@ -783,10 +740,7 @@
             this.stn_AlignDropDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stn_AlignDropDown.ForeColor = System.Drawing.Color.White;
             this.stn_AlignDropDown.FormattingEnabled = true;
-            this.stn_AlignDropDown.Items.AddRange(new object[] {
-            "Light Side",
-            "Dark Side",
-            "Neutral"});
+            this.stn_AlignDropDown.Items.AddRange(new object[] { "Light Side", "Dark Side", "Neutral" });
             this.stn_AlignDropDown.Location = new System.Drawing.Point(118, 118);
             this.stn_AlignDropDown.Name = "stn_AlignDropDown";
             this.stn_AlignDropDown.Size = new System.Drawing.Size(154, 21);
@@ -829,13 +783,7 @@
             this.stn_AffEnemies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stn_AffEnemies.ForeColor = System.Drawing.Color.White;
             this.stn_AffEnemies.FormattingEnabled = true;
-            this.stn_AffEnemies.Items.AddRange(new object[] {
-            "Selected Enemy",
-            "All Enemies",
-            "Enemy Leader",
-            "Specific Character(s)",
-            "Specific Faction(s)",
-            "Specific Allignment(s)"});
+            this.stn_AffEnemies.Items.AddRange(new object[] { "Selected Enemy", "All Enemies", "Enemy Leader", "Specific Character(s)", "Specific Faction(s)", "Specific Allignment(s)" });
             this.stn_AffEnemies.Location = new System.Drawing.Point(8, 78);
             this.stn_AffEnemies.Name = "stn_AffEnemies";
             this.stn_AffEnemies.Size = new System.Drawing.Size(121, 21);
@@ -856,11 +804,7 @@
             this.stn_NumberOfTurns.BackColor = System.Drawing.Color.DimGray;
             this.stn_NumberOfTurns.ForeColor = System.Drawing.Color.White;
             this.stn_NumberOfTurns.Location = new System.Drawing.Point(8, 36);
-            this.stn_NumberOfTurns.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
+            this.stn_NumberOfTurns.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
             this.stn_NumberOfTurns.Name = "stn_NumberOfTurns";
             this.stn_NumberOfTurns.Size = new System.Drawing.Size(96, 20);
             this.stn_NumberOfTurns.TabIndex = 24;
@@ -888,6 +832,36 @@
             this.ModifyStatsPage.Size = new System.Drawing.Size(426, 224);
             this.ModifyStatsPage.TabIndex = 3;
             this.ModifyStatsPage.Text = "Modify Stats";
+            // 
+            // buff_ContextMenuStrip
+            // 
+            this.buff_ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.buff_DefaultMenuHeader, this.buff_AboutBttn });
+            this.buff_ContextMenuStrip.Name = "buff_ContextMenuStrip";
+            this.buff_ContextMenuStrip.Size = new System.Drawing.Size(169, 48);
+            // 
+            // buff_DefaultMenuHeader
+            // 
+            this.buff_DefaultMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.buff_DefaultDropdown, this.buff_ChooseSelected });
+            this.buff_DefaultMenuHeader.Name = "buff_DefaultMenuHeader";
+            this.buff_DefaultMenuHeader.Size = new System.Drawing.Size(168, 22);
+            this.buff_DefaultMenuHeader.Text = "Set from default...";
+            // 
+            // buff_DefaultDropdown
+            // 
+            this.buff_DefaultDropdown.Name = "buff_DefaultDropdown";
+            this.buff_DefaultDropdown.Size = new System.Drawing.Size(121, 23);
+            // 
+            // buff_ChooseSelected
+            // 
+            this.buff_ChooseSelected.Name = "buff_ChooseSelected";
+            this.buff_ChooseSelected.Size = new System.Drawing.Size(181, 22);
+            this.buff_ChooseSelected.Text = "Chose Selected";
+            // 
+            // buff_AboutBttn
+            // 
+            this.buff_AboutBttn.Name = "buff_AboutBttn";
+            this.buff_AboutBttn.Size = new System.Drawing.Size(168, 22);
+            this.buff_AboutBttn.Text = "About";
             // 
             // buff_CharsLbl
             // 
@@ -929,10 +903,7 @@
             this.buff_AlignDropDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buff_AlignDropDown.ForeColor = System.Drawing.Color.White;
             this.buff_AlignDropDown.FormattingEnabled = true;
-            this.buff_AlignDropDown.Items.AddRange(new object[] {
-            "Light Side",
-            "Dark Side",
-            "Neutral"});
+            this.buff_AlignDropDown.Items.AddRange(new object[] { "Light Side", "Dark Side", "Neutral" });
             this.buff_AlignDropDown.Location = new System.Drawing.Point(118, 118);
             this.buff_AlignDropDown.Name = "buff_AlignDropDown";
             this.buff_AlignDropDown.Size = new System.Drawing.Size(154, 21);
@@ -999,23 +970,12 @@
             this.buff_UnitsSelector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buff_UnitsSelector.ForeColor = System.Drawing.Color.White;
             this.buff_UnitsSelector.FormattingEnabled = true;
-            this.buff_UnitsSelector.Items.AddRange(new object[] {
-            "Self",
-            "Selected Ally",
-            "Allied Leader",
-            "Specific Character(s) (Allies)",
-            "Specific Faction(s) (Allies)",
-            "Specific Allignment(s) (Allies)",
-            "Selected Enemy",
-            "All Enemies",
-            "Enemy Leader",
-            "Specific Character(s) (Enemy)",
-            "Specific Faction(s) (Enemy)",
-            "Specific Allignment(s) (Enemy)"});
+            this.buff_UnitsSelector.Items.AddRange(new object[] { "Self", "Selected Ally", "Allied Leader", "Specific Character(s) (Allies)", "Specific Faction(s) (Allies)", "Specific Allignment(s) (Allies)", "Selected Enemy", "All Enemies", "Enemy Leader", "Specific Character(s) (Enemy)", "Specific Faction(s) (Enemy)", "Specific Allignment(s) (Enemy)" });
             this.buff_UnitsSelector.Location = new System.Drawing.Point(8, 78);
             this.buff_UnitsSelector.Name = "buff_UnitsSelector";
             this.buff_UnitsSelector.Size = new System.Drawing.Size(121, 21);
             this.buff_UnitsSelector.TabIndex = 26;
+            this.buff_UnitsSelector.SelectedIndexChanged += new System.EventHandler(this.buff_UnitsSelector_SelectedIndexChanged);
             // 
             // buff_AffectAmtLbl
             // 
@@ -1032,11 +992,7 @@
             this.buff_AffectAmt.DecimalPlaces = 4;
             this.buff_AffectAmt.ForeColor = System.Drawing.Color.White;
             this.buff_AffectAmt.Location = new System.Drawing.Point(8, 36);
-            this.buff_AffectAmt.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
+            this.buff_AffectAmt.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
             this.buff_AffectAmt.Name = "buff_AffectAmt";
             this.buff_AffectAmt.Size = new System.Drawing.Size(96, 20);
             this.buff_AffectAmt.TabIndex = 24;
@@ -1044,17 +1000,13 @@
             // addCharacterDmg
             // 
             this.addCharacterDmg.BackColor = System.Drawing.Color.CadetBlue;
-            this.addCharacterDmg.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dmgAddCharMenuHeader,
-            this.removeChar});
+            this.addCharacterDmg.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.dmgAddCharMenuHeader, this.removeChar });
             this.addCharacterDmg.Name = "addCharacterHeal";
             this.addCharacterDmg.Size = new System.Drawing.Size(219, 48);
             // 
             // dmgAddCharMenuHeader
             // 
-            this.dmgAddCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dmgCharNameIpt,
-            this.addCharDmg});
+            this.dmgAddCharMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.dmgCharNameIpt, this.addCharDmg });
             this.dmgAddCharMenuHeader.Name = "dmgAddCharMenuHeader";
             this.dmgAddCharMenuHeader.Size = new System.Drawing.Size(218, 22);
             this.dmgAddCharMenuHeader.Text = "Add Character...";
@@ -1062,7 +1014,6 @@
             // dmgCharNameIpt
             // 
             this.dmgCharNameIpt.BackColor = System.Drawing.Color.CadetBlue;
-            this.dmgCharNameIpt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dmgCharNameIpt.Name = "dmgCharNameIpt";
             this.dmgCharNameIpt.Size = new System.Drawing.Size(100, 23);
             // 
@@ -1087,10 +1038,7 @@
             this.main_AbilityTypeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.main_AbilityTypeComboBox.ForeColor = System.Drawing.Color.White;
             this.main_AbilityTypeComboBox.FormattingEnabled = true;
-            this.main_AbilityTypeComboBox.Items.AddRange(new object[] {
-            "Basic",
-            "Special",
-            "Ultimate"});
+            this.main_AbilityTypeComboBox.Items.AddRange(new object[] { "Basic", "Special", "Ultimate" });
             this.main_AbilityTypeComboBox.Location = new System.Drawing.Point(358, 27);
             this.main_AbilityTypeComboBox.Name = "main_AbilityTypeComboBox";
             this.main_AbilityTypeComboBox.Size = new System.Drawing.Size(147, 21);
@@ -1126,39 +1074,44 @@
             this.main_CooldownLbl.TabIndex = 38;
             this.main_CooldownLbl.Text = "Cooldown";
             // 
-            // buff_ContextMenuStrip
+            // buff_addEffect
             // 
-            this.buff_ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.buff_DefaultMenuHeader,
-            this.buff_AboutBttn});
-            this.buff_ContextMenuStrip.Name = "buff_ContextMenuStrip";
-            this.buff_ContextMenuStrip.Size = new System.Drawing.Size(169, 48);
+            this.buff_addEffect.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.buff_submenu, this.aboutToolStripMenuItem });
+            this.buff_addEffect.Name = "buff_addEffect";
+            this.buff_addEffect.Size = new System.Drawing.Size(184, 70);
             // 
-            // buff_DefaultMenuHeader
+            // buff_submenu
             // 
-            this.buff_DefaultMenuHeader.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.buff_DefaultDropdown,
-            this.buff_ChooseSelected});
-            this.buff_DefaultMenuHeader.Name = "buff_DefaultMenuHeader";
-            this.buff_DefaultMenuHeader.Size = new System.Drawing.Size(168, 22);
-            this.buff_DefaultMenuHeader.Text = "Set from default...";
+            this.buff_submenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.buff_subtitleInstructions, this.buff_DropdownPreBuilt, this.buff_confirmToolStripMenuItem });
+            this.buff_submenu.Name = "buff_submenu";
+            this.buff_submenu.Size = new System.Drawing.Size(183, 22);
+            this.buff_submenu.Text = "Choose Prebuilt Buff";
             // 
-            // buff_DefaultDropdown
+            // buff_subtitleInstructions
             // 
-            this.buff_DefaultDropdown.Name = "buff_DefaultDropdown";
-            this.buff_DefaultDropdown.Size = new System.Drawing.Size(121, 23);
+            this.buff_subtitleInstructions.Name = "buff_subtitleInstructions";
+            this.buff_subtitleInstructions.Size = new System.Drawing.Size(219, 22);
+            this.buff_subtitleInstructions.Text = "Select One of the Following";
             // 
-            // buff_ChooseSelected
+            // buff_DropdownPreBuilt
             // 
-            this.buff_ChooseSelected.Name = "buff_ChooseSelected";
-            this.buff_ChooseSelected.Size = new System.Drawing.Size(181, 22);
-            this.buff_ChooseSelected.Text = "Chose Selected";
+            this.buff_DropdownPreBuilt.Name = "buff_DropdownPreBuilt";
+            this.buff_DropdownPreBuilt.Size = new System.Drawing.Size(121, 23);
+            this.buff_DropdownPreBuilt.Click += new System.EventHandler(this.buff_DropdownPreBuilt_Click);
             // 
-            // buff_AboutBttn
+            // buff_confirmToolStripMenuItem
             // 
-            this.buff_AboutBttn.Name = "buff_AboutBttn";
-            this.buff_AboutBttn.Size = new System.Drawing.Size(168, 22);
-            this.buff_AboutBttn.Text = "About";
+            this.buff_confirmToolStripMenuItem.Name = "buff_confirmToolStripMenuItem";
+            this.buff_confirmToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.buff_confirmToolStripMenuItem.Text = "Confirm";
+            this.buff_confirmToolStripMenuItem.Click += new System.EventHandler(this.buff_confirmToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.aboutToolStripMenuItem.Text = "About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // AbilityPopup
             // 
@@ -1202,14 +1155,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.stn_NumberOfTurns)).EndInit();
             this.ModifyStatsPage.ResumeLayout(false);
             this.ModifyStatsPage.PerformLayout();
+            this.buff_ContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.buff_AffectAmt)).EndInit();
             this.addCharacterDmg.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.main_Cooldown)).EndInit();
-            this.buff_ContextMenuStrip.ResumeLayout(false);
+            this.buff_addEffect.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.ToolStripMenuItem buff_confirmToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+
+        private System.Windows.Forms.ToolStripComboBox buff_DropdownPreBuilt;
+
+        private System.Windows.Forms.ToolStripMenuItem buff_submenu;
+        private System.Windows.Forms.ToolStripMenuItem buff_subtitleInstructions;
+
+        private System.Windows.Forms.ContextMenuStrip buff_addEffect;
 
         #endregion
 

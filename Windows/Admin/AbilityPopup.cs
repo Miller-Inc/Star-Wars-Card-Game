@@ -24,6 +24,27 @@ namespace Star_Wars_Card_Game.Windows.Admin
 
         public CharactersAffected Heal_AffectedChars { get; set; } = CharactersAffected.None;
 
+        private static readonly string aboutText =
+            "Currently there is no program able to modify the types of buffs that you can create." +
+            " This is a feature that will be added in the future. For now, you can only create " +
+            "buffs that are pre-built into the game. If you would like to see a list of the buffs " +
+            " click the submenu above the about button. ";  
+        
+        private static readonly string[] buffTypes = [
+        
+            "Heal Over Time 10%",
+            "Damage Over Time 10%",
+            "Increase Speed 10%",
+            "Increase Attack 10%",
+            "Increase Defense 10%",
+            "Increase Health 10%",
+            "Ability Block 1 turn",
+            "Decrease Speed -10%", 
+            "Decrease Attack -10%",
+            "Decrease Defense -10%",
+            "Decrease Health -10%"
+        ];
+        
         public CharactersAffected Stn_AffectedChars { get; set; } = CharactersAffected.None;
 
         public AbilityAction BuffAction { get; set; } = new()
@@ -104,15 +125,16 @@ namespace Star_Wars_Card_Game.Windows.Admin
             this.buff_ClassesSelectorCheckLsBx.Visible = false;
             this.buff_AlignLbl.Visible = false;
             this.buff_AlignDropDown.Visible = false;
-            this.buff_UnitsSelector.Visible = false;
-            this.buff_UnitsLbl.Visible = false;
+            this.buff_UnitsSelector.Visible = true;
+            this.buff_UnitsLbl.Visible = true;
             this.stn_CharTreeView.Nodes.Clear();
             this.stn_ClassListBox.Items.Clear();
             this.stn_ClassListBox.Items.AddRange(Backend.Game.Classes.ClassNames.ToArray());
             this.dmgClassIpt.Items.Clear();
             this.dmgClassIpt.Items.AddRange(Backend.Game.Classes.ClassNames.ToArray());
             this.unitsChooser.ExpandAll();
-
+            this.buff_DefaultDropdown.Items.Clear();
+            this.buff_DefaultDropdown.Items.AddRange(buffTypes);
             // Set the default types of buffs and debuffs
             this.buff_DefaultDropdown.Items.Clear();
             Type defaultType = typeof(DefaultStatusEffects);
@@ -1402,6 +1424,126 @@ namespace Star_Wars_Card_Game.Windows.Admin
             buff_CharsLbl.Visible = false;
         }
 
+        /// <summary>
+        /// Changes the UI based on the selected effect of the ability
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buff_UnitsSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*
+                Self
+                Selected Ally
+                Allied Leader
+                Specific Character(s) (Allies)
+                Specific Faction(s) (Allies)
+                Specific Allignment(s) (Allies)
+                Selected Enemy
+                All Enemies
+                Enemy Leader
+                Specific Character(s) (Enemy)
+                Specific Faction(s) (Enemy)
+                Specific Allignment(s) (Enemy)
+             */
+            buff_Hide();
+            //ResetEnemyNodes();
+            Color color = Color.White;
+            if (this.effectCheckBox.CheckedItems.Contains(this.effectCheckBox.Items[0])) color = Color.Yellow;
+            else { return; }
+            switch (this.buff_UnitsSelector.SelectedIndex)
+            {
+                case 0:
+                    // Self
+                    break;
+                case 1:
+                    // Selected Ally
+                    break;
+                case 2:
+                    // Allied Leader
+                    break;
+                case 3:
+                    // Specific Character(s) (Allies)
+                    break;
+                case 4:
+                    // Specific Faction(s) (Allies)
+                    break;
+                case 5:
+                    // Specific Allignment(s) (Allies)
+                    break;
+                case 6:
+                    // Selected Enemy
+                    this.buff_ClassesLbl.Visible = false;
+                    this.buff_ClassesSelectorCheckLsBx.Visible = false;
+                    this.buff_AlignLbl.Visible = false;
+                    this.buff_AlignDropDown.Visible = false;
+                    this.buff_CharsLbl.Visible = false;
+                    this.buff_CharsTreeView.Visible = false;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[1].ForeColor = color;
+                    break;
+                case 7:
+                    // All Enemies
+                    this.buff_ClassesLbl.Visible = false;
+                    this.buff_ClassesSelectorCheckLsBx.Visible = false;
+                    this.buff_AlignLbl.Visible = false;
+                    this.buff_AlignDropDown.Visible = false;
+                    this.buff_CharsLbl.Visible = false;
+                    this.buff_CharsTreeView.Visible = false;
+                    this.unitsChooser.Nodes[1].Checked = true;
+                    this.unitsChooser.Nodes[1].ForeColor = color;
+                    foreach (TreeNode node in this.unitsChooser.Nodes[1].Nodes)
+                    {
+                        node.Checked = true;
+                        node.ForeColor = color;
+                    }
+                    break;
+                case 8:
+                    // Enemy Leader
+                    this.buff_ClassesLbl.Visible = false;
+                    this.buff_ClassesSelectorCheckLsBx.Visible = false;
+                    this.buff_AlignLbl.Visible = false;
+                    this.buff_AlignDropDown.Visible = false;
+                    this.buff_CharsLbl.Visible = false;
+                    this.buff_CharsTreeView.Visible = false;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[0].ForeColor = color;
+                    break;
+                case 9:
+                    // Specific Character(s) (Enemy)
+                    this.buff_ClassesLbl.Visible = false;
+                    this.buff_ClassesSelectorCheckLsBx.Visible = false;
+                    this.buff_AlignLbl.Visible = false;
+                    this.buff_AlignDropDown.Visible = false;
+                    this.buff_CharsLbl.Visible = true;
+                    this.buff_CharsTreeView.Visible = true;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[2].ForeColor = color;
+                    break;
+                case 10:
+                    // Specific Faction(s) (Enemy)
+                    this.buff_ClassesLbl.Visible = true;
+                    this.buff_ClassesSelectorCheckLsBx.Visible = true;
+                    this.buff_AlignLbl.Visible = false;
+                    this.buff_AlignDropDown.Visible = false;
+                    this.buff_CharsLbl.Visible = false;
+                    this.buff_CharsTreeView.Visible = false;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[2].ForeColor = color;
+                    break;
+                case 11:
+                    // Specific Allignment(s) (Enemy)
+                    this.buff_ClassesLbl.Visible = false;
+                    this.buff_ClassesSelectorCheckLsBx.Visible = false;
+                    this.buff_AlignLbl.Visible = true;
+                    this.buff_AlignDropDown.Visible = true;
+                    this.buff_CharsLbl.Visible = false;
+                    this.buff_CharsTreeView.Visible = false;
+                    ResetEnemyNodes();
+                    this.unitsChooser.Nodes[1].Nodes[2].ForeColor = color;
+                    break;
+            }
+            UpdateChars();
+        }
         #endregion
 
         private void main_AbilityTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -1426,6 +1568,88 @@ namespace Star_Wars_Card_Game.Windows.Admin
                 case 3:
                     // Passive
                     break;
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(aboutText, "About");
+        }
+
+        private void buff_DropdownPreBuilt_Click(object sender, EventArgs e)
+        {
+            // TODO: Figure out what to do with this buff dropdown
+        }
+
+        private void buff_confirmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            switch (this.buff_DefaultDropdown.SelectedIndex)
+            {
+                case 0: 
+                    // Heal Over Time 10%
+                    this.Ability.Actions.Add(new AbilityAction
+                    {
+                        AffectedCharacters = CharactersAffected.AllAllies,
+                        AffectedClasses = [],
+                        AffectedAllignments = [],
+                        StatusEffect = new StatusEffect
+                        {
+                            AffectedStat = AffectedStat.Health,
+                            Duration = 3,
+                            Amount = 1.1f,
+                            ApplicationType = StatusApplicationType.Multiplicative,
+                        },
+                        AffectedStatValue = 0,
+                        AffectedUnits = [],
+                        Description = "Heals this unit",
+                        Type = ActionType.Heal,
+                        NumberOfTargets = 1,
+                    });
+                    break;
+                case 1:
+                    // Damage Over Time 10%
+                    
+                    break; 
+                case 2: 
+                    // Increase Speed 10%
+                
+                    break;
+                case 3:
+                    // Increase Attack 10%
+                
+                    break;
+                case 4:
+                    // Increase Defense 10%
+
+                    break; 
+                case 5:
+                    // Increase Health 10%
+                
+                    break;
+                case 6:
+                    // Ability Block 1 turn
+                
+                    break;
+                case 7:
+                    // Decrease Speed -10%
+                
+                    break;
+                case 8:
+                    // Decrease Attack -10%
+                    
+                    break; 
+                case 9: 
+                    // Decrease Defense -10%
+
+                    break;
+                case 10:
+                    // Decrease Health -10%
+                
+                    break;
+                default:
+                    MessageBox.Show("Please select a buff from the dropdown", "Error");
+                    break; 
+                    
             }
         }
     }
